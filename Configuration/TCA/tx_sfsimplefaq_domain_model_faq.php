@@ -1,10 +1,28 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
-}
+return array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq',
+		'label' => 'question',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'sorting',
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
 
-$GLOBALS['TCA']['tx_sfsimplefaq_domain_model_faq'] = array(
-	'ctrl' => $GLOBALS['TCA']['tx_sfsimplefaq_domain_model_faq']['ctrl'],
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'question,answer,keywords,category,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_simple_faq') . 'Resources/Public/Icons/tx_sfsimplefaq_domain_model_faq.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, category',
 	),
