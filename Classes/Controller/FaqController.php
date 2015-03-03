@@ -41,6 +41,14 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $faqRepository = NULL;
 
 	/**
+	 * categoryRepository
+	 *
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository
+	 * @inject
+	 */
+	protected $categoryRepository = NULL;
+
+	/**
 	 * action list
 	 *
 	 * @return void
@@ -48,6 +56,8 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	public function listAction() {
 		$faqs = $this->faqRepository->findAll();
 		$this->view->assign('faqs', $faqs);
+		$categories = $this->categoryRepository->findAll();
+		$this->view->assign('categories', $categories);
 	}
 
 }
