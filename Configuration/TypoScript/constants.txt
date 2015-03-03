@@ -1,0 +1,15 @@
+
+plugin.tx_sfsimplefaq {
+	view {
+		# cat=plugin.tx_sfsimplefaq/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:sf_simple_faq/Resources/Private/Templates/
+		# cat=plugin.tx_sfsimplefaq/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:sf_simple_faq/Resources/Private/Partials/
+		# cat=plugin.tx_sfsimplefaq/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:sf_simple_faq/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_sfsimplefaq//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

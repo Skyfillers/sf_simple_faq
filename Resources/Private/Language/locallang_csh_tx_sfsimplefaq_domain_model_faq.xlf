@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-03T14:35:15Z" product-name="sf_simple_faq">
+		<header/>
+		<body>
+			<trans-unit id="question.description">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="answer.description">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="keywords.description">
+				<source>Additional search keywords</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>Category</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

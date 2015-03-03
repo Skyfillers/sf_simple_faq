@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-03T14:35:15Z" product-name="sf_simple_faq">
+		<header/>
+		<body>
+			<trans-unit id="tx_sfsimplefaq_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_category.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq">
+				<source>Faq</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.category">
+				<source>Category</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
