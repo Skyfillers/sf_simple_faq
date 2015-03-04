@@ -50,13 +50,19 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
 
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 
 		$faqRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository', array('findAll'), array(), '', FALSE);
 		$faqRepository->expects($this->once())->method('findAll')->will($this->returnValue($allFaqs));
 		$this->inject($this->subject, 'faqRepository', $faqRepository);
 
+		$categoryRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository', array('findAll'), array(), '', FALSE);
+		$categoryRepository->expects($this->once())->method('findAll')->will($this->returnValue($allCategories));
+		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
+
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$view->expects($this->once())->method('assign')->with('faqs', $allFaqs);
+		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
+		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
 		$this->inject($this->subject, 'view', $view);
 
 		$this->subject->listAction();
