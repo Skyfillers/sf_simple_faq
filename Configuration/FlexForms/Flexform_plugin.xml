@@ -1,0 +1,56 @@
+<T3DataStructure>
+    <meta type="array">
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <!-- Sheet: Settings -->
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <!-- Category Selector -->
+                    <settings.category>
+                        <TCEforms>
+                            <label>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category</label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.all</numIndex>
+                                        <numIndex index="1">0</numIndex>
+                                    </numIndex>
+                                </items>
+                                <foreign_table>tx_sfsimplefaq_domain_model_category</foreign_table>
+                                <foreign_table_where> AND (tx_sfsimplefaq_domain_model_category.sys_language_uid = 0 OR tx_sfsimplefaq_domain_model_category.l10n_parent = 0) ORDER BY tx_sfsimplefaq_domain_model_category.title ASC</foreign_table_where>
+                            </config>
+                        </TCEforms>
+                    </settings.category>
+
+                    <!-- Category Overview -->
+                    <settings.category.overview>
+                        <TCEforms>
+                            <label>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.overview</label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.overview.hide</numIndex>
+                                        <numIndex index="1">0</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.overview.show</numIndex>
+                                        <numIndex index="1">0</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.category.overview>
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
