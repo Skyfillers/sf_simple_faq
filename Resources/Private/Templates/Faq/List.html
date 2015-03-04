@@ -4,12 +4,12 @@
 <f:section name="main">
 
 <f:for each="{categories}" as="category">
-	<h2>{category.title}</h2>
-	<f:for each="{faqs}" as="faq">
-		<f:if condition="{faq.category} == {category}">
-			<p>{faq.question}<br>{faq.answer}</p>
-  		</f:if>
-	</f:for>
+	<f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">{category.title}</f:link.action>
 </f:for>
+
+<f:for each="{faqs}" as="faq">
+	<p>{faq.question}<br>{faq.answer}</p>
+</f:for>
+
 
 </f:section>

@@ -26,6 +26,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  * FaqController
@@ -51,12 +52,13 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action list
 	 *
+	 * @param int $category
 	 * @return void
 	 */
-	public function listAction() {
-		$faqs = $this->faqRepository->findAll();
-		$this->view->assign('faqs', $faqs);
+	public function listAction($category = 0) {
+		$faqs = $this->faqRepository->findByCategory($category);
 		$categories = $this->categoryRepository->findAll();
+		$this->view->assign('faqs', $faqs);
 		$this->view->assign('categories', $categories);
 	}
 
