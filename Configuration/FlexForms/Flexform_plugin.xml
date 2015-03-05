@@ -15,6 +15,7 @@
                     <settings.category>
                         <TCEforms>
                             <label>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category</label>
+                            <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
                                 <items type="array">
