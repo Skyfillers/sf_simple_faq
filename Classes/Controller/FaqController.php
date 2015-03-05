@@ -50,6 +50,22 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $categoryRepository = NULL;
 
 	/**
+	 * Create a demand object with the given settings
+	 * @param array $settings
+	 * @param int $category
+	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
+	 */
+	public function createDemandObjectFromSettings($settings, $category = 0) {
+		if ($category === 0) {
+			$category = $settings['category'];
+		}
+		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
+		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
+		$demand->setCategory($category);
+		return $demand;
+	}
+
+	/**
 	 * action list
 	 *
 	 * @param int $category
