@@ -3,6 +3,8 @@
 
 <f:section name="main">
 
+<f:render partial="Searchform"/>
+
 <f:if condition="{settings.category}==0">
 	<f:if condition="{settings.overview}==1">
 		<f:for each="{categories}" as="category">
