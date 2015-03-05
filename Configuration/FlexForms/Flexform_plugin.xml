@@ -30,9 +30,10 @@
                     </settings.category>
 
                     <!-- Category Overview -->
-                    <settings.category.overview>
+                    <settings.overview>
                         <TCEforms>
                             <label>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.overview</label>
+                            <displayCond>FIELD:settings.category:=:0</displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -47,7 +48,7 @@
                                 </items>
                             </config>
                         </TCEforms>
-                    </settings.category.overview>
+                    </settings.overview>
 
                 </el>
             </ROOT>
