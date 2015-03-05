@@ -47,6 +47,13 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $category = NULL;
 
 	/**
+	 * Search text
+	 *
+	 * @var string
+	 */
+	protected $searchtext = NULL;
+
+	/**
 	 * Returns the keywords
 	 *
 	 * @return string $keywords
@@ -82,6 +89,25 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setCategory($category) {
 		$this->category = $category;
+	}
+
+	/**
+	 * Returns the search text
+	 *
+	 * @return string $searchtext
+	 */
+	public function getSearchtext() {
+		return $this->searchtext;
+	}
+
+	/**
+	 * Sets the search text
+	 *
+	 * @param string $searchtext
+	 * @return void
+	 */
+	public function setSearchtext($searchtext) {
+		$this->searchtext = $searchtext;
 	}
 
 }
