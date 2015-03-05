@@ -40,16 +40,27 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	protected $subject = NULL;
 
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
 	protected function setUp() {
 		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
 	}
 
+	/**
+	 * teardown
+	 *
+	 * @return void
+	 */
 	protected function tearDown() {
 		unset($this->subject);
 	}
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getTitleReturnsInitialValueForString() {
 		$this->assertSame(
@@ -60,6 +71,7 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function setTitleForStringSetsTitle() {
 		$this->subject->setTitle('Conceived at T3CON10');

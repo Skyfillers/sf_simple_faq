@@ -40,16 +40,27 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	protected $subject = NULL;
 
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
 	protected function setUp() {
 		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq();
 	}
 
+	/**
+	 * teardown
+	 *
+	 * @return void
+	 */
 	protected function tearDown() {
 		unset($this->subject);
 	}
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getQuestionReturnsInitialValueForString() {
 		$this->assertSame(
@@ -60,6 +71,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function setQuestionForStringSetsQuestion() {
 		$this->subject->setQuestion('Conceived at T3CON10');
@@ -73,6 +85,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getAnswerReturnsInitialValueForString() {
 		$this->assertSame(
@@ -83,6 +96,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function setAnswerForStringSetsAnswer() {
 		$this->subject->setAnswer('Conceived at T3CON10');
@@ -96,6 +110,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getKeywordsReturnsInitialValueForString() {
 		$this->assertSame(
@@ -106,6 +121,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function setKeywordsForStringSetsKeywords() {
 		$this->subject->setKeywords('Conceived at T3CON10');
@@ -119,6 +135,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function getCategoryReturnsInitialValueForCategory() {
 		$this->assertEquals(
@@ -129,6 +146,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * @test
+	 * @return void
 	 */
 	public function setCategoryForCategorySetsCategory() {
 		$categoryFixture = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
