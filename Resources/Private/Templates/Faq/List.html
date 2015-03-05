@@ -3,9 +3,13 @@
 
 <f:section name="main">
 
-<f:for each="{categories}" as="category">
-	<f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">{category.title}</f:link.action>
-</f:for>
+<f:if condition="{settings.category}==0">
+	<f:if condition="{settings.overview}==1">
+		<f:for each="{categories}" as="category">
+			<f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">{category.title}</f:link.action>
+		</f:for>
+	</f:if>
+</f:if>
 
 <f:for each="{faqs}" as="faq">
 	<p>{faq.question}<br>{faq.answer}</p>
