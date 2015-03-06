@@ -47,6 +47,13 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$constraints[] = $query->equals('category', $demand->getCategory());
 		}
 
+		if ($demand->getSearchtext()) {
+			$constraints[] = $query->logicalOr(
+				$query->like('question', '%' . $demand->getSearchtext() . '%'),
+				$query->like('answer', '%' . $demand->getSearchtext() . '%')
+			);
+		}
+
 		if (count($constraints) > 0) {
 			$query->matching($query->logicalAnd($constraints));
 		}
