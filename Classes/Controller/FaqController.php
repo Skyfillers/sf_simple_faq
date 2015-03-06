@@ -53,15 +53,18 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * Create a demand object with the given settings
 	 * @param array $settings
 	 * @param int $category
+	 * @param string $searchtext
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings($settings, $category = 0) {
+	public function createDemandObjectFromSettings($settings, $category = 0, $searchtext = '') {
 		if ($category === 0) {
 			$category = $settings['category'];
 		}
 		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
 		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
 		$demand->setCategory($category);
+		$demand->setSearchtext($searchtext);
+
 		return $demand;
 	}
 
@@ -69,10 +72,11 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * action list
 	 *
 	 * @param int $category
+	 * @param string $searchtext
 	 * @return void
 	 */
-	public function listAction($category = 0) {
-		$demand = $this->createDemandObjectFromSettings($this->settings, $category);
+	public function listAction($category = 0, $searchtext = '') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, $category, $searchtext);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
 		$this->view->assign('faqs', $faqs);
