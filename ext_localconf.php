@@ -8,11 +8,11 @@ if (!defined('TYPO3_MODE')) {
 	'Pifaq',
 	array(
 		'Faq' => 'list',
-		
+
 	),
 	// non-cacheable actions
 	array(
-		'Faq' => '',
-		
+		'Faq' => 'list',
+
 	)
 );
