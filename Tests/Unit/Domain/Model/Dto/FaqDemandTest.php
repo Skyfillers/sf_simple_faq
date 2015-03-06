@@ -62,34 +62,9 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 * @return void
 	 */
-	public function getKeywordsReturnsInitialValueForString() {
+	public function getCategoryReturnsInitialValueForInteger() {
 		$this->assertSame(
-			'',
-			$this->subject->getKeywords()
-		);
-	}
-
-	/**
-	 * @test
-	 * @return void
-	 */
-	public function setKeywordsForStringSetsKeywords() {
-		$this->subject->setKeywords('Conceived at T3CON10');
-
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'keywords',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 * @return void
-	 */
-	public function getCategoryReturnsInitialValueForCategory() {
-		$this->assertEquals(
-			NULL,
+			0,
 			$this->subject->getCategory()
 		);
 	}
@@ -98,14 +73,24 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 * @return void
 	 */
-	public function setCategoryForCategorySetsCategory() {
-		$categoryFixture = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
-		$this->subject->setCategory($categoryFixture);
-
-		$this->assertAttributeEquals(
-			$categoryFixture,
-			'category',
-			$this->subject
+	public function setCategoryForIntegerSetsCategory() {
+		$this->subject->setCategory(1);
+		$this->assertSame(
+			1,
+			$this->subject->getCategory()
 		);
 	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function getSearchtextForStringSetsSearchtext() {
+		$this->subject->setSearchtext('test');
+		$this->assertEquals(
+			'test',
+			$this->subject->getSearchtext()
+		);
+	}
+
 }
