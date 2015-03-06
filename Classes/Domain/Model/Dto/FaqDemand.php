@@ -35,7 +35,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Category
 	 *
-	 * @var string
+	 * @var int
 	 */
 	protected $category;
 
@@ -49,7 +49,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the category
 	 *
-	 * @return string
+	 * @return int
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -58,7 +58,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the category
 	 *
-	 * @param string $category
+	 * @param int $category
 	 * @return void
 	 */
 	public function setCategory($category) {
