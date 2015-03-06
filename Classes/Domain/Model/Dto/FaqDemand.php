@@ -33,44 +33,18 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model\Dto;
 class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
-	 * Additional search keywords
+	 * Category
 	 *
 	 * @var string
 	 */
-	protected $keywords = '';
-
-	/**
-	 * Category
-	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
-	 */
-	protected $category = NULL;
+	protected $category;
 
 	/**
 	 * Search text
 	 *
 	 * @var string
 	 */
-	protected $searchtext = NULL;
-
-	/**
-	 * Returns the keywords
-	 *
-	 * @return string $keywords
-	 */
-	public function getKeywords() {
-		return $this->keywords;
-	}
-
-	/**
-	 * Sets the keywords
-	 *
-	 * @param string $keywords
-	 * @return void
-	 */
-	public function setKeywords($keywords) {
-		$this->keywords = $keywords;
-	}
+	protected $searchtext;
 
 	/**
 	 * Returns the category
@@ -94,7 +68,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the search text
 	 *
-	 * @return string $searchtext
+	 * @return string
 	 */
 	public function getSearchtext() {
 		return $this->searchtext;
