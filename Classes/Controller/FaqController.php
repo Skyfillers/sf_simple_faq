@@ -56,7 +56,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @param string $searchtext
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings($settings, $searchtext, $category) {
+	public function createDemandObjectFromSettings($settings, $searchtext, $category = 0) {
 		if ($category === 0) {
 			$category = $settings['category'];
 		}
