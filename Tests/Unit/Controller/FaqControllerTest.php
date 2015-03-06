@@ -70,14 +70,15 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$mockDemand = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
 			array(), array(), '', FALSE);
 
-		$mockDemand->expects($this->once())->method('setCategory')->with(10);
+		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
+		$mockDemand->expects($this->at(1))->method('setCategory')->with(10);
 
 		$objectManager = $this->getMock('TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
 			array(), array(), '', FALSE);
 		$objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
 		$this->inject($mockController, 'objectManager', $objectManager);
 
-		$mockController->createDemandObjectFromSettings($settings);
+		$mockController->createDemandObjectFromSettings($settings, 'test');
 	}
 
 	/**
@@ -95,14 +96,15 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$mockDemand = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
 			array(), array(), '', FALSE);
 
-		$mockDemand->expects($this->once())->method('setCategory')->with(20);
+		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
+		$mockDemand->expects($this->at(1))->method('setCategory')->with(20);
 
 		$objectManager = $this->getMock('TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
 			array(), array(), '', FALSE);
 		$objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
 		$this->inject($mockController, 'objectManager', $objectManager);
 
-		$mockController->createDemandObjectFromSettings($settings, 20);
+		$mockController->createDemandObjectFromSettings($settings, 'test', 20);
 	}
 
 	/**
@@ -111,12 +113,13 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
 		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
-
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+		$category = 0;
 
 		$settings = array('settings');
 		$this->inject($this->subject, 'settings', $settings);
+
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
 
@@ -133,6 +136,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
 		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
+		$view->expects($this->at(2))->method('assign')->with('selectedCategory', $category);
 		$this->inject($this->subject, 'view', $view);
 
 		$this->subject->listAction();
