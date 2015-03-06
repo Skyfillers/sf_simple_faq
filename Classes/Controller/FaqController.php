@@ -81,6 +81,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$categories = $this->categoryRepository->findAll();
 		$this->view->assign('faqs', $faqs);
 		$this->view->assign('categories', $categories);
+		$this->view->assign('selectedCategory', $category);
 	}
 
 }

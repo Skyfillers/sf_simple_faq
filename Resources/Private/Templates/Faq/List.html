@@ -3,7 +3,7 @@
 
 <f:section name="main">
 
-<f:render partial="Searchform"/>
+<f:render partial="Searchform" arguments="{selectedCategory: selectedCategory}"/>
 
 <f:if condition="{settings.category}==0">
 	<f:if condition="{settings.overview}==1">
@@ -16,6 +16,5 @@
 <f:for each="{faqs}" as="faq">
 	<p>{faq.question}<br>{faq.answer}</p>
 </f:for>
-
 
 </f:section>
