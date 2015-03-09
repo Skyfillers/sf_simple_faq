@@ -27,6 +27,7 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The repository for Faqs
@@ -48,11 +49,18 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 
 		if ($demand->getSearchtext()) {
-			$constraints[] = $query->logicalOr(
-				$query->like('question', '%' . $demand->getSearchtext() . '%'),
-				$query->like('answer', '%' . $demand->getSearchtext() . '%'),
-				$query->like('keywords', '%' . $demand->getSearchtext() . '%')
-			);
+			$searchtextConstraints = array();
+			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
+			foreach ($searchWords as $searchWord) {
+				$searchtextConstraints[] = $query->logicalOr(
+					$query->like('question', '%' . $searchWord . '%'),
+					$query->like('answer', '%' . $searchWord . '%'),
+					$query->like('keywords', '%' . $searchWord . '%')
+				);
+			}
+			if (count($searchtextConstraints) > 0) {
+				$constraints[] = $query->logicalOr($searchtextConstraints);
+			}
 		}
 
 		if (count($constraints) > 0) {
