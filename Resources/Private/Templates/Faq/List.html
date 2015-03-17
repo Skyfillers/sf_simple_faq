@@ -14,8 +14,15 @@
 	</f:if>
 </f:if>
 
-<f:for each="{faqs}" as="faq">
-	<p>{faq.question}<br>{faq.answer}</p>
-</f:for>
+<ul>
+	<f:for each="{faqs}" as="faq">
+		<li>
+			{faq.question}
+			<ul>
+				<li>{faq.answer}</li>
+			</ul>
+		</li>
+	</f:for>
+</ul>
 
 </f:section>
