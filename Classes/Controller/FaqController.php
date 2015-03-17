@@ -26,6 +26,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  * FaqController
@@ -81,6 +82,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$this->view->assign('faqs', $faqs);
 		$this->view->assign('categories', $categories);
 		$this->view->assign('selectedCategory', $category);
+		$this->view->assign('searchtext', $searchtext);
 	}
 
 }
