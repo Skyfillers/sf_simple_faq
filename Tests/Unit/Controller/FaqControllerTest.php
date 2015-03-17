@@ -116,6 +116,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$category = 0;
+		$searchtext = '';
 
 		$settings = array('settings');
 		$this->inject($this->subject, 'settings', $settings);
@@ -137,6 +138,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
 		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
 		$view->expects($this->at(2))->method('assign')->with('selectedCategory', $category);
+		$view->expects($this->at(3))->method('assign')->with('searchtext', $searchtext);
 		$this->inject($this->subject, 'view', $view);
 
 		$this->subject->listAction();
