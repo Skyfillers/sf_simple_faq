@@ -1,46 +1,33 @@
-
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
 
-<f:render partial="Searchform" arguments="{selectedCategory: selectedCategory, searchtext: searchtext}"/>
+    <f:render partial="Searchform" arguments="{selectedCategory: selectedCategory, searchtext: searchtext}"/>
 
-<f:if condition="{settings.category}==0">
-	<f:if condition="{settings.overview}==1">
-		<f:link.action action="list" controller="Faq" arguments="{category: '0'}">
-			<f:if condition="{category.uid}=={selectedCategory}">
-				<f:then>
-					<span class="active"><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
-				</f:then>
-				<f:else>
-					<span><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
-				</f:else>
-			</f:if>
-		</f:link.action>
-		<f:for each="{categories}" as="category">
-			<f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">
-				<f:if condition="{category.uid}=={selectedCategory}">
-					<f:then>
-						<span class="active">{category.title}</span>
-					</f:then>
-					<f:else>
-						<span>{category.title}</span>
-					</f:else>
-				</f:if>
-			</f:link.action>
-		</f:for>
-	</f:if>
-</f:if>
+    <f:if condition="{settings.category}==0">
+        <f:if condition="{settings.overview}==1">
+            <f:link.action action="list" controller="Faq" arguments="{category: '0'}">
+                <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="active"')}><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
+            </f:link.action>
+            <f:for each="{categories}" as="category">
+                <f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">
+                    <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="active"')}>{category.title}</span>
+                </f:link.action>
+            </f:for>
+        </f:if>
+    </f:if>
 
-<ul>
-	<f:for each="{faqs}" as="faq">
-		<li>
-			{faq.question}
-			<ul>
-				<li><f:format.raw>{faq.answer}</f:format.raw></li>
-			</ul>
-		</li>
-	</f:for>
-</ul>
+    <ul>
+        <f:for each="{faqs}" as="faq">
+            <li>
+                {faq.question}
+                <ul>
+                    <li>
+                        <f:format.raw>{faq.answer}</f:format.raw>
+                    </li>
+                </ul>
+            </li>
+        </f:for>
+    </ul>
 
 </f:section>
