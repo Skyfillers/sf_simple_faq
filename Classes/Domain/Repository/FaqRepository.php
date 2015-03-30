@@ -44,7 +44,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$constraints = array();
 
 		if ($demand->getCategory() > 0) {
-			$constraints[] = $query->equals('category', $demand->getCategory());
+			$constraints[] = $query->contains('category', $demand->getCategory());
 		}
 
 		if ($demand->getSearchtext()) {
