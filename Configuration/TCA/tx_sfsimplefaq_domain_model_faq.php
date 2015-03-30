@@ -159,11 +159,14 @@ return array(
 			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.category',
 			'config' => array(
 				'type' => 'select',
+				'MM' => 'tx_sfsimplefaq_faq_category_mm',
 				'foreign_table' => 'tx_sfsimplefaq_domain_model_category',
+				'foreign_table_where' => ' AND (tx_sfsimplefaq_domain_model_category.sys_language_uid = 0 OR tx_sfsimplefaq_domain_model_category.l10n_parent = 0) ORDER BY tx_sfsimplefaq_domain_model_category.sorting ASC',
+				'size' => 5,
 				'minitems' => 0,
-				'maxitems' => 1,
+				'maxitems' => 99,
 			),
 		),
-		
+
 	),
 );
