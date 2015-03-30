@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-03T14:35:15Z" product-name="sf_simple_faq">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-03T14:35:15Z" product-name="sf_simple_faq">
 		<header/>
 		<body>
 			<trans-unit id="tx_sfsimplefaq_domain_model_category">
 				<source>Category</source>
+				<target>Kategorie</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_category.title">
 				<source>Title</source>
+				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_category.all">
 				<source>All</source>
+				<target>Alle</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq">
 				<source>Faq</source>
+				<target>Häufig gestellte Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.question">
 				<source>Question</source>
+				<target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.answer">
 				<source>Answer</source>
+				<target>Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.keywords">
 				<source>Keywords</source>
+				<target>Schlüsselwörter</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.category">
 				<source>Category</source>
+				<target>Kategory</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.searchtext">
 				<source>Text search</source>
+				<target>Freitextsuche</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.searchbutton">
 				<source>search</source>
+				<target>suchen</target>
 			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.noresults">
 				<source>No search results found for </source>
+				<target>Es wurden keine Suchergebnisse gefunden für </target>
 			</trans-unit>
 		</body>
 	</file>

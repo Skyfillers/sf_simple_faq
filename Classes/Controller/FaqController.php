@@ -41,13 +41,47 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $faqRepository = NULL;
 
 	/**
+	 * categoryRepository
+	 *
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository
+	 * @inject
+	 */
+	protected $categoryRepository = NULL;
+
+	/**
+	 * Create a demand object with the given settings
+	 * @param array $settings
+	 * @param int $category
+	 * @param string $searchtext
+	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
+	 */
+	public function createDemandObjectFromSettings($settings, $searchtext, $category = 0) {
+		if ($category === 0) {
+			$category = $settings['category'];
+		}
+		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
+		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
+		$demand->setSearchtext($searchtext);
+		$demand->setCategory($category);
+
+		return $demand;
+	}
+
+	/**
 	 * action list
 	 *
+	 * @param int $category
+	 * @param string $searchtext
 	 * @return void
 	 */
-	public function listAction() {
-		$faqs = $this->faqRepository->findAll();
+	public function listAction($category = 0, $searchtext = '') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $category);
+		$faqs = $this->faqRepository->findDemanded($demand);
+		$categories = $this->categoryRepository->findAll();
 		$this->view->assign('faqs', $faqs);
+		$this->view->assign('categories', $categories);
+		$this->view->assign('selectedCategory', $category);
+		$this->view->assign('searchtext', $searchtext);
 	}
 
 }

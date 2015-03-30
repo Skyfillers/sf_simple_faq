@@ -1,0 +1,8 @@
+<f:form class="faq-searchform" name="searchform" action="list" arguments="{category: '{selectedCategory}'}">
+    <label>
+        <f:translate key="tx_sfsimplefaq_domain_model_faq.searchtext"/>
+    </label>
+    <f:form.textfield class="faq-searchtext" name="searchtext" value="{searchtext}"/>
+    <f:form.submit class="faq-searchbutton" name="searchbutton"
+                   value="{f:translate(key:'tx_sfsimplefaq_domain_model_faq.searchbutton')}"/>
+</f:form>

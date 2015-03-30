@@ -1,6 +1,6 @@
 <?php
 
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
+namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model\Dto;
 
 /***************************************************************
  *  Copyright notice
@@ -27,16 +27,16 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \SKYFILLERS\SfSimpleFaq\Domain\Model\Category.
+ * Test case for class \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
-class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
 	protected $subject = NULL;
 
@@ -46,7 +46,7 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
+		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 	}
 
 	/**
@@ -62,10 +62,10 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 * @return void
 	 */
-	public function getTitleReturnsInitialValueForString() {
+	public function getCategoryReturnsInitialValueForInteger() {
 		$this->assertSame(
-			'',
-			$this->subject->getTitle()
+			0,
+			$this->subject->getCategory()
 		);
 	}
 
@@ -73,13 +73,24 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 * @return void
 	 */
-	public function setTitleForStringSetsTitle() {
-		$this->subject->setTitle('Conceived at T3CON10');
-
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'title',
-			$this->subject
+	public function setCategoryForIntegerSetsCategory() {
+		$this->subject->setCategory(1);
+		$this->assertSame(
+			1,
+			$this->subject->getCategory()
 		);
 	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function getSearchtextForStringSetsSearchtext() {
+		$this->subject->setSearchtext('test');
+		$this->assertEquals(
+			'test',
+			$this->subject->getSearchtext()
+		);
+	}
+
 }

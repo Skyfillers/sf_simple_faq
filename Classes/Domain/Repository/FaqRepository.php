@@ -26,11 +26,46 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The repository for Faqs
  */
 class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	
+	/**
+	 * Returns the objects of this repository matching the given demand
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findDemanded($demand) {
+		$query = $this->createQuery();
+		$constraints = array();
+
+		if ($demand->getCategory() > 0) {
+			$constraints[] = $query->equals('category', $demand->getCategory());
+		}
+
+		if ($demand->getSearchtext()) {
+			$searchtextConstraints = array();
+			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
+			foreach ($searchWords as $searchWord) {
+				$searchtextConstraints[] = $query->logicalOr(
+					$query->like('question', '%' . $searchWord . '%'),
+					$query->like('answer', '%' . $searchWord . '%'),
+					$query->like('keywords', '%' . $searchWord . '%')
+				);
+			}
+			if (count($searchtextConstraints) > 0) {
+				$constraints[] = $query->logicalOr($searchtextConstraints);
+			}
+		}
+
+		if (count($constraints) > 0) {
+			$query->matching($query->logicalAnd($constraints));
+		}
+
+		return $query->execute();
+	}
 }

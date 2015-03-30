@@ -1,41 +1,42 @@
-
-<f:layout name="Default" />
-
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:layout name="Default"/>
 
 <f:section name="main">
-<h1>Listing for Faq</h1>
 
-<f:flashMessages renderMode="div" />
+    <f:render partial="Searchform" arguments="{selectedCategory: selectedCategory, searchtext: searchtext}"/>
 
-<table  class="tx_sfsimplefaq" >
-	<tr>
-		<th><f:translate key="tx_sfsimplefaq_domain_model_faq.question" /></th>
-		<th><f:translate key="tx_sfsimplefaq_domain_model_faq.answer" /></th>
-		<th><f:translate key="tx_sfsimplefaq_domain_model_faq.keywords" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
+    <f:if condition="{settings.category}==0">
+        <f:if condition="{settings.overview}==1">
+            <f:link.action action="list" controller="Faq" arguments="{category: '0'}">
+                <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
+            </f:link.action>
+            <f:for each="{categories}" as="category">
+                <f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">
+                    <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}>{category.title}</span>
+                </f:link.action>
+            </f:for>
+        </f:if>
+    </f:if>
 
-	<f:for each="{faqs}" as="faq">
-		<tr>
-			<td><f:link.action action="show" arguments="{faq : faq}"> {faq.question}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{faq : faq}"> {faq.answer}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{faq : faq}"> {faq.keywords}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{faq : faq}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{faq : faq}">Delete</f:link.action></td>
-		</tr>
-	</f:for>
-</table>
+    <f:if condition="{faqs}">
+        <f:then>
+            <ul>
+                <f:for each="{faqs}" as="faq">
+                    <li>
+                        {faq.question}
+                        <ul>
+                            <li>
+                                <f:format.raw>{faq.answer}</f:format.raw>
+                            </li>
+                        </ul>
+                    </li>
+                </f:for>
+            </ul>
+        </f:then>
+        <f:else>
+            <p class="faq-noresults"><f:translate key="tx_sfsimplefaq_domain_model_faq.noresults"/>"{searchtext}".</p>
+        </f:else>
+    </f:if>
 
-<f:link.action action="new">New Faq</f:link.action>
+
+
 </f:section>
