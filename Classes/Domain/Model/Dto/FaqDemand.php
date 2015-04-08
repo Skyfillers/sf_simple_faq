@@ -37,7 +37,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var int
 	 */
-	protected $category = 0;
+	protected $category = '0';
 
 	/**
 	 * Search text

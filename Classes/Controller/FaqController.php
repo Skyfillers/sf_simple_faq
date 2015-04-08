@@ -70,15 +70,25 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action list
 	 *
-	 * @param int $category
+	 * @param string $category
 	 * @param string $searchtext
 	 * @return void
 	 */
-	public function listAction($category = 0, $searchtext = '') {
-		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $category);
+	public function listAction($selectedCategories = '0', $searchtext = '') {
+        $categories = $this->categoryRepository->findAll();
+
+        foreach($categories AS $category) {
+            if ($this->request->hasArgument('category-'.$category->getUid()) && $this->request->getArgument('category-'.$category->getUid())!=NULL){
+                $selectedCategories .= ',';
+                $selectedCategories .= $category->getUid();
+                $this->view->assign('sC', $selectedCategories);
+            }
+        }
+
+		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
-		$categories = $this->categoryRepository->findAll();
-		$this->view->assign('faqs', $faqs);
+
+        $this->view->assign('faqs', $faqs);
 		$this->view->assign('categories', $categories);
 		$this->view->assign('selectedCategory', $category);
 		$this->view->assign('searchtext', $searchtext);

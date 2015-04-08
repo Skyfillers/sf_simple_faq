@@ -43,9 +43,18 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$query = $this->createQuery();
 		$constraints = array();
 
-		if ($demand->getCategory() > 0) {
-			$constraints[] = $query->contains('category', $demand->getCategory());
-		}
+        $rawCategories = $demand->getCategory();
+        $categories = explode(',', $rawCategories);
+
+		//if ($demand->getCategory() > 0) {
+		//	$constraints[] = $query->contains('category', $demand->getCategory());
+		//}
+        if(count($categories)>1) {
+            //$constraints[] = $query->contains('category', $demand->getCategory());
+            foreach($categories AS $category) {
+                $constraints[] = $query->contains('category', $category);
+            }
+        }
 
 		if ($demand->getSearchtext()) {
 			$searchtextConstraints = array();
@@ -63,7 +72,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 
 		if (count($constraints) > 0) {
-			$query->matching($query->logicalAnd($constraints));
+			$query->matching($query->logicalOr($constraints));
 		}
 
 		return $query->execute();
