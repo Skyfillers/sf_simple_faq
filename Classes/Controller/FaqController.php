@@ -76,21 +76,24 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function listAction($selectedCategories = '0', $searchtext = '') {
         $categories = $this->categoryRepository->findAll();
-
         foreach($categories AS $category) {
-            if ($this->request->hasArgument('category-'.$category->getUid()) && $this->request->getArgument('category-'.$category->getUid())!=NULL){
-                $selectedCategories .= ',';
-                $selectedCategories .= $category->getUid();
-                $this->view->assign('sC', $selectedCategories);
+            if(strpos($selectedCategories, (string)$category->getUid()) !== false) {
+                $category->setArgs(str_replace($category->getUid(), '', $selectedCategories));
+            }else {
+                $category->setArgs($selectedCategories . $category->getUid());
             }
+
+            $stringParts = str_split($category->getArgs());
+            sort($stringParts);
+            $category->setArgs(implode('', $stringParts));
         }
 
-		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
+        $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 
         $this->view->assign('faqs', $faqs);
 		$this->view->assign('categories', $categories);
-		$this->view->assign('selectedCategory', $category);
+		$this->view->assign('selectedCategories', $selectedCategories);
 		$this->view->assign('searchtext', $searchtext);
 	}
 

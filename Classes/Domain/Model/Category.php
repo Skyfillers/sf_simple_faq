@@ -30,6 +30,11 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
 /**
  * Category
  */
+/**
+ * Class Category
+ *
+ * @package SKYFILLERS\SfSimpleFaq\Domain\Model
+ */
 class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
@@ -39,6 +44,11 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @validate NotEmpty
 	 */
 	protected $title = '';
+
+    /**
+     * @var string
+     */
+    protected $args = '';
 
 	/**
 	 * Returns the title
@@ -58,5 +68,21 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function setTitle($title) {
 		$this->title = $title;
 	}
+
+
+    /**
+     * @return string
+     */
+    public function getArgs() {
+        return $this->args;
+    }
+
+
+    /**
+     * @param string $args
+     */
+    public function setArgs($args) {
+        $this->args = $args;
+    }
 
 }
