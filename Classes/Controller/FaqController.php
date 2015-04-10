@@ -26,7 +26,6 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper as filterFagHelper;
 
 /**
  * FaqController
@@ -49,12 +48,18 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	protected $categoryRepository = NULL;
 
-
+    /**
+     * filterFagHelper
+     *
+     * @var \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper
+     * @inject
+     */
+    protected $filterFagHelper;
 
 	/**
 	 * Create a demand object with the given settings
 	 * @param array $settings
-	 * @param int $category
+	 * @param string $category
 	 * @param string $searchtext
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
@@ -62,7 +67,10 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		if ($category === '0') {
 			$category = $settings['category'];
 		}
-		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
+
+		/**
+         * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+         */
 		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
 		$demand->setSearchtext($searchtext);
 		$demand->setCategory($category);
@@ -82,19 +90,22 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
         $categories = $this->categoryRepository->findAll();
 
-        $selectedCategories = filterFagHelper::buildFilterArray($selectedCategories, $actualCategory);
-
+        /**
+         * @var \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper $filterFagHelper
+         */
+        $this->filterFagHelper = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Helper\\FilterFaqHelper');
+        $selectedCategories = $this->filterFagHelper->buildFilterArray($selectedCategories, $actualCategory);
 
         $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 
-
-        $assignArray = array();
-        $assignArray['faqs'] = $faqs;
-        $assignArray['categories'] = $categories;
-        $assignArray['selectedCategories'] = $selectedCategories;
-        $assignArray['searchtext'] = $searchtext;
-        $assignArray['actualCategory'] = $actualCategory;
+        $assignArray = array(
+            'faqs' => $faqs,
+            'categories' => $categories,
+            'selectedCategories' => $selectedCategories,
+            'searchtext' => $searchtext,
+            'actualCategory' => $actualCategory,
+        );
         $this->view->assignMultiple($assignArray);
 	}
 
