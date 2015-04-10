@@ -36,28 +36,17 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	protected $subject = NULL;
 
-	/**
-	 * setup
-	 *
-	 * @return void
-	 */
 	protected function setUp() {
 		$this->subject = $this->getAccessibleMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'), array(), '', FALSE);
 	}
 
-	/**
-	 * teardown
-	 *
-	 * @return void
-	 */
 	protected function tearDown() {
 		unset($this->subject);
 	}
 
 	/**
 	 * @test
-	 * @return void
 	 */
 	public function createDemandObjectFromSettingsWithoutCategory() {
 		$mockController = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',

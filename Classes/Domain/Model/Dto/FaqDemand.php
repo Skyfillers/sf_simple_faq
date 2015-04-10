@@ -35,7 +35,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Category
 	 *
-	 * @var int
+	 * @var string
 	 */
 	protected $category = '0';
 
@@ -44,12 +44,12 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var string
 	 */
-	protected $searchtext;
+	protected $searchText;
 
 	/**
 	 * Returns the category
 	 *
-	 * @return int
+	 * @return string
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -58,7 +58,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the category
 	 *
-	 * @param int $category
+	 * @param string $category
 	 * @return void
 	 */
 	public function setCategory($category) {
@@ -70,18 +70,18 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @return string
 	 */
-	public function getSearchtext() {
-		return $this->searchtext;
+	public function getSearchText() {
+		return $this->searchText;
 	}
 
 	/**
 	 * Sets the search text
 	 *
-	 * @param string $searchtext
+	 * @param string $searchText
 	 * @return void
 	 */
-	public function setSearchtext($searchtext) {
-		$this->searchtext = $searchtext;
+	public function setSearchText($searchText) {
+		$this->searchText = $searchText;
 	}
 
 }

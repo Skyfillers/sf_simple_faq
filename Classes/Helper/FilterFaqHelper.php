@@ -1,12 +1,19 @@
 <?php
 namespace SKYFILLERS\SfSimpleFaq\Helper;
 
-
+/**
+ * Class FilterFaqHelper
+ *
+ * @package SKYFILLERS\SfSimpleFaq\Helper
+ */
 class FilterFaqHelper {
 
+    /**
+     * Constructor
+     */
     public function __construct() {
 
-        }
+    }
 
     /**
      * @param int $selectedCategories
@@ -21,7 +28,7 @@ class FilterFaqHelper {
             $selectedCategoriesArray = explode(',', $selectedCategories);
         }
 
-        if($actualCategory != 0) {
+        if ($actualCategory != 0) {
             $categorySelected = FALSE;
             for ($i = 0; $i < count($selectedCategoriesArray); $i++) {
                 if ($selectedCategoriesArray[$i] == $actualCategory) {
@@ -30,13 +37,14 @@ class FilterFaqHelper {
                 }
             }
 
-            if($categorySelected == FALSE) {
+            if ($categorySelected == FALSE) {
                 array_push($selectedCategoriesArray, $actualCategory);
             }
 
             sort($selectedCategoriesArray);
             $selectedCategories = implode(',', $selectedCategoriesArray);
         }
+
         return $selectedCategories;
     }
 }

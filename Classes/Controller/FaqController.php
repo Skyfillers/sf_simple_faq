@@ -54,25 +54,24 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
      * @var \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper
      * @inject
      */
-    protected $filterFagHelper;
+    protected $filterFagHelper = NULL;
 
 	/**
 	 * Create a demand object with the given settings
+     *
 	 * @param array $settings
 	 * @param string $category
-	 * @param string $searchtext
+	 * @param string $searchText
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings($settings, $searchtext, $category = '0') {
+	public function createDemandObjectFromSettings($settings, $searchText, $category = '0') {
 		if ($category === '0') {
 			$category = $settings['category'];
 		}
 
-		/**
-         * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
-         */
+		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
 		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
-		$demand->setSearchtext($searchtext);
+		$demand->setSearchText($searchText);
 		$demand->setCategory($category);
 
 		return $demand;
@@ -83,27 +82,25 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *
 	 * @param string $selectedCategories
 	 * @param string $actualCategory
-     * @param string $searchtext
+     * @param string $searchText
 	 * @return void
 	 */
-	public function listAction($selectedCategories = '0', $actualCategory = '0', $searchtext = '') {
+	public function listAction($selectedCategories = '0', $actualCategory = '0', $searchText = '') {
 
         $categories = $this->categoryRepository->findAll();
 
-        /**
-         * @var \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper $filterFagHelper
-         */
+        /** @var \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper $filterFagHelper */
         $this->filterFagHelper = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Helper\\FilterFaqHelper');
         $selectedCategories = $this->filterFagHelper->buildFilterArray($selectedCategories, $actualCategory);
 
-        $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
+        $demand = $this->createDemandObjectFromSettings($this->settings, $searchText, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 
         $assignArray = array(
             'faqs' => $faqs,
             'categories' => $categories,
             'selectedCategories' => $selectedCategories,
-            'searchtext' => $searchtext,
+            'searchText' => $searchText,
             'actualCategory' => $actualCategory,
         );
         $this->view->assignMultiple($assignArray);

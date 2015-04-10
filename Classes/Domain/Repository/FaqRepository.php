@@ -44,15 +44,13 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$constraints = array();
 
         $rawCategories = $demand->getCategory();
-
         if (strlen($rawCategories) > 1) {
             $categories = explode(',', $rawCategories);
         } else {
             $categories[] = $rawCategories;
         }
 
-
-        if(count($categories)>1) {
+        if (count($categories)>1) {
             foreach($categories AS $category) {
                 $constraints[] = $query->contains('category', $category);
             }
@@ -62,18 +60,18 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
             }
         }
 
-		if ($demand->getSearchtext()) {
-			$searchtextConstraints = array();
-			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
+		if ($demand->getSearchText()) {
+			$searchTextConstraints = array();
+			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchText(), TRUE);
 			foreach ($searchWords as $searchWord) {
-				$searchtextConstraints[] = $query->logicalOr(
+				$searchTextConstraints[] = $query->logicalOr(
 					$query->like('question', '%' . $searchWord . '%'),
 					$query->like('answer', '%' . $searchWord . '%'),
 					$query->like('keywords', '%' . $searchWord . '%')
 				);
 			}
-			if (count($searchtextConstraints) > 0) {
-				$constraints[] = $query->logicalAnd($searchtextConstraints);
+			if (count($searchTextConstraints) > 0) {
+				$constraints[] = $query->logicalAnd($searchTextConstraints);
 			}
 		}
 

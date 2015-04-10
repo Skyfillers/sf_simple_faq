@@ -11,6 +11,8 @@ class CategoryActiveViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
 
 
     /**
+     *displays the select-status of a category
+     *
      * @param int $categoryUid
      * @param string $categoryString
      * @return string
