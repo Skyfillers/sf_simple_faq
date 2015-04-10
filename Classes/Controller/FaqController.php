@@ -58,8 +58,8 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @param string $searchtext
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings($settings, $searchtext, $category = 0) {
-		if ($category === 0) {
+	public function createDemandObjectFromSettings($settings, $searchtext, $category = '0') {
+		if ($category === '0') {
 			$category = $settings['category'];
 		}
 		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
@@ -80,20 +80,16 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function listAction($selectedCategories = '0', $actualCategory = '0', $searchtext = '') {
 
-        $multipleCategories = $this->settings['multipleCategories'];
-
         $categories = $this->categoryRepository->findAll();
 
-        if ($multipleCategories === TRUE) {
-            $selectedCategories = filterFagHelper::buildFilterArray($selectedCategories, $actualCategory);
-        }
+        $selectedCategories = filterFagHelper::buildFilterArray($selectedCategories, $actualCategory);
+
 
         $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 
 
         $assignArray = array();
-        $assignArray['multipleCategories'] = $multipleCategories;
         $assignArray['faqs'] = $faqs;
         $assignArray['categories'] = $categories;
         $assignArray['selectedCategories'] = $selectedCategories;
