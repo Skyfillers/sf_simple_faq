@@ -1,9 +1,6 @@
 <f:layout name="Default"/>
 
 <f:section name="main">
-
-
-
     <f:if condition="{settings.category}==0">
         <f:if condition="{settings.overview}==1">
             <f:link.action action="list" controller="Faq" arguments="{selectedCategories: '0'}">
@@ -16,7 +13,6 @@
             </f:for>
         </f:if>
     </f:if>
-
     <f:if condition="{faqs}">
         <f:then>
             <ul>
@@ -36,7 +32,4 @@
             <p class="faq-noresults"><f:translate key="tx_sfsimplefaq_domain_model_faq.noresults"/>"{searchtext}".</p>
         </f:else>
     </f:if>
-
-
-
 </f:section>

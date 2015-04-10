@@ -26,7 +26,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper;
+use SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper as filterFagHelper;
 
 /**
  * FaqController
@@ -80,33 +80,12 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function listAction($selectedCategories = '0', $actualCategory = '0', $searchtext = '') {
 
+        $multipleCategories = $this->settings['multipleCategories'];
+
         $categories = $this->categoryRepository->findAll();
 
-        //$this->filterFaqHelper = new FilterFaqHelper();
-        //$selectedCategories = \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper::buildFilterArray((string)$selectedCategories, (string)$actualCategory);
-
-        $selectedCategoriesArray = array();
-        if (strlen($selectedCategories) == 1) {
-            $selectedCategoriesArray[] = $selectedCategories;
-        } else {
-            $selectedCategoriesArray = explode(',', $selectedCategories);
-        }
-
-        if($actualCategory != 0) {
-            $categorySelected = FALSE;
-            for ($i = 0; $i < count($selectedCategoriesArray); $i++) {
-                if ($selectedCategoriesArray[$i] == $actualCategory) {
-                    $categorySelected = TRUE;
-                    unset($selectedCategoriesArray[$i]);
-                }
-            }
-
-            if($categorySelected == FALSE) {
-                array_push($selectedCategoriesArray, $actualCategory);
-            }
-
-            sort($selectedCategoriesArray);
-            $selectedCategories = implode(',', $selectedCategoriesArray);
+        if ($multipleCategories === TRUE) {
+            $selectedCategories = filterFagHelper::buildFilterArray($selectedCategories, $actualCategory);
         }
 
         $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
@@ -114,6 +93,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 
         $assignArray = array();
+        $assignArray['multipleCategories'] = $multipleCategories;
         $assignArray['faqs'] = $faqs;
         $assignArray['categories'] = $categories;
         $assignArray['selectedCategories'] = $selectedCategories;
