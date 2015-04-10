@@ -70,22 +70,48 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action list
 	 *
-	 * @param string $category
+	 * @param string $selectedCategories
 	 * @param string $searchtext
 	 * @return void
 	 */
 	public function listAction($selectedCategories = '0', $searchtext = '') {
+
         $categories = $this->categoryRepository->findAll();
-        foreach($categories AS $category) {
-            if(strpos($selectedCategories, (string)$category->getUid()) !== false) {
+
+        foreach($categories as $category) {
+            if(strpos($selectedCategories, (string)$category->getUid()) !== FALSE) {
                 $category->setArgs(str_replace($category->getUid(), '', $selectedCategories));
             }else {
                 $category->setArgs($selectedCategories . $category->getUid());
             }
 
-            $stringParts = str_split($category->getArgs());
-            sort($stringParts);
-            $category->setArgs(implode('', $stringParts));
+        }
+
+        $selectedCategoriesArray = array();
+        if(strlen($selectedCategories)==1) {
+            $selectedCategoriesArray[] = $selectedCategories;
+        }else {
+            $selectedCategoriesArray = explode(",", $selectedCategories);
+        }
+
+        /**
+         *@var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $category
+         */
+
+        foreach($categories as $category) {
+            $argsArray = $selectedCategoriesArray;
+            $foundCategory = FALSE;
+            for($i=0; $i<count($selectedCategoriesArray); $i++) {
+                if($category->getUid()==$selectedCategoriesArray[$i]) {
+                    $foundCategory = TRUE;
+                    unset($argsArray[$i]);
+                }
+            }
+            if($foundCategory==FALSE) {
+                $argsArray[] = $category->getUid();
+            }
+            sort($argsArray);
+            $category->setArgs(implode(",", $argsArray));
         }
 
         $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
