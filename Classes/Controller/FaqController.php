@@ -26,6 +26,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper;
 
 /**
  * FaqController
@@ -47,6 +48,8 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @inject
 	 */
 	protected $categoryRepository = NULL;
+
+
 
 	/**
 	 * Create a demand object with the given settings
@@ -71,56 +74,52 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * action list
 	 *
 	 * @param string $selectedCategories
-	 * @param string $searchtext
+	 * @param string $actualCategory
+     * @param string $searchtext
 	 * @return void
 	 */
-	public function listAction($selectedCategories = '0', $searchtext = '') {
+	public function listAction($selectedCategories = '0', $actualCategory = '0', $searchtext = '') {
 
         $categories = $this->categoryRepository->findAll();
 
-        foreach($categories as $category) {
-            if(strpos($selectedCategories, (string)$category->getUid()) !== FALSE) {
-                $category->setArgs(str_replace($category->getUid(), '', $selectedCategories));
-            }else {
-                $category->setArgs($selectedCategories . $category->getUid());
-            }
-
-        }
+        //$this->filterFaqHelper = new FilterFaqHelper();
+        //$selectedCategories = \SKYFILLERS\SfSimpleFaq\Helper\FilterFaqHelper::buildFilterArray((string)$selectedCategories, (string)$actualCategory);
 
         $selectedCategoriesArray = array();
-        if(strlen($selectedCategories)==1) {
+        if (strlen($selectedCategories) == 1) {
             $selectedCategoriesArray[] = $selectedCategories;
-        }else {
-            $selectedCategoriesArray = explode(",", $selectedCategories);
+        } else {
+            $selectedCategoriesArray = explode(',', $selectedCategories);
         }
 
-        /**
-         *@var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $category
-         */
-
-        foreach($categories as $category) {
-            $argsArray = $selectedCategoriesArray;
-            $foundCategory = FALSE;
-            for($i=0; $i<count($selectedCategoriesArray); $i++) {
-                if($category->getUid()==$selectedCategoriesArray[$i]) {
-                    $foundCategory = TRUE;
-                    unset($argsArray[$i]);
+        if($actualCategory != 0) {
+            $categorySelected = FALSE;
+            for ($i = 0; $i < count($selectedCategoriesArray); $i++) {
+                if ($selectedCategoriesArray[$i] == $actualCategory) {
+                    $categorySelected = TRUE;
+                    unset($selectedCategoriesArray[$i]);
                 }
             }
-            if($foundCategory==FALSE) {
-                $argsArray[] = $category->getUid();
+
+            if($categorySelected == FALSE) {
+                array_push($selectedCategoriesArray, $actualCategory);
             }
-            sort($argsArray);
-            $category->setArgs(implode(",", $argsArray));
+
+            sort($selectedCategoriesArray);
+            $selectedCategories = implode(',', $selectedCategoriesArray);
         }
 
         $demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 
-        $this->view->assign('faqs', $faqs);
-		$this->view->assign('categories', $categories);
-		$this->view->assign('selectedCategories', $selectedCategories);
-		$this->view->assign('searchtext', $searchtext);
+
+        $assignArray = array();
+        $assignArray['faqs'] = $faqs;
+        $assignArray['categories'] = $categories;
+        $assignArray['selectedCategories'] = $selectedCategories;
+        $assignArray['searchtext'] = $searchtext;
+        $assignArray['actualCategory'] = $actualCategory;
+        $this->view->assignMultiple($assignArray);
 	}
 
 }

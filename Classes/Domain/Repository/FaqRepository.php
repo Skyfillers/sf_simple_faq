@@ -46,13 +46,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         $rawCategories = $demand->getCategory();
         $categories = explode(',', $rawCategories);
 
-        /*
-        $categories = array();
-        $stringLength = strlen($rawCategories);
-        for($i=0; $i<$stringLength; $i++) {
-            $categories[] = substr($rawCategories, $i, $i);
-        }*/
-
         if(count($categories)>1) {
             foreach($categories AS $category) {
                 $constraints[] = $query->contains('category', $category);
