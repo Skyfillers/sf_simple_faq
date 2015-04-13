@@ -138,9 +138,45 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
 		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
 		$view->expects($this->at(2))->method('assign')->with('selectedCategory', $category);
-		$view->expects($this->at(3))->method('assign')->with('searchtext', $searchtext);
 		$this->inject($this->subject, 'view', $view);
 
 		$this->subject->listAction();
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function searchActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
+		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
+		$category = 0;
+		$searchtext = '';
+
+		$settings = array('settings');
+		$this->inject($this->subject, 'settings', $settings);
+
+		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
+			->with($settings)->will($this->returnValue($demand));
+
+		$faqRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+			array('findDemanded'), array(), '', FALSE);
+		$faqRepository->expects($this->once())->method('findDemanded')->will($this->returnValue($allFaqs));
+		$this->inject($this->subject, 'faqRepository', $faqRepository);
+
+		$categoryRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+			array('findAll'), array(), '', FALSE);
+		$categoryRepository->expects($this->once())->method('findAll')->will($this->returnValue($allCategories));
+		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
+
+		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
+		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
+		$view->expects($this->at(2))->method('assign')->with('selectedCategory', $category);
+		$view->expects($this->at(3))->method('assign')->with('searchtext', $searchtext);
+		$this->inject($this->subject, 'view', $view);
+
+		$this->subject->searchAction();
 	}
 }

@@ -1,0 +1,23 @@
+<f:if condition="{faqs}">
+    <f:then>
+        <ul>
+            <f:for each="{faqs}" as="faq">
+                <li>
+                    {faq.question}
+                    <ul>
+                        <li>
+                            <f:format.raw>{faq.answer}</f:format.raw>
+                        </li>
+                    </ul>
+                </li>
+            </f:for>
+        </ul>
+
+    </f:then>
+    <f:else>
+        <f:if condition="{searchtext}">
+            <p class="faq-noresults"><f:translate key="tx_sfsimplefaq_domain_model_faq.noresults"/>"{searchtext}".</p>
+        </f:if>
+    </f:else>
+</f:if>
+

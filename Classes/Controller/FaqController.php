@@ -68,13 +68,28 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * action list
+	 * List Action
+	 *
+	 * @param int $category
+	 * @return void
+	 */
+	public function listAction($category = 0) {
+		$demand = $this->createDemandObjectFromSettings($this->settings, '', $category);
+		$faqs = $this->faqRepository->findDemanded($demand);
+		$categories = $this->categoryRepository->findAll();
+		$this->view->assign('faqs', $faqs);
+		$this->view->assign('categories', $categories);
+		$this->view->assign('selectedCategory', $category);
+	}
+
+    /**
+	 * Search Action
 	 *
 	 * @param int $category
 	 * @param string $searchtext
 	 * @return void
 	 */
-	public function listAction($category = 0, $searchtext = '') {
+	public function searchAction($category = 0, $searchtext = '') {
 		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $category);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();

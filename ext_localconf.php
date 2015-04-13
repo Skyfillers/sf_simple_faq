@@ -7,12 +7,12 @@ if (!defined('TYPO3_MODE')) {
 	'SKYFILLERS.' . $_EXTKEY,
 	'Pifaq',
 	array(
-		'Faq' => 'list',
+		'Faq' => 'list,search',
 
 	),
 	// non-cacheable actions
 	array(
-		'Faq' => '',
+		'Faq' => 'search',
 
 	)
 );
