@@ -61,20 +61,38 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * The action list
+	 * List Action
+	 *
+	 * @param string $selectedCategories The categories to filter the FAQs
+	 *
+	 * @return void
+	 */
+	public function listAction($selectedCategories = '0') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, '', $selectedCategories);
+		$faqs = $this->faqRepository->findDemanded($demand);
+		$categories = $this->categoryRepository->findAll();
+
+		$assignArray = array(
+			'faqs' => $faqs,
+			'categories' => $categories,
+			'selectedCategories' => $selectedCategories,
+		);
+
+		$this->view->assignMultiple($assignArray);
+	}
+
+	/**
+	 * Search Action
 	 *
 	 * @param string $selectedCategories The categories to filter the FAQs
 	 * @param string $searchText The searchText to filter the FAQs
 	 *
 	 * @return void
 	 */
-	public function listAction($selectedCategories = '0', $searchText = '') {
-
-		$categories = $this->categoryRepository->findAll();
-
+	public function searchAction($selectedCategories = '0', $searchText = '') {
 		$demand = $this->createDemandObjectFromSettings($this->settings, $searchText, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
-
+		$categories = $this->categoryRepository->findAll();
 		$assignArray = array(
 			'faqs' => $faqs,
 			'categories' => $categories,
@@ -84,5 +102,4 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 		$this->view->assignMultiple($assignArray);
 	}
-
 }

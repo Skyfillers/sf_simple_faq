@@ -1,0 +1,12 @@
+<f:if condition="{settings.category}==0">
+    <f:if condition="{settings.overview}==1">
+        <f:link.action action="list" controller="Faq">
+            <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
+        </f:link.action>
+        <f:for each="{categories}" as="category">
+            <f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">
+                <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}>{category.title}</span>
+            </f:link.action>
+        </f:for>
+    </f:if>
+</f:if>
