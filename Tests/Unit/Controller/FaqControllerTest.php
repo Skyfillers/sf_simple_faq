@@ -36,28 +36,17 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	protected $subject = NULL;
 
-	/**
-	 * setup
-	 *
-	 * @return void
-	 */
 	protected function setUp() {
 		$this->subject = $this->getAccessibleMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'), array(), '', FALSE);
 	}
 
-	/**
-	 * teardown
-	 *
-	 * @return void
-	 */
 	protected function tearDown() {
 		unset($this->subject);
 	}
 
 	/**
 	 * @test
-	 * @return void
 	 */
 	public function createDemandObjectFromSettingsWithoutCategory() {
 		$mockController = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
@@ -71,7 +60,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			array(), array(), '', FALSE);
 
 		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
-		$mockDemand->expects($this->at(1))->method('setCategory')->with(10);
+		$mockDemand->expects($this->at(1))->method('setCategories')->with(10);
 
 		$objectManager = $this->getMock('TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
 			array(), array(), '', FALSE);
@@ -97,7 +86,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			array(), array(), '', FALSE);
 
 		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
-		$mockDemand->expects($this->at(1))->method('setCategory')->with(20);
+		$mockDemand->expects($this->at(1))->method('setCategories')->with(20);
 
 		$objectManager = $this->getMock('TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
 			array(), array(), '', FALSE);
@@ -115,11 +104,13 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$category = 0;
+		$category = '0';
+        $actualCategory = '0';
 		$searchtext = '';
 
 		$settings = array('settings');
 		$this->inject($this->subject, 'settings', $settings);
+
 
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));

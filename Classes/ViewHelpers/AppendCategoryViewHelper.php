@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
+namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
 
 	/*                                                                        *
 	 * This script is backported from the TYPO3 Flow package "TYPO3.Fluid".   *
@@ -12,40 +12,34 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
 	 *                                                                        */
 
 /**
- * Class Category
+ * Class AppendCategoryViewHelper
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
  *
- * @package SKYFILLERS\SfSimpleFaq\Domain\Model
+ * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
  */
-class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class AppendCategoryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+
 
 	/**
-	 * Title
+	 * @param string $selectedCategories
+	 * @param string $newCategory
 	 *
-	 * @var string
-	 * @validate NotEmpty
+	 * @return string
 	 */
-	protected $title = '';
+	public function render($selectedCategories, $newCategory) {
+		$selected = explode(',', $selectedCategories);
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title The title of the category
-	 *
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
+		if (array_search($newCategory, $selected) == FALSE) {
+			array_push($selected, (int)$newCategory);
+		} else {
+			$categoryToDelete = array_search($newCategory, $selected);
+			unset($selected[$categoryToDelete]);
+		}
+		sort($selected);
+
+		return implode(',', $selected);
 	}
 
 }

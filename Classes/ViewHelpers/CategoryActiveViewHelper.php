@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
+namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
 
 	/*                                                                        *
 	 * This script is backported from the TYPO3 Flow package "TYPO3.Fluid".   *
@@ -12,11 +12,31 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
 	 *                                                                        */
 
 /**
- * The repository for Categories
+ * Class CategoryActiveViewHelper
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ *
+ * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CategoryActiveViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
+
+	/**
+	 * Displays the select-status of a category
+	 *
+	 * @param int $currentCategory The Category to check if it's selected
+	 * @param string $selectedCategories The
+	 *
+	 * @return string
+	 */
+	public function render($currentCategory, $selectedCategories) {
+
+		$selected = explode(',', $selectedCategories);
+		if (in_array($currentCategory, $selected) == TRUE) {
+			return 'ausgewählt';
+		} else {
+			return 'nicht ausgewählt';
+		}
+	}
 
 }
