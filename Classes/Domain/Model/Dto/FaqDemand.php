@@ -30,7 +30,7 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var string
 	 */
-	protected $searchText;
+	protected $searchtext;
 
 	/**
 	 * Returns the categories
@@ -57,19 +57,19 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @return string
 	 */
-	public function getSearchText() {
-		return $this->searchText;
+	public function getSearchtext() {
+		return $this->searchtext;
 	}
 
 	/**
 	 * Sets the search text
 	 *
-	 * @param string $searchText The searchText to filter the FAQs
+	 * @param string $searchtext The searchtext to filter the FAQs
 	 *
 	 * @return void
 	 */
-	public function setSearchText($searchText) {
-		$this->searchText = $searchText;
+	public function setSearchtext($searchtext) {
+		$this->searchtext = $searchtext;
 	}
 
 }

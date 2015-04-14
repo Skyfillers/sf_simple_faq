@@ -105,12 +105,11 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$category = '0';
-        $actualCategory = '0';
+		$actualCategory = '0';
 		$searchtext = '';
 
 		$settings = array('settings');
 		$this->inject($this->subject, 'settings', $settings);
-
 
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
@@ -128,10 +127,11 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$view->expects($this->at(0))->method('assign')->with('faqs', $allFaqs);
 		$view->expects($this->at(1))->method('assign')->with('categories', $allCategories);
-		$view->expects($this->at(2))->method('assign')->with('selectedCategory', $category);
+		$view->expects($this->at(2))->method('assign')->with('selectedCategories', $category);
 		$this->inject($this->subject, 'view', $view);
 
 		$this->subject->listAction();
+
 	}
 
 	/**

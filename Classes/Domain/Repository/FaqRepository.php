@@ -29,7 +29,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	public function findDemanded(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
 		$query = $this->createQuery();
-		$constraints = array();
+		$categoryConstraints = array();
 
 		$rawCategories = $demand->getCategories();
 		if (strlen($rawCategories) > 1) {
@@ -38,34 +38,49 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$categories[] = $rawCategories;
 		}
 
-		if (count($categories) > 1) {
-			foreach ($categories AS $category) {
-				$constraints[] = $query->contains('category', $category);
-			}
-		} else {
-			if ($demand->getCategories() > 0) {
-				$constraints[] = $query->contains('category', $demand->getCategories());
+		$categoriesLength = count($categories);
+		if ($categoriesLength != 0) {
+			for ($i = 0; $i < $categoriesLength; $i++) {
+				$categoryConstraints[] = $query->contains('category', (string)$categories[$i]);
 			}
 		}
 
-		if ($demand->getSearchText()) {
-			$searchTextConstraints = array();
-			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchText(), TRUE);
+		$searchConstraints = array();
+		if ($demand->getSearchtext()) {
+			$searchtextConstraints = array();
+			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
 			foreach ($searchWords as $searchWord) {
-				$searchTextConstraints[] =
-					$query->logicalOr(
-						$query->like('question', '%' . $searchWord . '%'),
-						$query->like('answer', '%' . $searchWord . '%'),
-						$query->like('keywords', '%' . $searchWord . '%')
-					);
+				$searchtextConstraints[] = $query->logicalOr(
+					$query->like('question', '%' . $searchWord . '%'),
+					$query->like('answer', '%' . $searchWord . '%'),
+					$query->like('keywords', '%' . $searchWord . '%')
+				);
 			}
-			if (count($searchTextConstraints) > 0) {
-				$constraints[] = $query->logicalAnd($searchTextConstraints);
+			if (count($searchtextConstraints) > 0) {
+				$searchConstraints[] = $query->logicalOr($searchtextConstraints);
 			}
 		}
 
-		if (count($constraints) > 0) {
-			$query->matching($query->logicalOr($constraints));
+		$categoryConstraintsLength = count($categoryConstraints);
+		$searchConstraintsLength = count($searchConstraints);
+
+
+		$categoryIsAll = FALSE;
+		if ($categories[0] == 0 && $categoryConstraintsLength < 2) {
+			$categoryIsAll = TRUE;
+		}
+
+		if ($categoryConstraintsLength > 0 && $categoryIsAll == FALSE && $searchConstraintsLength > 0) {
+			$query->matching(
+				$query->logicalAnd(
+					$query->logicalOr($categoryConstraints),
+					$query->logicalAnd($searchConstraints)
+				)
+			);
+		} elseif ($categoryConstraintsLength > 0 && $categoryIsAll == FALSE) {
+			$query->matching(
+				$query->logicalOr($categoryConstraints)
+			);
 		}
 
 		return $query->execute();

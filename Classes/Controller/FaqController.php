@@ -38,12 +38,12 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * Create a demand object with the given settings
 	 *
 	 * @param array $settings The settings
-	 * @param string $searchText The text, which the FAQs are filtered by
+	 * @param string $searchtext The text, which the FAQs are filtered by
 	 * @param string $categories The categories, which the FAQs are filtered by
 	 *
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings(array $settings, $searchText, $categories = '0') {
+	public function createDemandObjectFromSettings(array $settings, $searchtext, $categories = '0') {
 		if ($categories === '0') {
 			$categories = $settings['category'];
 		}
@@ -54,7 +54,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
 		 */
 		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
-		$demand->setSearchText($searchText);
+		$demand->setSearchtext($searchtext);
 		$demand->setCategories($categories);
 
 		return $demand;
@@ -85,19 +85,19 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * Search Action
 	 *
 	 * @param string $selectedCategories The categories to filter the FAQs
-	 * @param string $searchText The searchText to filter the FAQs
+	 * @param string $searchtext The searchtext to filter the FAQs
 	 *
 	 * @return void
 	 */
-	public function searchAction($selectedCategories = '0', $searchText = '') {
-		$demand = $this->createDemandObjectFromSettings($this->settings, $searchText, $selectedCategories);
+	public function searchAction($selectedCategories = '0', $searchtext = '') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
 		$assignArray = array(
 			'faqs' => $faqs,
 			'categories' => $categories,
 			'selectedCategories' => $selectedCategories,
-			'searchText' => $searchText,
+			'searchtext' => $searchtext,
 		);
 
 		$this->view->assignMultiple($assignArray);
