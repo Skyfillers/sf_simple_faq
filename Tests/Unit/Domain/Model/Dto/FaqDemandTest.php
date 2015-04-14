@@ -85,6 +85,30 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 * @return void
 	 */
+	public function setCategoriesForStringSetsCategories() {
+		$this->subject->setCategories('0,3,4,10');
+		$this->assertSame(
+			'0,3,4,10',
+			$this->subject->getCategories()
+		);
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function setCategoriesForEmptyStringSetsCategories() {
+		$this->subject->setCategories('');
+		$this->assertSame(
+			'',
+			$this->subject->getCategories()
+		);
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
 	public function getSearchtextForStringSetsSearchtext() {
 		$this->subject->setSearchtext('test');
 		$this->assertEquals(
