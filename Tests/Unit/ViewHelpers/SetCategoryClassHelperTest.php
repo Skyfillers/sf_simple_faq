@@ -44,98 +44,63 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @test
+	 * Data Provider for unit tests
+	 *
+	 * @return array
 	 */
-	public function renderWithResultSelectedWithCurrentCategoryInt() {
-		$currentCategory = 4;
-		$selectedCategories = '0,2,4,5,6';
-		$this->assertSame(
-			'class="faq-active-link"',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
+	public function setCategoryClassDataProvider() {
+		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
+		return array(
+			'intSelectedCategoriesContainsCurrentCategory' => array(
+				2,
+				'0,2,5,7',
+				'class="faq-active-link"'
+			),
+			'stringSelectedCategoriesContainsCurrentCategory' => array(
+				'2',
+				'0,2,5,7',
+				'class="faq-active-link"'
+			),
+				'intSelectedCategoriesDoesntContainsCurrentCategory' => array(
+				3,
+				'0,2,5,7',
+				''
+			),
+				'stringSelectedCategoriesDoesntContainsCurrentCategory' => array(
+				'3',
+				'0,2,5,7',
+				''
+			),
+			'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+				0,
+				'0',
+				'class="faq-active-link"'
+			),
+			'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+				0,
+				'0,2,5,7',
+				''
+			),
+			'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+				'0',
+				'0',
+				'class="faq-active-link"'
+			),
+			'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+				'0',
+				'0,2,5,7',
+				''
+			)
 		);
 	}
 
 	/**
 	 * @test
+	 *
+	 * @dataProvider setCategoryClassDataProvider
 	 */
-	public function renderWithResultSelectedWithCurrentCategoryString() {
-		$currentCategory = '4';
-		$selectedCategories = '0,2,4,5,6';
-		$this->assertSame(
-			'class="faq-active-link"',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultNotSelectedWithCurrentCategoryInt() {
-		$currentCategory = 3;
-		$selectedCategories = '0,2,4,5,6';
-		$this->assertSame(
-			'',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultNotSelectedWithCurrentCategoryString() {
-		$currentCategory = '3';
-		$selectedCategories = '0,2,4,5,6';
-		$this->assertSame(
-			'',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultSelectedWithCurrentCategoryZeroAndInt() {
-		$currentCategory = 0;
-		$selectedCategories = '0';
-		$this->assertSame(
-			'class="faq-active-link"',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultSelectedWithCurrentCategoryZeroAndString() {
-		$currentCategory = '0';
-		$selectedCategories = '0';
-		$this->assertSame(
-			'class="faq-active-link"',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultNotSelectedWithCurrentCategoryZeroAndIsInt() {
-		$currentCategory = 0;
-		$selectedCategories = '0,1';
-		$this->assertSame(
-			'',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWithResultNotSelectedWithCurrentCategoryZeroAndIsString() {
-		$currentCategory = '0';
-		$selectedCategories = '0,1';
-		$this->assertSame(
-			'',
-			$this->viewhelper->render($currentCategory, $selectedCategories)
-		);
+	public function renderWithResultSelectedWithCurrentCategoryInt($value, $value2, $expected) {
+		$actual = $this->viewhelper->render($value, $value2);
+		$this->assertSame($expected, $actual);
 	}
 }

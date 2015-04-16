@@ -27,50 +27,43 @@ class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @test
+	 * Data Provider for unit tests
+	 *
+	 * @return array
 	 */
-	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt() {
-		$selectedCategories = '0,2,4,5,6,8';
-		$newCategory = 4;
-		$this->assertSame(
-			'0,2,5,6,8',
-			$this->viewhelper->render($selectedCategories, $newCategory)
+	public function setCategoryClassDataProvider() {
+		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
+		return array(
+			'intSelectedCategoriesContainsNewCategory' => array(
+				'0,2,4,6',
+				2,
+				'0,4,6'
+			),
+			'intSelectedCategoriesDoesntContainsNewCategory' => array(
+				'0,2,4,6',
+				3,
+				'0,2,3,4,6'
+			),
+			'stringSelectedCategoriesContainsNewCategory' => array(
+				'0,2,4,6',
+				'2',
+				'0,4,6'
+			),
+			'stringSelectedCategoriesDoesntContainsNewCategory' => array(
+				'0,2,4,6',
+				'3',
+				'0,2,3,4,6'
+			)
 		);
 	}
 
 	/**
 	 * @test
+	 *
+	 * @dataProvider setCategoryClassDataProvider
 	 */
-	public function renderWhenNewCategoryIsInSelectedCategoriesAndString() {
-		$selectedCategories = '0,2,4,5,6,8';
-		$newCategory = '4';
-		$this->assertSame(
-			'0,2,5,6,8',
-			$this->viewhelper->render($selectedCategories, $newCategory)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWhenNewCategoryIsNotInSelectedCategoriesAndIsInt() {
-		$selectedCategories = '0,2,4,5,6,8';
-		$newCategory = 1;
-		$this->assertSame(
-			'0,1,2,4,5,6,8',
-			$this->viewhelper->render($selectedCategories, $newCategory)
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function renderWhenNewCategoryIsNotInSelectedCategoriesAndIsString() {
-		$selectedCategories = '0,2,4,5,6,8';
-		$newCategory = '1';
-		$this->assertSame(
-			'0,1,2,4,5,6,8',
-			$this->viewhelper->render($selectedCategories, $newCategory)
-		);
+	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt($value, $value2, $expected) {
+		$actual = $this->viewhelper->render($value, $value2);
+		$this->assertSame($expected, $actual);
 	}
 }
