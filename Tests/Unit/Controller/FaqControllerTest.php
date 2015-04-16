@@ -111,8 +111,8 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$categoryRepository->expects($this->once())->method('findAll')->will($this->returnValue($allCategories));
 		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$view->expects($this->once())->method('assignMultiple')->with(array('faqs' => $allFaqs,
-			'categories' => $allCategories, 'selectedCategories' => 0)
+		$view->expects($this->once())->method('assignMultiple')->with(
+			array('faqs' => $allFaqs, 'categories' => $allCategories, 'selectedCategories' => 0)
 		);
 		$this->inject($this->subject, 'view', $view);
 		$this->subject->listAction();
