@@ -68,6 +68,13 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function listAction($selectedCategories = '0') {
+		$selectMultipleCategories = FALSE;
+		$categoryPartialName = 'Categories';
+		if ($selectMultipleCategories == TRUE) {
+			$categoryPartialName = 'CategoriesChooseMultiple';
+		} else {
+			$categoryPartialName = 'Categories';
+		}
 		$demand = $this->createDemandObjectFromSettings($this->settings, '', $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
@@ -76,6 +83,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			'faqs' => $faqs,
 			'categories' => $categories,
 			'selectedCategories' => $selectedCategories,
+			'categoryPartialName' => $categoryPartialName,
 		);
 
 		$this->view->assignMultiple($assignArray);
@@ -90,6 +98,13 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function searchAction($selectedCategories = '0', $searchtext = '') {
+		$selectMultipleCategories = FALSE;
+		$categoryPartialName = 'Categories';
+		if ($selectMultipleCategories == TRUE) {
+			$categoryPartialName = 'CategoriesChooseMultiple';
+		} else {
+			$categoryPartialName = 'Categories';
+		}
 		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
@@ -98,6 +113,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			'categories' => $categories,
 			'selectedCategories' => $selectedCategories,
 			'searchtext' => $searchtext,
+			'categoryPartialName' => $categoryPartialName,
 		);
 
 		$this->view->assignMultiple($assignArray);
