@@ -22,7 +22,8 @@ class CategoryActiveViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
 
 
 	/**
-	 * Displays the select-status of a category
+	 * Returns The class "faq-active-link"
+	 * if $selectedCategories contains $currentCategory
 	 *
 	 * @param int $currentCategory The Category to check if it's selected
 	 * @param string $selectedCategories The
@@ -31,11 +32,17 @@ class CategoryActiveViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
 	 */
 	public function render($currentCategory, $selectedCategories) {
 
-		$selected = explode(',', $selectedCategories);
-		if (in_array($currentCategory, $selected) == TRUE) {
-			return 'ausgewählt';
+		if ($selectedCategories == '0' && $currentCategory == 0) {
+			return 'class="faq-active-link"';
+		} elseif ($selectedCategories != '0' && $currentCategory == 0) {
+			return '';
 		} else {
-			return 'nicht ausgewählt';
+			$selected = explode(',', $selectedCategories);
+			if (in_array($currentCategory, $selected) == TRUE) {
+				return 'class="faq-active-link"';
+			} else {
+				return '';
+			}
 		}
 	}
 
