@@ -99,8 +99,8 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @dataProvider setCategoryClassDataProvider
 	 */
-	public function renderWithResultSelectedWithCurrentCategoryInt($value, $value2, $expected) {
-		$actual = $this->viewhelper->render($value, $value2);
+	public function renderWithResultSelectedWithCurrentCategoryInt($currentCategory, $selectedCategories, $expected) {
+		$actual = $this->viewhelper->render($currentCategory, $selectedCategories);
 		$this->assertSame($expected, $actual);
 	}
 }

@@ -62,8 +62,8 @@ class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @dataProvider setCategoryClassDataProvider
 	 */
-	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt($value, $value2, $expected) {
-		$actual = $this->viewhelper->render($value, $value2);
+	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt($selectedCategories, $newCategory, $expected) {
+		$actual = $this->viewhelper->render($selectedCategories, $newCategory);
 		$this->assertSame($expected, $actual);
 	}
 }
