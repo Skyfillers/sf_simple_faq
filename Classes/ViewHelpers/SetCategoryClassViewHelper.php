@@ -18,7 +18,7 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
  *
  * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
  */
-class CategoryActiveViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class SetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 
 	/**

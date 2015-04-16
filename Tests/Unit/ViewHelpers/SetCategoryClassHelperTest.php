@@ -19,7 +19,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
  * @package SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers
  */
 
-class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
+class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Viewhelper
 	 *
@@ -32,7 +32,7 @@ class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\CategoryActiveViewHelper();
+		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
 	}
 	/**
 	 * Teardown
@@ -50,7 +50,7 @@ class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
 		$currentCategory = 4;
 		$selectedCategories = '0,2,4,5,6';
 		$this->assertSame(
-			'ausgewählt',
+			'class="faq-active-link"',
 			$this->viewhelper->render($currentCategory, $selectedCategories)
 		);
 	}
@@ -62,7 +62,7 @@ class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
 		$currentCategory = '4';
 		$selectedCategories = '0,2,4,5,6';
 		$this->assertSame(
-			'ausgewählt',
+			'class="faq-active-link"',
 			$this->viewhelper->render($currentCategory, $selectedCategories)
 		);
 	}
@@ -74,7 +74,7 @@ class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
 		$currentCategory = 3;
 		$selectedCategories = '0,2,4,5,6';
 		$this->assertSame(
-			'nicht ausgewählt',
+			'',
 			$this->viewhelper->render($currentCategory, $selectedCategories)
 		);
 	}
@@ -86,7 +86,55 @@ class CategoryActiveViewHelperTest extends \PHPUnit_Framework_TestCase {
 		$currentCategory = '3';
 		$selectedCategories = '0,2,4,5,6';
 		$this->assertSame(
-			'nicht ausgewählt',
+			'',
+			$this->viewhelper->render($currentCategory, $selectedCategories)
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function renderWithResultSelectedWithCurrentCategoryZeroAndInt() {
+		$currentCategory = 0;
+		$selectedCategories = '0';
+		$this->assertSame(
+			'class="faq-active-link"',
+			$this->viewhelper->render($currentCategory, $selectedCategories)
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function renderWithResultSelectedWithCurrentCategoryZeroAndString() {
+		$currentCategory = '0';
+		$selectedCategories = '0';
+		$this->assertSame(
+			'class="faq-active-link"',
+			$this->viewhelper->render($currentCategory, $selectedCategories)
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function renderWithResultNotSelectedWithCurrentCategoryZeroAndIsInt() {
+		$currentCategory = 0;
+		$selectedCategories = '0,1';
+		$this->assertSame(
+			'',
+			$this->viewhelper->render($currentCategory, $selectedCategories)
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function renderWithResultNotSelectedWithCurrentCategoryZeroAndIsString() {
+		$currentCategory = '0';
+		$selectedCategories = '0,1';
+		$this->assertSame(
+			'',
 			$this->viewhelper->render($currentCategory, $selectedCategories)
 		);
 	}
