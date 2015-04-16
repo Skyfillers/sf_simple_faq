@@ -51,6 +51,27 @@
                         </TCEforms>
                     </settings.overview>
 
+                    <!-- Select Multiple Category -->
+                    <settings.selectMultipleCategories>
+                        <TCEforms>
+                            <label>Select Multiple Categories</label>
+                            <displayCond>FIELD:settings.category:=:0</displayCond>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">No</numIndex>
+                                        <numIndex index="1">0</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Yes</numIndex>
+                                        <numIndex index="1">1</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.selectMultipleCategories>
+
                 </el>
             </ROOT>
         </sDEF>

@@ -99,6 +99,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$settings = array('settings');
+		$categoryPartialName = 'Categories';
 		$this->inject($this->subject, 'settings', $settings);
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
@@ -112,7 +113,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$view->expects($this->once())->method('assignMultiple')->with(
-			array('faqs' => $allFaqs, 'categories' => $allCategories, 'selectedCategories' => 0)
+			array('faqs' => $allFaqs, 'categories' => $allCategories, 'selectedCategories' => 0,)
 		);
 		$this->inject($this->subject, 'view', $view);
 		$this->subject->listAction();
@@ -129,6 +130,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$category = 0;
 		$searchtext = '';
 		$settings = array('settings');
+		$categoryPartialName = 'Categories';
 		$this->inject($this->subject, 'settings', $settings);
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
