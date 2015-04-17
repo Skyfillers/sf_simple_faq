@@ -1,39 +1,25 @@
 <?php
 namespace SKYFILLERS\SfSimpleFaq\Controller;
 
-
-/***************************************************************
- *
- *  Copyright notice
- *
- *  (c) 2015 Daniel Meyer <d.meyer@skyfillers.com>
- *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+	/*                                                                        *
+	 * This script is backported from the TYPO3 Flow package "TYPO3.Fluid".   *
+	 *                                                                        *
+	 * It is free software; you can redistribute it and/or modify it under    *
+	 * the terms of the GNU Lesser General Public License, either version 3   *
+	 *  of the License, or (at your option) any later version.                *
+	 *                                                                        *
+	 * The TYPO3 project - inspiring people to share!                         *
+	 *                                                                        */
 
 /**
  * FaqController
+ *
+ * @author Daniel Meyer, Alexander Schnoor
  */
 class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * faqRepository
+	 * The FaqRepository
 	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository
 	 * @inject
@@ -41,7 +27,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $faqRepository = NULL;
 
 	/**
-	 * categoryRepository
+	 * The categoryRepository
 	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository
 	 * @inject
@@ -50,19 +36,26 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * Create a demand object with the given settings
-	 * @param array $settings
-	 * @param int $category
-	 * @param string $searchtext
+	 *
+	 * @param array $settings The settings
+	 * @param string $searchtext The text, which the FAQs are filtered by
+	 * @param string $categories The categories, which the FAQs are filtered by
+	 *
 	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
-	public function createDemandObjectFromSettings($settings, $searchtext, $category = 0) {
-		if ($category === 0) {
-			$category = $settings['category'];
+	public function createDemandObjectFromSettings(array $settings, $searchtext, $categories = '0') {
+		if ($categories === '0') {
+			$categories = $settings['category'];
 		}
-		/** @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand */
+
+		/**
+		 * Object of the type FaqDemand
+		 *
+		 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+		 */
 		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
 		$demand->setSearchtext($searchtext);
-		$demand->setCategory($category);
+		$demand->setCategories($categories);
 
 		return $demand;
 	}
@@ -70,33 +63,41 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * List Action
 	 *
-	 * @param int $category
+	 * @param string $selectedCategories The categories to filter the FAQs
+	 *
 	 * @return void
 	 */
-	public function listAction($category = 0) {
-		$demand = $this->createDemandObjectFromSettings($this->settings, '', $category);
+	public function listAction($selectedCategories = '0') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, '', $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
-		$this->view->assign('faqs', $faqs);
-		$this->view->assign('categories', $categories);
-		$this->view->assign('selectedCategory', $category);
+
+		$assignArray = array(
+			'faqs' => $faqs,
+			'categories' => $categories,
+			'selectedCategories' => $selectedCategories,
+		);
+		$this->view->assignMultiple($assignArray);
 	}
 
-    /**
+	/**
 	 * Search Action
 	 *
-	 * @param int $category
-	 * @param string $searchtext
+	 * @param string $selectedCategories The categories to filter the FAQs
+	 * @param string $searchtext The searchtext to filter the FAQs
+	 *
 	 * @return void
 	 */
-	public function searchAction($category = 0, $searchtext = '') {
-		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $category);
+	public function searchAction($selectedCategories = '0', $searchtext = '') {
+		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
 		$faqs = $this->faqRepository->findDemanded($demand);
 		$categories = $this->categoryRepository->findAll();
-		$this->view->assign('faqs', $faqs);
-		$this->view->assign('categories', $categories);
-		$this->view->assign('selectedCategory', $category);
-		$this->view->assign('searchtext', $searchtext);
+		$assignArray = array(
+			'faqs' => $faqs,
+			'categories' => $categories,
+			'selectedCategories' => $selectedCategories,
+			'searchtext' => $searchtext,
+		);
+		$this->view->assignMultiple($assignArray);
 	}
-
 }

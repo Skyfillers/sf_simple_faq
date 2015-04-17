@@ -1,12 +1,22 @@
+{namespace sFaq=SKYFILLERS\SfSimpleFaq\ViewHelpers}
 <f:if condition="{settings.category}==0">
     <f:if condition="{settings.overview}==1">
         <f:link.action action="list" controller="Faq">
-            <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
+            <span {sFaq:SetCategoryClass(currentCategory: 0, selectedCategories: selectedCategories)}><f:translate key="tx_sfsimplefaq_domain_model_category.all"/></span>
         </f:link.action>
         <f:for each="{categories}" as="category">
-            <f:link.action action="list" controller="Faq" arguments="{category: '{category.uid}'}">
-                <span {f:if(condition: '{category.uid}=={selectedCategory}', then: 'class="faq-active-link"')}>{category.title}</span>
-            </f:link.action>
+            <f:if condition="{settings.selectMultipleCategories} == 0">
+                <f:then>
+                    <f:link.action action="list" controller="Faq" arguments="{selectedCategories: '{category.uid}'}">
+                        <span {sFaq:SetCategoryClass(currentCategory: category.uid, selectedCategories: selectedCategories)}>{category.title}</span>
+                    </f:link.action>
+                </f:then>
+                <f:else>
+                    <f:link.action action="list" controller="Faq" arguments="{selectedCategories: '{sFaq:appendCategory(selectedCategories: selectedCategories, newCategory: category.uid)}'}">
+                        <span {sFaq:SetCategoryClass(currentCategory: category.uid, selectedCategories: selectedCategories)}>{category.title}</span>
+                    </f:link.action>
+                </f:else>
+            </f:if>
         </f:for>
     </f:if>
 </f:if>

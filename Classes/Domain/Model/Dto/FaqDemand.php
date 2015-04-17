@@ -1,43 +1,29 @@
 <?php
 namespace SKYFILLERS\SfSimpleFaq\Domain\Model\Dto;
 
-
-/***************************************************************
- *
- *  Copyright notice
- *
- *  (c) 2015 Daniel Meyer <d.meyer@skyfillers.com>
- *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+	/*                                                                        *
+	 * This script is backported from the TYPO3 Flow package "TYPO3.Fluid".   *
+	 *                                                                        *
+	 * It is free software; you can redistribute it and/or modify it under    *
+	 * the terms of the GNU Lesser General Public License, either version 3   *
+	 *  of the License, or (at your option) any later version.                *
+	 *                                                                        *
+	 * The TYPO3 project - inspiring people to share!                         *
+	 *                                                                        */
 
 /**
  * Frequently asked questions
+ *
+ * @author Daniel Meyer, Alexander Schnoor
  */
 class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * Category
 	 *
-	 * @var int
+	 * @var string
 	 */
-	protected $category = 0;
+	protected $categories = '0';
 
 	/**
 	 * Search text
@@ -47,22 +33,23 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $searchtext;
 
 	/**
-	 * Returns the category
+	 * Returns the categories
 	 *
-	 * @return int
+	 * @return string
 	 */
-	public function getCategory() {
-		return $this->category;
+	public function getCategories() {
+		return $this->categories;
 	}
 
 	/**
 	 * Sets the category
 	 *
-	 * @param int $category
+	 * @param string $categories The categories to filter the FAQs
+	 *
 	 * @return void
 	 */
-	public function setCategory($category) {
-		$this->category = $category;
+	public function setCategories($categories) {
+		$this->categories = $categories;
 	}
 
 	/**
@@ -77,7 +64,8 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the search text
 	 *
-	 * @param string $searchtext
+	 * @param string $searchtext The searchtext to filter the FAQs
+	 *
 	 * @return void
 	 */
 	public function setSearchtext($searchtext) {

@@ -64,8 +64,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	public function getCategoryReturnsInitialValueForInteger() {
 		$this->assertSame(
-			0,
-			$this->subject->getCategory()
+			'0',
+			$this->subject->getCategories()
 		);
 	}
 
@@ -74,10 +74,34 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	public function setCategoryForIntegerSetsCategory() {
-		$this->subject->setCategory(1);
+		$this->subject->setCategories(1);
 		$this->assertSame(
 			1,
-			$this->subject->getCategory()
+			$this->subject->getCategories()
+		);
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function setCategoriesForStringSetsCategories() {
+		$this->subject->setCategories('0,3,4,10');
+		$this->assertSame(
+			'0,3,4,10',
+			$this->subject->getCategories()
+		);
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function setCategoriesForEmptyStringSetsCategories() {
+		$this->subject->setCategories('');
+		$this->assertSame(
+			'',
+			$this->subject->getCategories()
 		);
 	}
 
