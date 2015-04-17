@@ -16,13 +16,14 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
 
 /**
  * Class CategoryActiveViewHelperTest
+ *
  * @author Alexander Schnoor
  */
-class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
+class GetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Viewhelper
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\ViewHelpers\CategoryActiveViewHelper
+	 * @var \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
 	 */
 	protected $viewhelper = NULL;
 	/**
@@ -31,7 +32,7 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
+		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
 	}
 	/**
 	 * Teardown
@@ -48,17 +49,21 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	public function setCategoryClassDataProvider() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
 		return array(
+			'emptySettings' => array(
+				'',
+				'',
+				''
+			),
 			'intSelectedCategoriesContainsCurrentCategory' => array(
 				2,
 				'0,2,5,7',
-				'class="faq-active-link"'
+				'faq-active-link'
 			),
 			'stringSelectedCategoriesContainsCurrentCategory' => array(
 				'2',
 				'0,2,5,7',
-				'class="faq-active-link"'
+				'faq-active-link'
 			),
 				'intSelectedCategoriesDoesntContainsCurrentCategory' => array(
 				3,
@@ -73,7 +78,7 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 			'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
 				0,
 				'0',
-				'class="faq-active-link"'
+				'faq-active-link'
 			),
 			'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
 				0,
@@ -83,7 +88,7 @@ class SetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 			'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
 				'0',
 				'0',
-				'class="faq-active-link"'
+				'faq-active-link'
 			),
 			'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
 				'0',

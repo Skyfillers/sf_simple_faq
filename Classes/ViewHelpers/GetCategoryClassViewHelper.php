@@ -15,13 +15,11 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
  */
 
 /**
- * Class CategoryActiveViewHelper
+ * Class GetCategoryClassViewHelper
  *
  * @author Alexander Schnoor
- *
- * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
  */
-class SetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class GetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 
 	/**
@@ -34,19 +32,16 @@ class SetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
 	 * @return string
 	 */
 	public function render($currentCategory, $selectedCategories) {
-
-		if ($selectedCategories == '0' && $currentCategory == 0) {
-			return 'class="faq-active-link"';
-		} elseif ($selectedCategories != '0' && $currentCategory == 0) {
-			return '';
-		} else {
+		$return = '';
+		if ($selectedCategories === '0' && (int)$currentCategory === 0) {
+			$return  = 'faq-active-link';
+		} elseif ($selectedCategories !== '0' && (int)$currentCategory !== 0) {
 			$selected = explode(',', $selectedCategories);
-			if (in_array($currentCategory, $selected) == TRUE) {
-				return 'class="faq-active-link"';
-			} else {
-				return '';
+			if (in_array($currentCategory, $selected) === TRUE) {
+				$return = 'faq-active-link';
 			}
 		}
+		return $return;
 	}
 
 }

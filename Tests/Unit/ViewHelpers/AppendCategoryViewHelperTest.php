@@ -46,8 +46,7 @@ class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @return array
 	 */
-	public function setCategoryClassDataProvider() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\SetCategoryClassViewHelper();
+	public function appendCategoryClassDataProvider() {
 		return array(
 			'intSelectedCategoriesContainsNewCategory' => array(
 				'0,2,4,6',
@@ -75,7 +74,7 @@ class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @test
 	 *
-	 * @dataProvider setCategoryClassDataProvider
+	 * @dataProvider appendCategoryClassDataProvider
 	 */
 	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt($selectedCategories, $newCategory, $expected) {
 		$actual = $this->viewhelper->render($selectedCategories, $newCategory);
