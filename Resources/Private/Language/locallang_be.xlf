@@ -21,6 +21,12 @@
 			<trans-unit id="flexforms_general.category.overview.show">
 				<source>Show</source>
 			</trans-unit>
-		</body>
+			<trans-unit id="flexforms_general.category.multiple.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category.multiple.no">
+				<source>No</source>
+			</trans-unit>
+        </body>
 	</file>
 </xliff>

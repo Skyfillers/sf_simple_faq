@@ -60,11 +60,11 @@
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">No</numIndex>
+                                        <numIndex index="0">LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.multiple.no</numIndex>
                                         <numIndex index="1">0</numIndex>
                                     </numIndex>
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">Yes</numIndex>
+                                        <numIndex index="0">LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.multiple.yes</numIndex>
                                         <numIndex index="1">1</numIndex>
                                     </numIndex>
                                 </items>
