@@ -17,10 +17,10 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
 /**
  * Class Category
  *
+ * @package SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+ *
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
- *
- * @package SKYFILLERS\SfSimpleFaq\Domain\Model\Category
  */
 class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
