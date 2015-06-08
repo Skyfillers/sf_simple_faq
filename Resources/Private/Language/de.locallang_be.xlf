@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-02-10T11:27:53Z" product-name="sf_mm_kleinanzeigen">
+		<header/>
+		<body>
+			<trans-unit id="flexforms_tab.settings">
+				<source>Settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category">
+				<source>Category</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category.all">
+				<source>All</source>
+				<target>Alle</target>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category.overview">
+				<source>Category Overview</source>
+				<target>Kategorieübersicht</target>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category.overview.hide">
+				<source>hide</source>
+				<target>verstecken</target>
+			</trans-unit>
+			<trans-unit id="flexforms_general.category.overview.show">
+				<source>show</source>
+				<target>anzeigen</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
