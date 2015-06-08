@@ -25,18 +25,34 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * The FaqRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository
-	 * @inject
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
 	 */
 	protected $faqRepository = NULL;
 
 	/**
 	 * The categoryRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository
-	 * @inject
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
 	 */
 	protected $categoryRepository = NULL;
+
+	/**
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
+	 *
+	 * @return void
+	 */
+	public function injectFaqRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository) {
+		$this->faqRepository = $faqRepository;
+	}
+
+	/**
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
+	 *
+	 * @return void
+	 */
+	public function injectCategoryRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository) {
+		$this->categoryRepository = $categoryRepository;
+	}
 
 	/**
 	 * Create a demand object with the given settings
