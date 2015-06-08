@@ -26,14 +26,14 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
 	 */
-	protected $faqRepository = NULL;
+	protected $faqRepository;
 
 	/**
 	 * categoryRepository
 	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
 	 */
-	protected $categoryRepository = NULL;
+	protected $categoryRepository;
 
 	/**
 	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
@@ -74,7 +74,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * action list
+	 * List action
 	 *
 	 * @param int $category
 	 * @param string $searchtext
@@ -82,12 +82,16 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function listAction($category = 0, $searchtext = '') {
 		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $category);
-		$faqs = $this->faqRepository->findDemanded($demand);
+		$faqs = $this->faqRepository->findByDemand($demand);
 		$categories = $this->categoryRepository->findAll();
-		$this->view->assign('faqs', $faqs);
-		$this->view->assign('categories', $categories);
-		$this->view->assign('selectedCategory', $category);
-		$this->view->assign('searchtext', $searchtext);
+		$this->view->assignMultiple(
+			array(
+				'faqs' => $faqs,
+				'categories' => $categories,
+				'selectedCategory' => $category,
+				'searchtext' => $searchtext
+			)
+		);
 	}
 
 }

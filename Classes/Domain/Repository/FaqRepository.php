@@ -14,6 +14,7 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -29,7 +30,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findDemanded($demand) {
+	public function findByDemand(FaqDemand $demand) {
 		$query = $this->createQuery();
 		$constraints = array();
 
