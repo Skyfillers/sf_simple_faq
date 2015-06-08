@@ -19,7 +19,8 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * The repository for Faqs
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 

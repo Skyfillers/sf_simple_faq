@@ -17,7 +17,8 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
 /**
  * FaqController
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
