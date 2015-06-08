@@ -13,6 +13,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use SKYFILLERS\SfSimpleFaq\Domain\Model\Faq;
 
 /**
  * FaqController
@@ -119,5 +120,20 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			'searchtext' => $searchtext,
 		);
 		$this->view->assignMultiple($assignArray);
+	}
+
+	/**
+	 * Detail action
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq $faq
+	 * @param string $selectedCategories
+	 */
+	public function detailAction(Faq $faq, $selectedCategories) {
+		$this->view->assignMultiple(array(
+				'faq' => $faq,
+				'selectedCategories' => $selectedCategories,
+				'listPageUid' => $this->settings['listPageUid']
+			)
+		);
 	}
 }
