@@ -1,6 +1,7 @@
 # TYPO3 Extension "sf_simple_faq"
 
 [![Build Status](https://travis-ci.org/Skyfillers/sf_simple_faq.svg?branch=master)](https://travis- ci.org/Skyfillers/sf_simple_faq)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Skyfillers/sf_simple_faq/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Skyfillers/sf_simple_faq/?branch=master)
 
 ## What is it?
 
