@@ -51,6 +51,10 @@
 				<source>Back</source>
 				<target>Zurück</target>
 			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.files">
+				<source>Files:</source>
+				<target>Dateien:</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

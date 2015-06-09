@@ -50,7 +50,12 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
 	 */
-	protected $category = NULL;
+	protected $category;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	protected $files;
 
 	/**
 	 * Returns the question
@@ -132,4 +137,17 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->category = $category;
 	}
 
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	public function getFiles() {
+		return $this->files;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
+	 */
+	public function setFiles($files) {
+		$this->files = $files;
+	}
 }

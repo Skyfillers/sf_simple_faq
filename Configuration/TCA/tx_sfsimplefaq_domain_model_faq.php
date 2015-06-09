@@ -24,10 +24,10 @@ return array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_simple_faq') . 'Resources/Public/Icons/tx_sfsimplefaq_domain_model_faq.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, category',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, files, category',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, question, answer;;;richtext:rte_transform[mode=ts_links], keywords, category, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, question, answer;;;richtext:rte_transform[mode=ts_links], keywords, files, category, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -167,6 +167,14 @@ return array(
 				'maxitems' => 99,
 			),
 		),
-
+		'files' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/Backend.xlf:file',
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('files', array(
+				'appearance' => array(
+					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'
+				),
+			), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+		),
 	),
 );
