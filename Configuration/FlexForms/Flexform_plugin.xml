@@ -72,6 +72,17 @@
                         </TCEforms>
                     </settings.selectMultipleCategories>
 
+                    <!-- Show answers in ListView -->
+                    <settings.showAnswersInListView>
+                        <TCEforms>
+                            <label>Show answers in list view</label>
+                            <displayCond>FIELD:settings.category:=:0</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.showAnswersInListView>
+
                 </el>
             </ROOT>
         </sDEF>

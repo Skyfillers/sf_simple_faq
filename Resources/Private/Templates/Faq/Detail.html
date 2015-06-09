@@ -1,0 +1,24 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <h2>{faq.question}</h2>
+    <p><f:format.raw>{faq.answer}</f:format.raw></p>
+    <f:if condition="{faq.files}">
+        <f:then>
+            <f:translate key="tx_sfsimplefaq_domain_model_faq.files" />
+            <ul>
+                <f:for each="{faq.files}" as="report">
+                    <f:if condition="{report.originalResource.title}">
+                        <f:then>
+                            <li><a href="{report.originalResource.publicUrl}">{report.originalResource.title}</a></li>
+                        </f:then>
+                        <f:else>
+                            <li><a href="{report.originalResource.publicUrl}">{report.originalResource.name}</a></li>
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </ul>
+        </f:then>
+    </f:if>
+    <f:link.action action="list" pageUid="{listPageUid}" arguments="{selectedCategories: selectedCategories}"><f:translate key="tx_sfsimplefaq_domain_model_faq.back"/></f:link.action>
+</f:section>

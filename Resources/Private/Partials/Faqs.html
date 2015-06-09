@@ -3,16 +3,22 @@
         <ul>
             <f:for each="{faqs}" as="faq">
                 <li>
-                    {faq.question}
-                    <ul>
-                        <li>
-                            <f:format.raw>{faq.answer}</f:format.raw>
-                        </li>
-                    </ul>
+                    <f:if condition="{settings.showAnswersInListView}">
+                        <f:then>
+                            {faq.question}
+                            <ul>
+                                <li>
+                                    <f:format.raw>{faq.answer}</f:format.raw>
+                                </li>
+                            </ul>
+                        </f:then>
+                        <f:else>
+                            <f:link.action action="detail" controller="Faq" pageUid="34" arguments="{faq: faq, selectedCategories: selectedCategories}">{faq.question}</f:link.action>
+                        </f:else>
+                    </f:if>
                 </li>
             </f:for>
         </ul>
-
     </f:then>
     <f:else>
         <f:if condition="{searchtext}">

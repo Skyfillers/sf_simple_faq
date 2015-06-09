@@ -17,9 +17,8 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
 /**
  * The repository for Categories
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
-
-
 }

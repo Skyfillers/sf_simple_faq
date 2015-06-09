@@ -17,7 +17,8 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model\Dto;
 /**
  * Frequently asked questions
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 

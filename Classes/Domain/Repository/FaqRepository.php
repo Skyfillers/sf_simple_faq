@@ -14,12 +14,14 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The repository for Faqs
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
@@ -30,7 +32,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findDemanded(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
+	public function findByDemand(FaqDemand $demand) {
 		$query = $this->createQuery();
 		$categoryConstraints = array();
 

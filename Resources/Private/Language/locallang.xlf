@@ -36,6 +36,12 @@
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.noresults">
 				<source>No search results found for </source>
 			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.back">
+				<source>Back</source>
+			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.files">
+				<source>Files:</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

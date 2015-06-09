@@ -13,29 +13,47 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use SKYFILLERS\SfSimpleFaq\Domain\Model\Faq;
 
 /**
  * FaqController
  *
- * @author Daniel Meyer, Alexander Schnoor
+ * @author Alexander Schnoor
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
 class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * The FaqRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository
-	 * @inject
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
 	 */
-	protected $faqRepository = NULL;
+	protected $faqRepository;
 
 	/**
 	 * The categoryRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository
-	 * @inject
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
 	 */
-	protected $categoryRepository = NULL;
+	protected $categoryRepository;
+
+	/**
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
+	 *
+	 * @return void
+	 */
+	public function injectFaqRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository) {
+		$this->faqRepository = $faqRepository;
+	}
+
+	/**
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
+	 *
+	 * @return void
+	 */
+	public function injectCategoryRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository) {
+		$this->categoryRepository = $categoryRepository;
+	}
 
 	/**
 	 * Create a demand object with the given settings
@@ -64,7 +82,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * List Action
+	 * List action
 	 *
 	 * @param string $selectedCategories The categories to filter the FAQs
 	 *
@@ -72,7 +90,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function listAction($selectedCategories = '0') {
 		$demand = $this->createDemandObjectFromSettings($this->settings, '', $selectedCategories);
-		$faqs = $this->faqRepository->findDemanded($demand);
+		$faqs = $this->faqRepository->findByDemand($demand);
 		$categories = $this->categoryRepository->findAll();
 
 		$assignArray = array(
@@ -93,7 +111,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 */
 	public function searchAction($selectedCategories = '0', $searchtext = '') {
 		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
-		$faqs = $this->faqRepository->findDemanded($demand);
+		$faqs = $this->faqRepository->findByDemand($demand);
 		$categories = $this->categoryRepository->findAll();
 		$assignArray = array(
 			'faqs' => $faqs,
@@ -102,5 +120,20 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			'searchtext' => $searchtext,
 		);
 		$this->view->assignMultiple($assignArray);
+	}
+
+	/**
+	 * Detail action
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq $faq
+	 * @param string $selectedCategories
+	 */
+	public function detailAction(Faq $faq, $selectedCategories) {
+		$this->view->assignMultiple(array(
+				'faq' => $faq,
+				'selectedCategories' => $selectedCategories,
+				'listPageUid' => $this->settings['listPageUid']
+			)
+		);
 	}
 }
