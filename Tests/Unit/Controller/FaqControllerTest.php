@@ -95,8 +95,8 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
 		$faqRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
-			array('findDemanded'), array(), '', FALSE);
-		$faqRepository->expects($this->once())->method('findDemanded')->will($this->returnValue($allFaqs));
+			array('findByDemand'), array(), '', FALSE);
+		$faqRepository->expects($this->once())->method('findByDemand')->will($this->returnValue($allFaqs));
 		$this->inject($this->subject, 'faqRepository', $faqRepository);
 		$categoryRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
 			array('findAll'), array(), '', FALSE);
@@ -126,8 +126,8 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->subject->expects($this->once())->method('createDemandObjectFromSettings')
 			->with($settings)->will($this->returnValue($demand));
 		$faqRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
-			array('findDemanded'), array(), '', FALSE);
-		$faqRepository->expects($this->once())->method('findDemanded')->will($this->returnValue($allFaqs));
+			array('findByDemand'), array(), '', FALSE);
+		$faqRepository->expects($this->once())->method('findByDemand')->will($this->returnValue($allFaqs));
 		$this->inject($this->subject, 'faqRepository', $faqRepository);
 		$categoryRepository = $this->getMock('SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
 			array('findAll'), array(), '', FALSE);
