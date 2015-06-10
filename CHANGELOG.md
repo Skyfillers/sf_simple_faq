@@ -1,6 +1,14 @@
 # Change Log
 
-## [1.2.0](https://github.com/Skyfillers/sf_simple_faq/tree/1.2.0) (2015-06-09)
+## [v1.2.1](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.1) (2015-06-10)
+
+**Implemented enhancements:**
+
+- \[TASK\] Rename findDemanded methods in test to findByDemand [\#23](https://github.com/Skyfillers/sf_simple_faq/issues/23)
+
+## [v1.2.0](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.0) (2015-06-09)
+
+[Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/1.1.0...v1.2.0)
 
 **Closed issues:**
 
@@ -37,6 +45,8 @@
 - \[TASK\] Remove default CSS vom setup.txt [\#15](https://github.com/Skyfillers/sf_simple_faq/issues/15)
 
 - \[TASK\] Add readme [\#14](https://github.com/Skyfillers/sf_simple_faq/issues/14)
+
+- \[TASK\] Add documentation [\#13](https://github.com/Skyfillers/sf_simple_faq/issues/13)
 
 - \[TASK\] Refactor SetCategoryClassViewHelper [\#12](https://github.com/Skyfillers/sf_simple_faq/issues/12)
 
