@@ -34,7 +34,7 @@ following:
 #. Include the plugin “Simple FAQ” on a page. If there is no TypoScript setting for the storagePid,
    the folder containing your FAQs needs to be set in the plugin und "Behaviour -> Record Storage Page".
 
-   |img-4|
+   |img-res|
 
 #. Set the necessary settings:
 
@@ -42,3 +42,5 @@ following:
    #. Show/Hide the category overview
    #. Enable/Disable multiple selection of category in frontend
    #. Show answers inside the list view or in a detail view.
+
+   |img-settings|

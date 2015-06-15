@@ -1,6 +1,13 @@
-﻿.. |img-4|      image:: ../../Images/Add_Resource.png
+﻿.. |img-res|      image:: ../../Images/Add_Resource.png
    :height: 155
    :width: 485
 .. :align: left
 .. :border: 0
 .. :name: Add a resource folder to the plugin
+
+.. |img-settings|      image:: ../../Images/Simple_FAQ_Plugin_Settings.png
+   :height: 458
+   :width: 352
+.. :align: left
+.. :border: 0
+.. :name: Plugin Settings
