@@ -14,7 +14,7 @@ plugin.tx_sfsimplefaq {
 	}
 
 	settings {
-		listPageUid = 34
-		detailPageUid = 50
+		listPageUid =
+		detailPageUid =
 	}
 }
