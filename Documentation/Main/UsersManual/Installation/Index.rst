@@ -1,4 +1,4 @@
-﻿
+﻿.. include:: Images.txt
 
 .. ==================================================
 .. FOR YOUR INFORMATION
@@ -30,6 +30,8 @@ following:
 
 #. Include the plugin “Simple FAQ” on a page. If there is no TypoScript setting for the storagePid,
    the folder containing your FAQs needs to be set in the plugin und "Behaviour -> Record Storage Page".
+
+   |img-4|
 
 #. Set the necessary settings:
 

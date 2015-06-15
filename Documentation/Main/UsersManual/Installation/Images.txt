@@ -1,0 +1,6 @@
+﻿.. |img-4|      image:: ../../Images/Add_Resource.png
+   :height: 155
+   :width: 485
+.. :align: left
+.. :border: 0
+.. :name: Add a resource folder to the plugin
