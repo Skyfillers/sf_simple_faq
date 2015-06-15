@@ -14,8 +14,8 @@ The FAQs are shown in the frontend along with a search field and a category head
 
 ## Installation
 
-Clone the extension from https://github.com/Skyfillers/sf_simple_faq.git into your TYPO3 installation and install it.
-Then add the TypoScript Template to your root template.
+Download the extension from TER or clone from https://github.com/Skyfillers/sf_simple_faq.git into your TYPO3 installation and install it.
+Then add the static TypoScript Template to your root template.
 
 ## Configuration
 
