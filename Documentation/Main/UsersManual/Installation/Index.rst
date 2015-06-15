@@ -17,11 +17,10 @@
 
 Installation
 ^^^^^^^^^^^^
+You may install the extension via TER or download from https://github.com/Skyfillers/sf_simple_faq.git
 
 The installation and initial configuration of the extension is as
 following:
-
-#. Install the extension by cloning from https://github.com/Skyfillers/sf_simple_faq.git
 
 #. Include the static TypoScript configuration “Simple FAQ
    (sf\_simple\_faq)” in your TypoScript template
