@@ -28,6 +28,9 @@ following:
 #. Create a new sysfolder in your page tree, where you create FAQs and
    categories.
 
+#. It is necessary, thay you provide **plugin.tx_sfsimplefaq.settings.listPageUid and plugin.tx_sfsimplefaq.settings.detailPageUid**
+   if you want to not show the answers in the list.
+
 #. Include the plugin “Simple FAQ” on a page. If there is no TypoScript setting for the storagePid,
    the folder containing your FAQs needs to be set in the plugin und "Behaviour -> Record Storage Page".
 
@@ -39,4 +42,3 @@ following:
    #. Show/Hide the category overview
    #. Enable/Disable multiple selection of category in frontend
    #. Show answers inside the list view or in a detail view.
-
