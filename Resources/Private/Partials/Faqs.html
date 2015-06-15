@@ -13,7 +13,7 @@
                             </ul>
                         </f:then>
                         <f:else>
-                            <f:link.action action="detail" controller="Faq" pageUid="34" arguments="{faq: faq, selectedCategories: selectedCategories}">{faq.question}</f:link.action>
+                            <f:link.action action="detail" controller="Faq" pageUid="{settings.detailPageUid}" arguments="{faq: faq, selectedCategories: selectedCategories}">{faq.question}</f:link.action>
                         </f:else>
                     </f:if>
                 </li>
