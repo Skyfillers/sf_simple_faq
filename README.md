@@ -19,7 +19,9 @@ Then add the static TypoScript Template to your root template.
 
 ## Configuration
 
-After you added the plugin to a page you have several Flexform settings which change the behavior of the extension:
+After you added the plugin to a page you have to set the Resource Folder at the "Bahviour" Tab of the plugin.
+Otherwise you may set the storagePid via TS.
+You then have several Flexform settings which change the behavior of the extension:
 
 - Show FAQs of one category or all
 - Show/Hide the category overview

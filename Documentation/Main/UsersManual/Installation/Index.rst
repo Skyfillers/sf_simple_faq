@@ -28,7 +28,10 @@ following:
 #. Create a new sysfolder in your page tree, where you create FAQs and
    categories.
 
-#. Include the plugin “Simple FAQ” on a page. You can set a few things here:
+#. Include the plugin “Simple FAQ” on a page. If there is no TypoScript setting for the storagePid,
+   the folder containing your FAQs needs to be set in the plugin und "Behaviour -> Record Storage Page".
+
+#. Set the necessary settings:
 
    #. Show show the FAQs of all categories or only the FAQs of one category.
    #. Show/Hide the category overview
