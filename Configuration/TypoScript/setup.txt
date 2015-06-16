@@ -8,10 +8,6 @@ plugin.tx_sfsimplefaq {
 	persistence {
 		storagePid = {$plugin.tx_sfsimplefaq.persistence.storagePid}
 	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
-	}
 
 	settings {
 		listPageUid = {$plugin.tx_sfsimplefaq.settings.listPageUid}
