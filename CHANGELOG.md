@@ -1,8 +1,8 @@
 # Change Log
 
-## [v1.2.2](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.2) (2015-06-16)
+## [1.2.2](https://github.com/Skyfillers/sf_simple_faq/tree/1.2.2) (2015-06-16)
 
-[Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/1.2.1...v1.2.2)
+[Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/v1.2.1...1.2.2)
 
 **Closed issues:**
 
