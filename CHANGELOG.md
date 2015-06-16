@@ -1,5 +1,23 @@
 # Change Log
 
+## [v1.2.2](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.2) (2015-06-16)
+
+**Closed issues:**
+
+- \[BUG\] DetailView does not work [\#30](https://github.com/Skyfillers/sf_simple_faq/issues/30)
+
+- \[BUG\] Remove values for pid's in constants.txt [\#29](https://github.com/Skyfillers/sf_simple_faq/issues/29)
+
+**Implemented enhancements:**
+
+- \[TASK\] Use current page Uid if no detailPageUid and listPageUid is specified via TS [\#28](https://github.com/Skyfillers/sf_simple_faq/issues/28)
+
+- \[TASK\] Explain how to set the folder in plugin [\#27](https://github.com/Skyfillers/sf_simple_faq/issues/27)
+
+- \[TASK\] Add screenshots to documentation [\#26](https://github.com/Skyfillers/sf_simple_faq/issues/26)
+
+- \[TASK\] Add ext_icon [\#25](https://github.com/Skyfillers/sf_simple_faq/issues/25)
+
 ## [v1.2.1](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.1) (2015-06-10)
 
 **Implemented enhancements:**
