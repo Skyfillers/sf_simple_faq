@@ -56,6 +56,20 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
+	 * Initializes the current action
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		if (isset($this->settings['detailPageUid']) && $this->settings['detailPageUid'] == '') {
+			$this->settings['detailPageUid'] = $GLOBALS['TSFE']->id;
+		}
+		if (isset($this->settings['listPageUid']) && $this->settings['listPageUid'] == '') {
+			$this->settings['listPageUid'] = $GLOBALS['TSFE']->id;
+		}
+	}
+
+	/**
 	 * Create a demand object with the given settings
 	 *
 	 * @param array $settings The settings
@@ -131,8 +145,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	public function detailAction(Faq $faq, $selectedCategories) {
 		$this->view->assignMultiple(array(
 				'faq' => $faq,
-				'selectedCategories' => $selectedCategories,
-				'listPageUid' => $this->settings['listPageUid']
+				'selectedCategories' => $selectedCategories
 			)
 		);
 	}
