@@ -4,3 +4,17 @@
 .. :align: left
 .. :border: 0
 .. :name: Plugin Settings
+
+.. |img-list|      image:: ../../Images/sf_simple_faq_detail-list.png
+   :height: 217
+   :width: 405
+.. :align: left
+.. :border: 0
+.. :name: List with detail link
+
+.. |img-in-list|      image:: ../../Images/sf_simple_faq_in-list.png
+   :height: 314
+   :width: 394
+.. :align: left
+.. :border: 0
+.. :name: Answers in list

@@ -18,5 +18,15 @@
 Screenshots
 ^^^^^^^^^^^
 
+Plugin Settings
+"""""""""""""""
 |img-3|
+
+List of questions
+"""""""""""""""""
+|img-list|
+
+List with inline answers
+""""""""""""""""""""""""
+|img-in-list|
 
