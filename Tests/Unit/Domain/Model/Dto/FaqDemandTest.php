@@ -22,15 +22,18 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model\Dto;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
+	 * The tested subject
+	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
 	protected $subject = NULL;
 
 	/**
-	 * setup
+	 * Setup
 	 *
 	 * @return void
 	 */
@@ -39,7 +42,7 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
-	 * teardown
+	 * Teardown
 	 *
 	 * @return void
 	 */
@@ -48,6 +51,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -59,6 +64,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -71,6 +78,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -83,6 +92,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -95,6 +106,8 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */

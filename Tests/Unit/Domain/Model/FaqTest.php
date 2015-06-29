@@ -22,15 +22,17 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
+	 * The subject under test
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq
 	 */
 	protected $subject = NULL;
 
 	/**
-	 * setup
+	 * Setup
 	 *
 	 * @return void
 	 */
@@ -39,7 +41,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
-	 * teardown
+	 * Teardown
 	 *
 	 * @return void
 	 */
@@ -48,6 +50,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test.
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -59,6 +63,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -73,6 +79,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -84,6 +92,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -98,6 +108,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -109,6 +121,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -123,6 +137,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -134,6 +150,8 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test
+	 *
 	 * @test
 	 * @return void
 	 */

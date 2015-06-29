@@ -20,6 +20,7 @@ use SKYFILLERS\SfSimpleFaq\Domain\Model\Faq;
  *
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
@@ -38,7 +39,9 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $categoryRepository;
 
 	/**
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
+	 * Inject the FAQ repository
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository The repository
 	 *
 	 * @return void
 	 */
@@ -47,7 +50,9 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
+	 * Inject the category repository
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository The repository
 	 *
 	 * @return void
 	 */
@@ -139,8 +144,10 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * Detail action
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq $faq
-	 * @param string $selectedCategories
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq $faq The faq model
+	 * @param string $selectedCategories The selected repository
+	 *
+	 * @return void
 	 */
 	public function detailAction(Faq $faq, $selectedCategories) {
 		$this->view->assignMultiple(array(

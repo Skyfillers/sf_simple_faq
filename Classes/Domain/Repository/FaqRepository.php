@@ -22,6 +22,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
@@ -68,7 +69,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		$categoryConstraintsLength = count($categoryConstraints);
 		$searchConstraintsLength = count($searchConstraints);
-
 
 		$categoryIsAll = FALSE;
 		if ($categories[0] == 0 && $categoryConstraintsLength < 2) {

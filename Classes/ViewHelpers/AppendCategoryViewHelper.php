@@ -18,21 +18,22 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
  * Class AppendCategoryViewHelper
  *
  * @author Alexander Schnoor
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  *
  * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
  */
 class AppendCategoryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
-
 	/**
-	 * @param string $selectedCategories
-	 * @param string $newCategory
+	 * Render the viewhelpers view
+	 *
+	 * @param string $selectedCategories The selected categories
+	 * @param string $newCategory The new category
 	 *
 	 * @return string
 	 */
 	public function render($selectedCategories, $newCategory) {
 		$selected = explode(',', $selectedCategories);
-
 
 		if (array_search($newCategory, $selected) == FALSE) {
 			array_push($selected, (int)$newCategory);

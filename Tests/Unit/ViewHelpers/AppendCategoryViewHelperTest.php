@@ -16,6 +16,9 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
 
 /**
  * Class AppendCategoryViewHelperTest
+ *
+ * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	/**
@@ -72,9 +75,17 @@ class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test the rendering of this viewhelper
+	 *
+	 * @param string $selectedCategories The selected categories
+	 * @param string $newCategory The new category
+	 * @param string $expected The expected result
+	 *
 	 * @test
 	 *
 	 * @dataProvider appendCategoryClassDataProvider
+	 *
+	 * @return void
 	 */
 	public function renderWhenNewCategoryIsInSelectedCategoriesAndInt($selectedCategories, $newCategory, $expected) {
 		$actual = $this->viewhelper->render($selectedCategories, $newCategory);

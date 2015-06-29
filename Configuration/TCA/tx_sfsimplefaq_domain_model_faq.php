@@ -33,7 +33,6 @@ return array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
-	
 		'sys_language_uid' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
@@ -65,7 +64,6 @@ return array(
 				'type' => 'passthrough',
 			),
 		),
-
 		't3ver_label' => array(
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
 			'config' => array(
@@ -74,7 +72,6 @@ return array(
 				'max' => 255,
 			)
 		),
-	
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
@@ -114,7 +111,6 @@ return array(
 				),
 			),
 		),
-
 		'question' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.question',
@@ -136,7 +132,7 @@ return array(
 				'wizards' => array(
 					'RTE' => array(
 						'icon' => 'wizard_rte2.gif',
-						'notNewRecords'=> 1,
+						'notNewRecords' => 1,
 						'RTEonly' => 1,
 						'script' => 'wizard_rte.php',
 						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',

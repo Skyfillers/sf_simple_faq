@@ -27,7 +27,7 @@ class GetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
 	 * if $selectedCategories contains $currentCategory
 	 *
 	 * @param int $currentCategory The Category to check if it's selected
-	 * @param string $selectedCategories The
+	 * @param string $selectedCategories The selected categories
 	 *
 	 * @return string
 	 */

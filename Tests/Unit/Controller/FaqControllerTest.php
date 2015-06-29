@@ -18,14 +18,18 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Controller;
  * Test case for class SKYFILLERS\SfSimpleFaq\Controller\FaqController.
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
+	 * The tested subject
+	 *
 	 * @var \SKYFILLERS\SfSimpleFaq\Controller\FaqController
 	 */
 	protected $subject = NULL;
+
 	/**
-	 * setup
+	 * Setup
 	 *
 	 * @return void
 	 */
@@ -33,16 +37,21 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->subject = $this->getAccessibleMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'), array(), '', FALSE);
 	}
+
 	/**
-	 * teardown
+	 * Teardown
 	 *
 	 * @return void
 	 */
 	protected function tearDown() {
 		unset($this->subject);
 	}
+
 	/**
+	 * Test: create a demand object from settings without category
+	 *
 	 * @test
+	 *
 	 * @return void
 	 */
 	public function createDemandObjectFromSettingsWithoutCategory() {
@@ -61,8 +70,12 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->inject($mockController, 'objectManager', $objectManager);
 		$mockController->createDemandObjectFromSettings($settings, 'test');
 	}
+
 	/**
+	 * Test: Create demand object from settings with category
+	 *
 	 * @test
+	 *
 	 * @return void
 	 */
 	public function createDemandObjectFromSettingsWithCategory() {
@@ -81,8 +94,12 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->inject($mockController, 'objectManager', $objectManager);
 		$mockController->createDemandObjectFromSettings($settings, 'test', 20);
 	}
+
 	/**
+	 * Test: List action test with all FAQs
+	 *
 	 * @test
+	 *
 	 * @return void
 	 */
 	public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
@@ -111,7 +128,10 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test: Search action fetches all FAQs
+	 *
 	 * @test
+	 *
 	 * @return void
 	 */
 	public function searchActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {

@@ -22,15 +22,18 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
+ * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
 class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+
 	/**
+	 * The subject under test.
 	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
 	 */
 	protected $subject = NULL;
 
 	/**
-	 * setup
+	 * Setup
 	 *
 	 * @return void
 	 */
@@ -39,7 +42,7 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
-	 * teardown
+	 * Teardown
 	 *
 	 * @return void
 	 */
@@ -48,6 +51,8 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test: getTitle
+	 *
 	 * @test
 	 * @return void
 	 */
@@ -59,6 +64,8 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	}
 
 	/**
+	 * Test: set title
+	 *
 	 * @test
 	 * @return void
 	 */

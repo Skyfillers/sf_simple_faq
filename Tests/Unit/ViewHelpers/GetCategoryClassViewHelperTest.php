@@ -26,6 +26,7 @@ class GetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	 * @var \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
 	 */
 	protected $viewhelper = NULL;
+
 	/**
 	 * Setup
 	 *
@@ -34,6 +35,7 @@ class GetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
 	}
+
 	/**
 	 * Teardown
 	 *
@@ -99,9 +101,17 @@ class GetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test the rendering
+	 *
+	 * @param int $currentCategory The Category to check if it's selected
+	 * @param string $selectedCategories The selected categories
+	 * @param string $expected The expected result
+	 *
 	 * @test
 	 *
 	 * @dataProvider setCategoryClassDataProvider
+	 *
+	 * @return void
 	 */
 	public function renderWithResultSelectedWithCurrentCategoryInt($currentCategory, $selectedCategories, $expected) {
 		$actual = $this->viewhelper->render($currentCategory, $selectedCategories);
