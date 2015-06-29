@@ -36,6 +36,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findByDemand(FaqDemand $demand) {
 		$query = $this->createQuery();
 		$categoryConstraints = array();
+		$categories = array();
 
 		$rawCategories = $demand->getCategories();
 		if (strlen($rawCategories) > 1) {
@@ -70,19 +71,23 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$categoryConstraintsLength = count($categoryConstraints);
 		$searchConstraintsLength = count($searchConstraints);
 
+		/**
+		 * If all categories are selected
+		 * @var boolean $categoryIsAll
+		 */
 		$categoryIsAll = FALSE;
 		if ($categories[0] == 0 && $categoryConstraintsLength < 2) {
 			$categoryIsAll = TRUE;
 		}
 
-		if ($categoryConstraintsLength > 0 && $categoryIsAll == FALSE && $searchConstraintsLength > 0) {
+		if ($categoryConstraintsLength > 0 && $categoryIsAll === FALSE && $searchConstraintsLength > 0) {
 			$query->matching(
 				$query->logicalAnd(
 					$query->logicalOr($categoryConstraints),
 					$query->logicalAnd($searchConstraints)
 				)
 			);
-		} elseif ($categoryConstraintsLength > 0 && $categoryIsAll == FALSE) {
+		} elseif ($categoryConstraintsLength > 0 && $categoryIsAll === FALSE) {
 			$query->matching(
 				$query->logicalOr($categoryConstraints)
 			);
