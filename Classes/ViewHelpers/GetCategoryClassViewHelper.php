@@ -34,7 +34,7 @@ class GetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstra
 	public function render($currentCategory, $selectedCategories) {
 		$return = '';
 		if ($selectedCategories === '0' && (int)$currentCategory === 0) {
-			$return  = 'faq-active-link';
+			$return = 'faq-active-link';
 		} elseif ($selectedCategories !== '0' && (int)$currentCategory !== 0) {
 			$selected = explode(',', $selectedCategories);
 			if (in_array($currentCategory, $selected) === TRUE) {
