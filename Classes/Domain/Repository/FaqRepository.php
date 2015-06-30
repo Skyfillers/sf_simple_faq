@@ -72,7 +72,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * The query
 	 * @var \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
-	protected $query;
+	protected $query = NULL;
 
 	/**
 	 * Generates the necessary category settings.
@@ -87,18 +87,17 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$categories = explode(',', $categories);
 		}
 
-		$categoriesLength = count($categories);
-		if ($categoriesLength != 0) {
-			for ($i = 0; $i < $categoriesLength; $i++) {
-				$categoryConstraints[] = $this->$query->contains('category', (string)$categories[$i]);
+		$this->categoriesLength = count($categories);
+		if ($this->categoriesLength != 0) {
+			for ($i = 0; $i < $this->categoriesLength; $i++) {
+				array_push($this->categoryConstraints, $this->query->contains('category', (string)$categories[$i]));
 			}
 		}
 
-		if ($categories[0] == 0 && $this->$categoryConstraintsLength < 2) {
-			$this->$categoryIsAll = TRUE;
+		$this->categoryConstraintsLength = count($this->categoryConstraints);
+		if ($categories[0] == 0 && $this->categoryConstraintsLength < 2) {
+			$this->categoryIsAll = TRUE;
 		}
-
-		$this->$categoryConstraintsLength = count($this->$categoryConstraints);
 	}
 
 	/**
@@ -113,17 +112,17 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$searchtextConstraints = array();
 			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
 			foreach ($searchWords as $searchWord) {
-				$searchtextConstraints[] = $this->$query->logicalOr(
-					$this->$query->like('question', '%' . $searchWord . '%'),
-					$this->$query->like('answer', '%' . $searchWord . '%'),
-					$this->$query->like('keywords', '%' . $searchWord . '%')
+				$searchtextConstraints[] = $this->query->logicalOr(
+					$this->query->like('question', '%' . $searchWord . '%'),
+					$this->query->like('answer', '%' . $searchWord . '%'),
+					$this->query->like('keywords', '%' . $searchWord . '%')
 				);
 			}
 			if (count($searchtextConstraints) > 0) {
-				$this->searchConstraints[] = $this->$query->logicalOr($searchtextConstraints);
+				$this->searchConstraints[] = $this->query->logicalOr($searchtextConstraints);
 			}
 		}
-		$this->$searchConstraintsLength = count($this->$searchConstraints);
+		$this->searchConstraintsLength = count($this->searchConstraints);
 	}
 
 	/**
@@ -131,20 +130,20 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return void
 	 */
 	protected function buildQuery() {
-		if ($this->$categoryConstraintsLength > 0 && $this->$categoryIsAll === FALSE && $this->$searchConstraintsLength > 0) {
-			$this->$query->matching(
-				$this->$query->logicalAnd(
-					$this->$query->logicalOr($this->$categoryConstraints),
-					$this->$query->logicalAnd($this->$searchConstraints)
+		if ($this->categoryConstraintsLength > 0 && $this->categoryIsAll === FALSE && $this->searchConstraintsLength > 0) {
+			$this->query->matching(
+				$this->query->logicalAnd(
+					$this->query->logicalOr($this->categoryConstraints),
+					$this->query->logicalAnd($this->searchConstraints)
 				)
 			);
-		} elseif ($categoryConstraintsLength > 0 && $this->$categoryIsAll === FALSE) {
-			$this->$query->matching(
-				$this->$query->logicalOr($this->$categoryConstraints)
+		} elseif ($this->categoryConstraintsLength > 0 && $this->categoryIsAll === FALSE) {
+			$this->query->matching(
+				$this->query->logicalOr($this->categoryConstraints)
 			);
-		} elseif ($searchConstraintsLength > 0) {
-			$this->$query->matching(
-				$this->$query->logicalAnd($this->$searchConstraints)
+		} elseif ($this->searchConstraintsLength > 0) {
+			$this->query->matching(
+				$this->query->logicalAnd($this->searchConstraints)
 			);
 		}
 	}
@@ -157,12 +156,12 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByDemand(FaqDemand $demand) {
-		$this->$query = $this->createQuery();
+		$this->query = $this->createQuery();
 
 		$this->generateCategories($demand);
 		$this->generateSearchConstraints($demand);
 
 		$this->buildQuery();
-		return $this->$query->execute();
+		return $this->query->execute();
 	}
 }
