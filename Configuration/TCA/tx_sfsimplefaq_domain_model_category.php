@@ -137,6 +137,7 @@ return array(
 				'foreign_table_where' => ' AND (tx_sfsimplefaq_domain_model_category.sys_language_uid = 0 OR tx_sfsimplefaq_domain_model_category.l10n_parent = 0) AND tx_sfsimplefaq_domain_model_category.pid = ###CURRENT_PID### AND tx_sfsimplefaq_domain_model_category.uid != ###THIS_UID### ORDER BY tx_sfsimplefaq_domain_model_category.sorting ASC',
 				'minitems' => 0,
 				'maxitems' => 1,
+				'size' => 10,
 			),
 		),
 	),
