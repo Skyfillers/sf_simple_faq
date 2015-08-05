@@ -1,5 +1,5 @@
 {
-  "name": "Skyfillers/sf_simple_faq",
+  "name": "skyfillers/sf_simple_faq",
   "type": "typo3-cms-extension",
   "keywords": ["TYPO3 CMS", "faq", "questions", "answers", "fluid", "extbase"],
   "description": "A simple FAQ extension, based on Extbase and Fluid.",
@@ -41,7 +41,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.2.x-dev",
+      "dev-master": "1.2.x-dev"
     }
   }
 }
