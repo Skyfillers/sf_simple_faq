@@ -21,7 +21,7 @@ return array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'question,answer,keywords,category,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_simple_faq') . 'Resources/Public/Icons/tx_sfsimplefaq_domain_model_faq.gif'
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('sf_simple_faq') . 'Resources/Public/Icons/tx_sfsimplefaq_domain_model_faq.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, files, category',
