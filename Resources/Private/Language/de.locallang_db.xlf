@@ -11,6 +11,10 @@
 				<source>Title</source>
 				<target>Titel</target>
 			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_category.parent">
+				<source>Parent</source>
+				<target>Übergeordnet</target>
+			</trans-unit>
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq">
 				<source>Faq</source>
 				<target>Häufig gestellte Frage</target>

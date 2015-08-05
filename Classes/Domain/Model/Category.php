@@ -33,6 +33,11 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
+	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $parent The parent category
+	 */
+	protected $parent;
+
+	/**
 	 * Returns the title
 	 *
 	 * @return string $title
@@ -52,4 +57,21 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->title = $title;
 	}
 
+	/**
+	 * Returns the parent category
+	 *
+	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+	 */
+	public function getParent() {
+		return $this->parent;
+	}
+
+	/**
+	 * Set the parent category of this category
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $parent
+	 */
+	public function setParent($parent) {
+		$this->parent = $parent;
+	}
 }
