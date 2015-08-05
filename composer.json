@@ -1,0 +1,47 @@
+{
+  "name": "Skyfillers/sf_simple_faq",
+  "type": "typo3-cms-extension",
+  "keywords": ["TYPO3 CMS", "faq", "questions", "answers", "fluid", "extbase"],
+  "description": "A simple FAQ extension, based on Extbase and Fluid.",
+  "homepage": "http://typo3.org",
+  "license": ["GPL-2.0+"],
+  "authors": [
+    {
+      "name": "Torben Hansen",
+      "email": "t.hansen@skyfillers.com",
+      "homepage": "https://www.skyfillers.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Jöran Kurschatke",
+      "email": "j.kurschatke@skyfillers.com",
+      "homepage": "https://www.skyfillers.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Stefano Kowalke",
+      "email": "s.kowalke@skyfillers.com",
+      "homepage": "https://www.skyfillers.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Skyfillers/sf_simple_faq/issues"
+  },
+  "require": {
+    "typo3/cms-core": ">=6.2.0,<7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SKYFILLERS\\SfSimpleFaq\\": "Classes"
+    }
+  },
+  "replace": {
+    "sf_simple_faq": "*"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.2.x-dev",
+    }
+  }
+}
