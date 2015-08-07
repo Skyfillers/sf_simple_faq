@@ -12,5 +12,7 @@ plugin.tx_sfsimplefaq {
 	settings {
 		listPageUid = {$plugin.tx_sfsimplefaq.settings.listPageUid}
 		detailPageUid = {$plugin.tx_sfsimplefaq.settings.detailPageUid}
+		highlightTag.wrap = {$plugin.tx_sfsimplefaq.settings.highlightTag}
+		trimSign = {$plugin.tx_sfsimplefaq.settings.trimSign}
 	}
 }

@@ -34,3 +34,8 @@
 	background: #ff8700;
 	color: #fff;
 }
+
+.faq-search-highlight {
+	background: red;
+	color: white;
+}
