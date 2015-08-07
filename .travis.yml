@@ -3,6 +3,7 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - hhvm
 
 env:
   matrix:
@@ -12,6 +13,8 @@ env:
     secure: pj0LN2iXMab1i05K7MA7KRBhZ3zjVtDWLMPXm10wwCKWvA1jrn8ef9MwO/MuMgZc+ohQF89fkIHHjxJCOiitYwWgMd1o7Qt2QIcWEXmbE1qylHNo48LhBOSRzc24tWVEcPoay1HfR0kteTkJ64kW3f1Dn0bsoN4vqYXeFLrC9hY=
 
 matrix:
+  allow_failures:
+    - php: hhvm
   fast_finish: true
   include:
     - php: 5.6
