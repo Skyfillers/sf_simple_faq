@@ -1,3 +1,5 @@
+{namespace sFaq=SKYFILLERS\SfSimpleFaq\ViewHelpers}
+
 <f:if condition="{faqs}">
     <f:then>
         <ul class="faq-list">
@@ -5,10 +7,10 @@
                 <li>
                     <f:if condition="{settings.showAnswersInListView}">
                         <f:then>
-                            {faq.question}
+                            <sFaq:HighlightSearchword searchtext="{searchtext}">{faq.question}</sFaq:HighlightSearchword>
                             <ul>
                                 <li>
-                                    <f:format.raw>{faq.answer}</f:format.raw>
+                                    <f:format.raw><sFaq:HighlightSearchword searchtext="{searchtext}" crop="30">{faq.answer}</sFaq:HighlightSearchword></f:format.raw>
                                 </li>
                             </ul>
                         </f:then>

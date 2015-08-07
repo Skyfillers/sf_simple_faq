@@ -16,5 +16,7 @@ plugin.tx_sfsimplefaq {
 	settings {
 		listPageUid =
 		detailPageUid =
+		highlightTag = <span class="faq-search-highlight">|</span>
+		trimSign = ...
 	}
 }
