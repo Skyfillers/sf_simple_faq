@@ -119,7 +119,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 *
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 * @dataProvider textForRenderDataProvider
-	 * @covers HighlightSearchwordViewHelper::render
+	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function render($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
@@ -173,7 +173,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @expectedExceptionMessage The TypoScript setting "highlightTag" is not set or empty in your configuration.
 	 * @expectedExceptionCode 1438950217
 	 * @dataProvider textForRenderDataProvider
-	 * @covers HighlightSearchwordViewHelper::render
+	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderWithMissingHighlightTagThrowsException($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
@@ -205,7 +205,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 *
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 * @dataProvider textForRenderWithoutCroppingDataProvider
-	 * @covers HighlightSearchwordViewHelper::render
+	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderWithOutCropping($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
