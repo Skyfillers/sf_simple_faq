@@ -96,10 +96,8 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	 */
 	protected function highlight($content, array $searchWords) {
 		$rawSearchPattern  = '/%s/i';
-
-		if (empty($this->settingsService->getByPath('highlightTag')) === FALSE) {
-			$replacePatternStdWrapConfiguration = $this->settingsService->getByPath('highlightTag');
-		} else {
+		$replacePatternStdWrapConfiguration = $this->settingsService->getByPath('highlightTag');
+		if (empty($replacePatternStdWrapConfiguration) === TRUE) {
 			throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('The TypoScript setting "highlightTag" is not set or empty in your configuration.', 1438950217);
 		}
 
@@ -125,9 +123,8 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 */
 	protected function crop($content, array $searchwords, $trim) {
-		if (empty($this->settingsService->getByPath('trimSign')) === FALSE) {
-			$trimSign = $this->settingsService->getByPath('trimSign');
-		} else {
+		$trimSign = $this->settingsService->getByPath('trimSign');
+		if (empty($trimSign) === TRUE) {
 			$trimSign = '';
 		}
 

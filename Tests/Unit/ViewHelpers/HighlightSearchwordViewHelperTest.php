@@ -133,18 +133,6 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 		$settingsServiceMock
 			->expects($this->at(1))
 			->method('getByPath')
-			->with($this->equalTo('trimSign'))
-			->will($this->returnValue('...'));
-
-		$settingsServiceMock
-			->expects($this->at(2))
-			->method('getByPath')
-			->with($this->equalTo('highlightTag'))
-			->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
-
-		$settingsServiceMock
-			->expects($this->at(3))
-			->method('getByPath')
 			->with($this->equalTo('highlightTag'))
 			->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
 
@@ -182,11 +170,6 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 			->method('getByPath')
 			->with($this->equalTo('trimSign'))
 			->will($this->returnValue('...'));
-		$settingsServiceMock
-			->expects($this->at(1))
-			->method('getByPath')
-			->with($this->equalTo('trimSign'))
-			->will($this->returnValue('...'));
 
 		$this->viewhelper->injectSettingsService($settingsServiceMock);
 
@@ -211,12 +194,6 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
 		$settingsServiceMock
 			->expects($this->at(0))
-			->method('getByPath')
-			->with($this->equalTo('highlightTag'))
-			->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
-
-		$settingsServiceMock
-			->expects($this->at(1))
 			->method('getByPath')
 			->with($this->equalTo('highlightTag'))
 			->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
