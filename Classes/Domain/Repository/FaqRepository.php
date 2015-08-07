@@ -103,7 +103,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Generates the necessary search settings.
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand object
 	 *
 	 * @return void
 	 */
@@ -111,6 +111,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if ($demand->getSearchtext()) {
 			$searchtextConstraints = array();
 			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
+
 			foreach ($searchWords as $searchWord) {
 				$searchtextConstraints[] = $this->query->logicalOr(
 					$this->query->like('question', '%' . $searchWord . '%'),
