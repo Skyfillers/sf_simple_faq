@@ -19,7 +19,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
  *
  * @author Alexander Schnoor
  */
-class GetCategoryClassViewHelperTest extends \PHPUnit_Framework_TestCase {
+class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * Viewhelper
 	 *

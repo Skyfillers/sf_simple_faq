@@ -20,7 +20,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
-class AppendCategoryViewHelperTest extends \PHPUnit_Framework_TestCase {
+class AppendCategoryViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * Viewhelper
 	 *
