@@ -1,16 +1,44 @@
 # Change Log
 
+## [Unreleased](https://github.com/Skyfillers/sf_simple_faq/tree/HEAD)
+
+[Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/1.2.2...HEAD)
+
+**Implemented enhancements:**
+
+- \[CLEANUP\] Use the core Unit Test Class [\#39](https://github.com/Skyfillers/sf_simple_faq/issues/39)
+
+- Add faq icon [\#38](https://github.com/Skyfillers/sf_simple_faq/issues/38)
+
+- Remove deprecated strict setting from PHP Unit configuration [\#37](https://github.com/Skyfillers/sf_simple_faq/issues/37)
+
+- Use the tree view for category selection [\#36](https://github.com/Skyfillers/sf_simple_faq/issues/36)
+
+- \[TASK\] Composer support [\#33](https://github.com/Skyfillers/sf_simple_faq/issues/33)
+
+- \[FEATURE\] Highlight searchword in searchresult [\#31](https://github.com/Skyfillers/sf_simple_faq/issues/31)
+
+**Fixed bugs:**
+
+- \[BUGFIX\] Add namespaces to @covers annotation in Tests [\#41](https://github.com/Skyfillers/sf_simple_faq/issues/41)
+
+**Closed issues:**
+
+- \[CLEANUP\] Small adjustments  [\#40](https://github.com/Skyfillers/sf_simple_faq/issues/40)
+
+**Merged pull requests:**
+
+- Update ext\_emconf.php [\#34](https://github.com/Skyfillers/sf_simple_faq/pull/34) ([derhansen](https://github.com/derhansen))
+
 ## [1.2.2](https://github.com/Skyfillers/sf_simple_faq/tree/1.2.2) (2015-06-16)
 
 [Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/v1.2.1...1.2.2)
 
-**Closed issues:**
-
-- \[BUG\] DetailView does not work [\#30](https://github.com/Skyfillers/sf_simple_faq/issues/30)
-
-- \[BUG\] Remove values for pid's in constants.txt [\#29](https://github.com/Skyfillers/sf_simple_faq/issues/29)
-
 **Implemented enhancements:**
+
+- \[TASK\] Remove github from official documentation [\#24](https://github.com/Skyfillers/sf_simple_faq/issues/24)
+
+- \[TASK\] Release 1.2.2 [\#32](https://github.com/Skyfillers/sf_simple_faq/issues/32)
 
 - \[TASK\] Use current page Uid if no detailPageUid and listPageUid is specified via TS [\#28](https://github.com/Skyfillers/sf_simple_faq/issues/28)
 
@@ -18,9 +46,17 @@
 
 - \[TASK\] Add screenshots to documentation [\#26](https://github.com/Skyfillers/sf_simple_faq/issues/26)
 
-- \[TASK\] Add ext_icon [\#25](https://github.com/Skyfillers/sf_simple_faq/issues/25)
+- \[TASK\] Add ext\_icon [\#25](https://github.com/Skyfillers/sf_simple_faq/issues/25)
+
+**Fixed bugs:**
+
+- \[BUG\] DetailView does not work [\#30](https://github.com/Skyfillers/sf_simple_faq/issues/30)
+
+- \[BUG\] Remove values for pid's in constants.txt [\#29](https://github.com/Skyfillers/sf_simple_faq/issues/29)
 
 ## [v1.2.1](https://github.com/Skyfillers/sf_simple_faq/tree/v1.2.1) (2015-06-10)
+
+[Full Changelog](https://github.com/Skyfillers/sf_simple_faq/compare/v1.2.0...v1.2.1)
 
 **Implemented enhancements:**
 
