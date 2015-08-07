@@ -56,19 +56,19 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 
 	/**
 	 * @param string $searchtext
-	 * @param int $trim
+	 * @param int $crop The amount of chars after we crop the text. 0 by default which means no cropping.
 	 * @param string $content
 	 *
 	 * @return string
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 */
-	public function render($searchtext, $trim = 0, $content = '') {
+	public function render($searchtext, $crop = 0, $content = '') {
 		if (is_string($searchtext) === FALSE) {
 			throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('The value of "searchtext" must be a string.', 1438850616);
 		}
 
-		if (is_numeric($trim) === FALSE) {
-			$trim = 0;
+		if (is_numeric($crop) === FALSE) {
+			$crop = 0;
 		}
 
 		if ($content === '') {
@@ -77,7 +77,9 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 
 		$searchWords = GeneralUtility::trimExplode(' ', $searchtext, TRUE);
 
-		$content = $this->crop($content, $searchWords, $trim);
+		if ($crop > 0) {
+			$content = $this->crop($content, $searchWords, $crop);
+		}
 		$content = $this->highlight($content, $searchWords);
 
 		return $content;
