@@ -1,7 +1,9 @@
 <?php
+$ll = 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:';
+
 return array(
 	'ctrl' => array(
-		'title'	=> 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq',
+		'title'	=> $ll . 'tx_sfsimplefaq_domain_model_faq',
 		'label' => 'question',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -112,7 +114,7 @@ return array(
 		),
 		'question' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.question',
+			'label' => $ll . 'tx_sfsimplefaq_domain_model_faq.question',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -122,7 +124,7 @@ return array(
 		),
 		'answer' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.answer',
+			'label' => $ll . 'tx_sfsimplefaq_domain_model_faq.answer',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -142,7 +144,7 @@ return array(
 		),
 		'keywords' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.keywords',
+			'label' => $ll . 'tx_sfsimplefaq_domain_model_faq.keywords',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -151,7 +153,7 @@ return array(
 		),
 		'category' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_db.xlf:tx_sfsimplefaq_domain_model_faq.category',
+			'label' => $ll . 'tx_sfsimplefaq_domain_model_faq.category',
 			'config' => array(
 				'type' => 'select',
 				'renderMode' => 'tree',
@@ -174,7 +176,7 @@ return array(
 		),
 		'files' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sf_simple_faq/Resources/Private/Language/Backend.xlf:file',
+			'label' => $ll . 'tx_sfsimplefaq_domain_model_faq.files',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('files', array(
 				'appearance' => array(
 					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'

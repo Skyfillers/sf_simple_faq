@@ -27,6 +27,9 @@
 			<trans-unit id="tx_sfsimplefaq_domain_model_faq.category">
 				<source>Category</source>
 			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.files">
+				<source>Files:</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

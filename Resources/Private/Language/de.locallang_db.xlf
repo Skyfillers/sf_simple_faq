@@ -35,6 +35,9 @@
 				<source>Category</source>
 				<target>Kategorie</target>
 			</trans-unit>
+			<trans-unit id="tx_sfsimplefaq_domain_model_faq.files">
+				<source>Dateien</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
