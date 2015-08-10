@@ -18,5 +18,6 @@ plugin.tx_sfsimplefaq {
 		detailPageUid =
 		highlightTag = <span class="faq-search-highlight">|</span>
 		trimSign = ...
+		cropChars = 30
 	}
 }

@@ -14,5 +14,6 @@ plugin.tx_sfsimplefaq {
 		detailPageUid = {$plugin.tx_sfsimplefaq.settings.detailPageUid}
 		highlightTag.wrap = {$plugin.tx_sfsimplefaq.settings.highlightTag}
 		trimSign = {$plugin.tx_sfsimplefaq.settings.trimSign}
+		cropChars = {$plugin.tx_sfsimplefaq.settings.cropChars}
 	}
 }

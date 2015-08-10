@@ -67,5 +67,16 @@ Plugin-Settings: plugin.tx\_sfsimplefaq.settings
    Description
          Defines the signs which are used after text trim. Like ... or [...]. Leave empty for no signs.
 
+.. container:: table-row
+
+   Property
+         cropChars
+
+   Data type
+         int
+
+   Description
+         Amount of chars after the text will be cropped. By default (not setting the attribute or set to 0) the text will not cropped.
+
 .. ###### END~OF~TABLE ######
 

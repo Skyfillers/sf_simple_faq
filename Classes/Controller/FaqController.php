@@ -129,8 +129,12 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function searchAction($selectedCategories = '0', $searchtext = '') {
-		$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
-		$faqs = $this->faqRepository->findByDemand($demand);
+		if (empty($searchtext) === TRUE) {
+			$faqs = $this->faqRepository->findAll();
+		} else {
+			$demand = $this->createDemandObjectFromSettings($this->settings, $searchtext, $selectedCategories);
+			$faqs = $this->faqRepository->findByDemand($demand);
+		}
 		$categories = $this->categoryRepository->findAll();
 		$assignArray = array(
 			'faqs' => $faqs,

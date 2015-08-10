@@ -16,6 +16,7 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
 use Psr\Log\InvalidArgumentException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidActionNameException;
+use TYPO3\CMS\Extbase\Mvc\Exception\InvalidViewHelperException;
 
 /**
  * Class HighlightSearchwordViewHelper
@@ -53,28 +54,33 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 		$this->contentObject = $contentObject;
 	}
 
-
 	/**
 	 * @param string $searchtext
-	 * @param int $crop The amount of chars after we crop the text. 0 by default which means no cropping.
+	 * @param int $cropChars
 	 * @param string $content
 	 *
 	 * @return string
+	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 */
-	public function render($searchtext, $crop = 0, $content = '') {
-		if (is_numeric($crop) === FALSE) {
-			$crop = 0;
-		}
-
+	public function render($searchtext, $cropChars = 0, $content = '') {
 		if ($content === '') {
 			$content = $this->renderChildren();
 		}
 
+		if (empty($searchtext) === TRUE) {
+			return $content;
+		}
+
 		$searchWords = GeneralUtility::trimExplode(' ', $searchtext, TRUE);
 
-		if ($crop > 0) {
-			$content = $this->crop($content, $searchWords, $crop);
+		if (is_numeric($cropChars) === FALSE) {
+			throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('Setting "cropChars" can not cast to integer. Check your TS or your HighlightViewHelper.', 1439202541);
 		}
+
+		if ($cropChars > 0) {
+			$content = $this->crop($content, $searchWords, $cropChars);
+		}
+
 		$content = $this->highlight($content, $searchWords);
 
 		return $content;
@@ -113,13 +119,18 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	/**
 	 * @param $content
 	 * @param array $searchwords
-	 * @param $trim
+	 * @param $cropChars
+	 *
 	 * @return bool|string
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 */
-	protected function crop($content, array $searchwords, $trim) {
+	protected function crop($content, array $searchwords, $cropChars) {
 		$trimSign = $this->settingsService->getByPath('trimSign');
 		if (empty($trimSign) === TRUE) {
+			$trimSign = '';
+		}
+
+		if ($cropChars > strlen($content)) {
 			$trimSign = '';
 		}
 
@@ -133,14 +144,14 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 				$lengthLeftPart = strlen($contentArray[0]);
 				$lengthRightPart = strlen($contentArray[1]);
 
-				if ($lengthLeftPart < $trim) {
-					$length = $trim - $lengthLeftPart;
+				if ($lengthLeftPart < $cropChars) {
+					$length = $cropChars - $lengthLeftPart;
 					$contentArray[1] = substr($contentArray[1], 0, $length) . ' ' . $trimSign;
-				} else if ($lengthRightPart < $trim) {
-					$length = $trim - $lengthRightPart;
+				} else if ($lengthRightPart < $cropChars) {
+					$length = $cropChars - $lengthRightPart;
 					$contentArray[0] = $trimSign . ' ' . substr($contentArray[0], -$length);
-				} else if ($lengthLeftPart > $trim && $lengthRightPart > $trim) {
-					$length = $trim / 2;
+				} else if ($lengthLeftPart > $cropChars && $lengthRightPart > $cropChars) {
+					$length = $cropChars / 2;
 					$contentArray[0] = $trimSign . ' ' . substr($contentArray[0], -$length);
 					$contentArray[1] = substr($contentArray[1], 0, $length) . ' ' . $trimSign;
 				}
@@ -149,7 +160,7 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 			}
 		}
 
-		return '';
+		return substr($content, 0, $cropChars) . ' ' . $trimSign;
 	}
 
 }
