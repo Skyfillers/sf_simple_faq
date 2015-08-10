@@ -26,4 +26,5 @@ Users manual
 
    Installation/Index
    PropertiesForFaq/Index
+   ViewHelpers/Index
 

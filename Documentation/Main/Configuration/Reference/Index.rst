@@ -45,5 +45,27 @@ Plugin-Settings: plugin.tx\_sfsimplefaq.settings
    Description
          The page uid for the detail view
 
+.. container:: table-row
+
+   Property
+         highlightTag
+
+   Data type
+         string
+
+   Description
+         The tag which should used for highlight search terms. Use pipe (|) for content substitution.
+
+.. container:: table-row
+
+   Property
+         trimSign
+
+   Data type
+         string
+
+   Description
+         Defines the signs which are used after text trim. Like ... or [...]. Leave empty for no signs.
+
 .. ###### END~OF~TABLE ######
 
