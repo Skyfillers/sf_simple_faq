@@ -60,13 +60,8 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	 * @param string $content
 	 *
 	 * @return string
-	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 */
 	public function render($searchtext, $crop = 0, $content = '') {
-		if (is_string($searchtext) === FALSE) {
-			throw new \TYPO3\CMS\Fluid\Core\ViewHelper\Exception('The value of "searchtext" must be a string.', 1438850616);
-		}
-
 		if (is_numeric($crop) === FALSE) {
 			$crop = 0;
 		}
