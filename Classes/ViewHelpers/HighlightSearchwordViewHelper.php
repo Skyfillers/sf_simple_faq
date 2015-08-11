@@ -126,11 +126,7 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	 */
 	protected function crop($content, array $searchwords, $cropChars) {
 		$trimSign = $this->settingsService->getByPath('trimSign');
-		if (empty($trimSign) === TRUE) {
-			$trimSign = '';
-		}
-
-		if ($cropChars > strlen($content)) {
+		if ((empty($trimSign) === TRUE) || ($cropChars > strlen($content))) {
 			$trimSign = '';
 		}
 
@@ -154,6 +150,10 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 					$length = $cropChars / 2;
 					$contentArray[0] = $trimSign . substr($contentArray[0], -$length);
 					$contentArray[1] = substr($contentArray[1], 0, $length) . $trimSign;
+				}
+
+				if (count($contentArray) > 2) {
+					$contentArray = array_slice($contentArray, 0, 2);
 				}
 
 				return implode($searchword, $contentArray);

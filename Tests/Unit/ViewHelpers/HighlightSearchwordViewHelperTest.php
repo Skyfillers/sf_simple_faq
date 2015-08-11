@@ -52,6 +52,12 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 */
 	public function textForRenderDataProvider() {
 		return array(
+			'searchwordExistMultipleTimesInText' => array(
+				'butt',
+				30,
+				'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la . Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
+				'Minions ipsum <span class="faq-search-highlight">butt</span> po kass gelatoo...',
+			),
 			'searchwordAtTextStart' => array(
 				'Flensburg bodaaa',
 				16,
