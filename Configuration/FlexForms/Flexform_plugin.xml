@@ -34,7 +34,6 @@
                     <settings.overview>
                         <TCEforms>
                             <label>LLL:EXT:sf_simple_faq/Resources/Private/Language/locallang_be.xlf:flexforms_general.category.overview</label>
-                            <displayCond>FIELD:settings.category:=:0</displayCond>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -55,7 +54,6 @@
                     <settings.selectMultipleCategories>
                         <TCEforms>
                             <label>Select Multiple Categories</label>
-                            <displayCond>FIELD:settings.category:=:0</displayCond>
                             <config>
                                 <type>check</type>
                             </config>
@@ -66,7 +64,6 @@
                     <settings.showAnswersInListView>
                         <TCEforms>
                             <label>Show answers in list view</label>
-                            <displayCond>FIELD:settings.category:=:0</displayCond>
                             <config>
                                 <type>check</type>
                             </config>
