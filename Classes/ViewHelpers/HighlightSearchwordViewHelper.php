@@ -146,21 +146,21 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 
 				if ($lengthLeftPart < $cropChars) {
 					$length = $cropChars - $lengthLeftPart;
-					$contentArray[1] = substr($contentArray[1], 0, $length) . ' ' . $trimSign;
+					$contentArray[1] = substr($contentArray[1], 0, $length) . $trimSign;
 				} else if ($lengthRightPart < $cropChars) {
 					$length = $cropChars - $lengthRightPart;
-					$contentArray[0] = $trimSign . ' ' . substr($contentArray[0], -$length);
+					$contentArray[0] = $trimSign . substr($contentArray[0], -$length);
 				} else if ($lengthLeftPart > $cropChars && $lengthRightPart > $cropChars) {
 					$length = $cropChars / 2;
-					$contentArray[0] = $trimSign . ' ' . substr($contentArray[0], -$length);
-					$contentArray[1] = substr($contentArray[1], 0, $length) . ' ' . $trimSign;
+					$contentArray[0] = $trimSign . substr($contentArray[0], -$length);
+					$contentArray[1] = substr($contentArray[1], 0, $length) . $trimSign;
 				}
 
 				return implode($searchword, $contentArray);
 			}
 		}
 
-		return substr($content, 0, $cropChars) . ' ' . $trimSign;
+		return substr($content, 0, $cropChars) . $trimSign;
 	}
 
 }
