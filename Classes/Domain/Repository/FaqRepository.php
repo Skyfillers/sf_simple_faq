@@ -16,6 +16,7 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
 
 use SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 /**
  * The repository for Faqs
@@ -27,126 +28,22 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
-	 * The categories
-	 * @var array
+	 * @var bool $isAllCategories
 	 */
-	protected $categories = array();
+	protected $isAllCategories;
 
 	/**
-	 * The category constraints
-	 * @var array
+	 * @return mixed
 	 */
-	protected $categoryConstraints = array();
-
-	/**
-	 * The category constrains length
-	 * @var int
-	 */
-	protected $categoryConstraintsLength = 0;
-
-	/**
-	 * The categories length
-	 * @var int
-	 */
-	protected $categoriesLength = 0;
-
-	/**
-	 * The search constraints
-	 * @var array
-	 */
-	protected $searchConstraints = array();
-
-	/**
-	 * The search constraints length
-	 * @var int
-	 */
-	protected $searchConstraintsLength = 0;
-
-	/**
-	 * If all categories are selected
-	 * @var boolean $categoryIsAll
-	 */
-	protected $categoryIsAll = FALSE;
-
-	/**
-	 * The query
-	 * @var \TYPO3\CMS\Extbase\Persistence\QueryInterface
-	 */
-	protected $query = NULL;
-
-	/**
-	 * Generates the necessary category settings.
-	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
-	 *
-	 * @return void
-	 */
-	protected function generateCategories(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
-		$categories = $demand->getCategories();
-		if (strlen($categories) > 1) {
-			$categories = explode(',', $categories);
-		}
-
-		$this->categoriesLength = count($categories);
-		if ($this->categoriesLength != 0) {
-			for ($i = 0; $i < $this->categoriesLength; $i++) {
-				array_push($this->categoryConstraints, $this->query->contains('category', (string)$categories[$i]));
-			}
-		}
-
-		$this->categoryConstraintsLength = count($this->categoryConstraints);
-		if ($categories[0] == 0 && $this->categoryConstraintsLength < 2) {
-			$this->categoryIsAll = TRUE;
-		}
+	public function isAllCategories() {
+		return $this->isAllCategories;
 	}
 
 	/**
-	 * Generates the necessary search settings.
-	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand object
-	 *
-	 * @return void
+	 * @param mixed $isAllCategories
 	 */
-	protected function generateSearchConstraints(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
-		if ($demand->getSearchtext()) {
-			$searchtextConstraints = array();
-			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
-
-			foreach ($searchWords as $searchWord) {
-				$searchtextConstraints[] = $this->query->logicalOr(
-					$this->query->like('question', '%' . $searchWord . '%'),
-					$this->query->like('answer', '%' . $searchWord . '%'),
-					$this->query->like('keywords', '%' . $searchWord . '%')
-				);
-			}
-			if (count($searchtextConstraints) > 0) {
-				$this->searchConstraints[] = $this->query->logicalOr($searchtextConstraints);
-			}
-		}
-		$this->searchConstraintsLength = count($this->searchConstraints);
-	}
-
-	/**
-	 * Builds the query
-	 * @return void
-	 */
-	protected function buildQuery() {
-		if ($this->categoryConstraintsLength > 0 && $this->categoryIsAll === FALSE && $this->searchConstraintsLength > 0) {
-			$this->query->matching(
-				$this->query->logicalAnd(
-					$this->query->logicalOr($this->categoryConstraints),
-					$this->query->logicalAnd($this->searchConstraints)
-				)
-			);
-		} elseif ($this->categoryConstraintsLength > 0 && $this->categoryIsAll === FALSE) {
-			$this->query->matching(
-				$this->query->logicalOr($this->categoryConstraints)
-			);
-		} elseif ($this->searchConstraintsLength > 0) {
-			$this->query->matching(
-				$this->query->logicalAnd($this->searchConstraints)
-			);
-		}
+	public function setIsAllCategories($isAllCategories) {
+		$this->isAllCategories = $isAllCategories;
 	}
 
 	/**
@@ -157,12 +54,96 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByDemand(FaqDemand $demand) {
-		$this->query = $this->createQuery();
+		return $this->buildQuery($demand)->execute();
+	}
 
-		$this->generateCategories($demand);
-		$this->generateSearchConstraints($demand);
+	/**
+	 * Builds the query
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+	 */
+	protected function buildQuery($demand) {
+		$query = $this->createQuery();
 
-		$this->buildQuery();
-		return $this->query->execute();
+		$categoryConstraints = $this->generateCategoryConstraints($demand, $query);
+		$searchConstraints = $this->generateSearchConstraints($demand, $query);
+
+		$categoryConstraintsLength = count($categoryConstraints);
+		$searchConstraintsLength = count($searchConstraints);
+
+		if ($categoryConstraintsLength > 0 && $searchConstraintsLength > 0 && $this->isAllCategories() === FALSE) {
+			$query->matching(
+				$query->logicalAnd(
+					$query->logicalOr($categoryConstraints),
+					$query->logicalAnd($searchConstraints)
+				)
+			);
+		} elseif ($categoryConstraintsLength > 0 && $this->isAllCategories() === FALSE) {
+			$query->matching(
+				$query->logicalOr($categoryConstraints)
+			);
+		} elseif ($searchConstraintsLength > 0) {
+			$query->matching(
+				$query->logicalAnd($searchConstraints)
+			);
+		}
+
+		return $query;
+	}
+
+	/**
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
+	 *
+	 * @return array
+	 */
+	protected function generateCategoryConstraints($demand, $query) {
+		$categories = GeneralUtility::trimExplode(',', $demand->getCategories());
+		$categoryConstraints = array();
+
+		foreach ($categories as $category) {
+			$categoryConstraints[] = $query->contains('category', $category);
+		}
+
+		if ($categories[0] == 0 && count($categoryConstraints) < 2) {
+			$this->setIsAllCategories(TRUE);
+		} else {
+			$this->setIsAllCategories(FALSE);
+		}
+
+		return $categoryConstraints;
+	}
+
+	/**
+	 * Generates the necessary search settings.
+	 *
+	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand object
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
+	 *
+	 * @return array
+	 */
+	protected function generateSearchConstraints(FaqDemand $demand, QueryInterface $query) {
+		$searchConstraints = array();
+
+		if ($demand->getSearchtext()) {
+			$searchTermConstraints = array();
+			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
+
+			foreach ($searchWords as $searchWord) {
+				$searchTermConstraints[] = $query->logicalOr(
+					$query->like('question', '%' . $searchWord . '%'),
+					$query->like('answer', '%' . $searchWord . '%'),
+					$query->like('keywords', '%' . $searchWord . '%')
+				);
+			}
+
+			if (count($searchTermConstraints) > 0) {
+				$searchConstraints[] = $query->logicalOr($searchTermConstraints);
+			}
+		}
+
+		return $searchConstraints;
 	}
 }
