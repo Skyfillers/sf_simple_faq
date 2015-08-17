@@ -117,7 +117,7 @@ class FaqRepositoryTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 		 *
 		 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
 		 */
-		$demand = GeneralUtility::makeInstance('\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand');
+		$demand = GeneralUtility::makeInstance('SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand');
 		$demand->setSearchtext($searchtext);
 		$demand->setCategories($categories);
 
