@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+	<!-- findByCategories -->
+	<!-- has 0 category -->
+	<tx_sfsimplefaq_domain_model_faq>
+		<uid>5</uid>
+		<pid>0</pid>
+		<question>When?</question>
+		<answer>Then</answer>
+		<category>0</category>
+	</tx_sfsimplefaq_domain_model_faq>
+	<!-- has 1 category (1) -->
+	<tx_sfsimplefaq_domain_model_faq>
+		<uid>6</uid>
+		<pid>0</pid>
+		<question>C - Where?</question>
+		<answer>There</answer>
+		<category>1</category>
+	</tx_sfsimplefaq_domain_model_faq>
+	<!-- has 1 category (1) -->
+	<tx_sfsimplefaq_domain_model_faq>
+		<uid>7</uid>
+		<pid>0</pid>
+		<question>B - Quando?</question>
+		<answer>luego</answer>
+		<category>1</category>
+	</tx_sfsimplefaq_domain_model_faq>
+	<!-- has 1 category (1) -->
+	<tx_sfsimplefaq_domain_model_faq>
+		<uid>9</uid>
+		<pid>0</pid>
+		<question>A - Was?</question>
+		<answer>Das</answer>
+		<category>1</category>
+	</tx_sfsimplefaq_domain_model_faq>
+	<!-- has 3 category (1) -->
+	<tx_sfsimplefaq_domain_model_faq>
+		<uid>10</uid>
+		<pid>0</pid>
+		<question>A, B, C - Who?</question>
+		<answer>He</answer>
+		<category>3</category>
+	</tx_sfsimplefaq_domain_model_faq>
+
+	<tx_sfsimplefaq_domain_model_category>
+		<uid>4</uid>
+		<pid>0</pid>
+		<title>A</title>
+ 	</tx_sfsimplefaq_domain_model_category>
+ 	<tx_sfsimplefaq_domain_model_category>
+		<uid>5</uid>
+		<pid>0</pid>
+		<title>B</title>
+	</tx_sfsimplefaq_domain_model_category>
+ 	<tx_sfsimplefaq_domain_model_category>
+		<uid>6</uid>
+		<pid>0</pid>
+		<title>C</title>
+	</tx_sfsimplefaq_domain_model_category>
+
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>9</uid_local>
+		<uid_foreign>5</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>7</uid_local>
+		<uid_foreign>4</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>6</uid_local>
+		<uid_foreign>6</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>10</uid_local>
+		<uid_foreign>5</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>10</uid_local>
+		<uid_foreign>4</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+	<tx_sfsimplefaq_faq_category_mm>
+		<uid_local>10</uid_local>
+		<uid_foreign>6</uid_foreign>
+	</tx_sfsimplefaq_faq_category_mm>
+</dataset>
