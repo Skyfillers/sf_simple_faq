@@ -1,9 +1,18 @@
 
 plugin.tx_sfsimplefaq {
 	view {
-		templateRootPath = {$plugin.tx_sfsimplefaq.view.templateRootPath}
-		partialRootPath = {$plugin.tx_sfsimplefaq.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_sfsimplefaq.view.layoutRootPath}
+		templateRootPaths {
+			0 = EXT:sf_simple_faq/Resources/Private/Templates/
+			10 = {$plugin.tx_sfsimplefaq.view.templateRootPath}
+		}
+		partialRootPaths {
+			0 = EXT:sf_simple_faq/Resources/Private/Partials/
+			10 = $plugin.tx_sfsimplefaq.view.partialRootPath}
+		}
+		layoutRootPath {
+			0 = EXT:sf_simple_faq/Resources/Private/Layouts/
+			10 = {$plugin.tx_sfsimplefaq.view.layoutRootPath}
+		}
 	}
 	persistence {
 		storagePid = {$plugin.tx_sfsimplefaq.persistence.storagePid}
