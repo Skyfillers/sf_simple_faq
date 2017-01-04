@@ -44,10 +44,16 @@ use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
  * @author Stefano Kowalke <s.kowalke@skyfillers.com>
  */
 class SettingsService implements SingletonInterface {
+
 	/**
 	 * @var mixed
 	 */
-	protected $configuration;
+	protected $configuration = null;
+
+    /**
+     * @var array
+     */
+	protected $configurationPathCache = array();
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
@@ -81,13 +87,31 @@ class SettingsService implements SingletonInterface {
 	 * @return mixed
 	 */
 	public function getByPath($path) {
+
+	    if(isset($this->configurationPathCache[$path])) {
+	        return $this->configurationPathCache[$path];
+        }
+
 		$configuration = $this->getConfiguration();
 
-		$setting = ObjectAccess::getPropertyPath($configuration, $path);
+		$setting = $this->getPropertyPath($configuration, $path);
 		if ($setting === NULL) {
-			$setting = ObjectAccess::getPropertyPath($configuration['settings'], $path);
+			$setting = $this->getPropertyPath($configuration['settings'], $path);
 		}
+
+		$this->configurationPathCache[$path] = $setting;
 
 		return $setting;
 	}
+
+    /**
+     * @param array $configuration
+     * @param string $path
+     *
+     * @return mixed
+     */
+	protected function getPropertyPath(array $configuration, $path)
+    {
+        return ObjectAccess::getPropertyPath($configuration, $path);
+    }
 }
