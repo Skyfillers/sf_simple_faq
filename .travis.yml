@@ -43,11 +43,11 @@ notifications:
     - breakpoint@schreibersebastian.de
 
 before_install:
-  - phpenv config-rm xdebug.ini
   - composer self-update
   - composer --version
 
 before_script:
+  - phpenv config-rm xdebug.ini || true
   - composer require typo3/cms="$TYPO3_VERSION"
   # Restore composer.json
   - git checkout composer.json
