@@ -31,7 +31,7 @@ class SettingsServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
 
     /**
-     * @var \Skyfillers\SfSimpleFaq\Service\SettingsService
+     * @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService
      */
     protected $subject;
 
@@ -45,7 +45,7 @@ class SettingsServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     protected function setUp()
     {
-        $this->subject = new \Skyfillers\SfSimpleFaq\Service\SettingsService();
+        $this->subject = new \SKYFILLERS\SfSimpleFaq\Service\SettingsService();
         $this->configurationManager = $this->getMockBuilder('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface')->getMock();
         $this->inject($this->subject, 'configurationManager', $this->configurationManager);
     }
@@ -102,8 +102,8 @@ class SettingsServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getSettingFromCache()
     {
-        /** @var \Skyfillers\SfSimpleFaq\Service\SettingsService|\PHPUnit_Framework_MockObject_MockObject $settingsService */
-        $settingsService = $this->getMockBuilder('Skyfillers\\SfSimpleFaq\\Service\\SettingsService')->setMethods(array('getPropertyPath'))->getMock();
+        /** @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService|\PHPUnit_Framework_MockObject_MockObject $settingsService */
+        $settingsService = $this->getMockBuilder('SKYFILLERS\\SfSimpleFaq\\Service\\SettingsService')->setMethods(array('getPropertyPath'))->getMock();
         $settingsService->expects($this->once())->method('getPropertyPath')->willReturn('value');
 
         $configuration = array('settings' => array('key' => 'value'));
