@@ -1,17 +1,31 @@
 language: php
 
 php:
+  - 5.4
+  - 5.5
   - 5.6
-  - 7
+  - hhvm
+  - 7.0
 
 env:
   - TYPO3_VERSION="^6.2.0"
   - TYPO3_VERSION="^7.6.0"
 
 matrix:
+  allow_failures:
+    - php: hhvm
+  fast_finish: true
   exclude:
-    - php: 7
+    # TYPO3 6.2 only with PHP-Versions 5.4 - 5.6
+    - php: 7.0
       env: TYPO3_VERSION="^6.2.0"
+    - php: hhvm
+      env: TYPO3_VERSION="^6.2.0"
+    - php: nightly
+      env: TYPO3_VERSION="^6.2.0"
+    # TYPO3 7.6 only with PHP-Versions 5.5 - 7.0
+    - php: 5.4
+      env: TYPO3_VERSION="^7.6.0"
 
 sudo: false
 
@@ -49,11 +63,3 @@ script:
     echo;
     echo "Running php lint";
     find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
-
-  - >
-    echo;
-    export typo3DatabaseName="typo3";
-    export typo3DatabaseHost="localhost";
-    export typo3DatabaseUsername="root";
-    export typo3DatabasePassword="";
-    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/FunctionalTests.xml {}'
