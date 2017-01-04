@@ -61,7 +61,7 @@
   },
   "replace": {
     "sf_simple_faq": "self.version",
-    "skyfillers/sf-simple-faq": "self.version"
+    "typo3-ter/sf-simple-faq": "self.version"
   },
   "extra": {
     "branch-alias": {
