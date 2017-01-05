@@ -10,8 +10,6 @@ php:
 env:
   - TYPO3_VERSION="^6.2.0"
   - TYPO3_VERSION="^7.6.0"
-  global:
-    secure: pj0LN2iXMab1i05K7MA7KRBhZ3zjVtDWLMPXm10wwCKWvA1jrn8ef9MwO/MuMgZc+ohQF89fkIHHjxJCOiitYwWgMd1o7Qt2QIcWEXmbE1qylHNo48LhBOSRzc24tWVEcPoay1HfR0kteTkJ64kW3f1Dn0bsoN4vqYXeFLrC9hY=
 
 matrix:
   allow_failures:
