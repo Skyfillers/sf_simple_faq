@@ -22,96 +22,93 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Service;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @author Daniel Meyer <d.meyer@skyfillers.com>
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Sebastian Schreiber <breakpoint@schreibersebastian.de>
  */
-
-
 class SettingsServiceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
-
-    /**
-     * @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService
-     */
-    protected $subject;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $configurationManager;
-
-    /**
-     * @return void
-     */
-    protected function setUp()
-    {
-        $this->subject = new \SKYFILLERS\SfSimpleFaq\Service\SettingsService();
-        $this->configurationManager = $this->getMockBuilder('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface')->getMock();
-        $this->inject($this->subject, 'configurationManager', $this->configurationManager);
-    }
-
-    /**
-     * @test
-     */
-    public function getConfigurationInConfigurationManagerOnlyCalledOnce()
-    {
-        $configuration = array('settings' => array('key' => 'value'));
-        $this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
-
-        $this->subject->getByPath('key');
-        $this->subject->getByPath('key');
-        $this->subject->getByPath('key');
-        $this->subject->getByPath('key');
-    }
-
-    /**
-     * @test
-     */
-    public function getSettingFromSettingsSimple()
-    {
-        $configuration = array('settings' => array('key' => 'value'));
-        $this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
-
-        $this->assertEquals('value', $this->subject->getByPath('key'));
-    }
-
-    /**
-     * @test
-     */
-    public function getSettingSimple()
-    {
-        $configuration = array('key' => 'value');
-        $this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
-
-        $this->assertEquals('value', $this->subject->getByPath('key'));
-    }
-
-    /**
-     * @test
-     */
-    public function getSettingWithDots()
-    {
-        $configuration = array('key' => array('path' => 'value'));
-        $this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
-
-        $this->assertEquals('value', $this->subject->getByPath('key.path'));
-    }
-
-    /**
-     * @test
-     */
-    public function getSettingFromCache()
-    {
-        /** @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService|\PHPUnit_Framework_MockObject_MockObject $settingsService */
-        $settingsService = $this->getMockBuilder('SKYFILLERS\\SfSimpleFaq\\Service\\SettingsService')->setMethods(array('getPropertyPath'))->getMock();
-        $settingsService->expects($this->once())->method('getPropertyPath')->willReturn('value');
-
-        $configuration = array('settings' => array('key' => 'value'));
-        $this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
-        $this->inject($settingsService, 'configurationManager', $this->configurationManager);
-
-        $settingsService->getByPath('key');
-        $settingsService->getByPath('key');
-    }
-
+	
+	/**
+	 * @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService
+	 */
+	protected $subject;
+	
+	/**
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+	 */
+	protected $configurationManager;
+	
+	/**
+	 * @return void
+	 */
+	protected function setUp()
+	{
+		$this->subject = new \SKYFILLERS\SfSimpleFaq\Service\SettingsService();
+		$this->configurationManager = $this->getMockBuilder('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface')->getMock();
+		$this->inject($this->subject, 'configurationManager', $this->configurationManager);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getConfigurationInConfigurationManagerOnlyCalledOnce()
+	{
+		$configuration = ['settings' => ['key' => 'value']];
+		$this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
+		
+		$this->subject->getByPath('key');
+		$this->subject->getByPath('key');
+		$this->subject->getByPath('key');
+		$this->subject->getByPath('key');
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getSettingFromSettingsSimple()
+	{
+		$configuration = ['settings' => ['key' => 'value']];
+		$this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
+		
+		$this->assertEquals('value', $this->subject->getByPath('key'));
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getSettingSimple()
+	{
+		$configuration = ['key' => 'value'];
+		$this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
+		
+		$this->assertEquals('value', $this->subject->getByPath('key'));
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getSettingWithDots()
+	{
+		$configuration = ['key' => ['path' => 'value']];
+		$this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
+		
+		$this->assertEquals('value', $this->subject->getByPath('key.path'));
+	}
+	
+	/**
+	 * @test
+	 */
+	public function getSettingFromCache()
+	{
+		/** @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService|\PHPUnit_Framework_MockObject_MockObject $settingsService */
+		$settingsService = $this->getMockBuilder('SKYFILLERS\\SfSimpleFaq\\Service\\SettingsService')->setMethods(['getPropertyPath'])->getMock();
+		$settingsService->expects($this->once())->method('getPropertyPath')->willReturn('value');
+		
+		$configuration = ['settings' => ['key' => 'value']];
+		$this->configurationManager->expects($this->once())->method('getConfiguration')->willReturn($configuration);
+		$this->inject($settingsService, 'configurationManager', $this->configurationManager);
+		
+		$settingsService->getByPath('key');
+		$settingsService->getByPath('key');
+	}
+	
 }
