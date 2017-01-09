@@ -9,7 +9,7 @@ plugin.tx_sfsimplefaq {
 			0 = EXT:sf_simple_faq/Resources/Private/Partials/
 			10 = {$plugin.tx_sfsimplefaq.view.partialRootPath}
 		}
-		layoutRootPath {
+		layoutRootPaths {
 			0 = EXT:sf_simple_faq/Resources/Private/Layouts/
 			10 = {$plugin.tx_sfsimplefaq.view.layoutRootPath}
 		}
