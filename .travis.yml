@@ -55,9 +55,13 @@ script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/ --coverage-text --coverage-clover=coverage.clover
 
   - >
     echo;
     echo "Running php lint";
     find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

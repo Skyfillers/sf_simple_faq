@@ -1,7 +1,7 @@
 # TYPO3 Extension "sf_simple_faq"
 
-[![Build Status](https://travis-ci.org/Skyfillers/sf_simple_faq.svg?branch=master)](https://travis-ci.org/Skyfillers/sf_simple_faq)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Skyfillers/sf_simple_faq/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Skyfillers/sf_simple_faq/?branch=master)
+[![Build Status](https://img.shields.io/travis/sabbelasichon/sf_simple_faq.svg)](https://travis-ci.org/Skyfillers/sf_simple_faq)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/coverage/g/Skyfillers/sf_simple_faq/master.svg)](https://scrutinizer-ci.com/g/Skyfillers/sf_simple_faq)
 
 ## What is it?
 
@@ -17,7 +17,7 @@ The FAQs are shown in the frontend along with a search field and a category head
 Download the extension from TER or clone from https://github.com/Skyfillers/sf_simple_faq.git into your TYPO3 installation and install it.
 Then add the static TypoScript Template to your root template.
 
-## Configuration
+## Configuration 
 
 After you added the plugin to a page you have to set the Resource Folder at the "Behavior" Tab of the plugin.
 Otherwise you may set the storagePid via TS.
