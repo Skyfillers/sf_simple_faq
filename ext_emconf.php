@@ -21,18 +21,14 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'autoload' =>
-		array(
-			'psr-4' =>
-				array(
-					'SKYFILLERS\\SfSimpleFaq\\' => 'Classes',
-				),
-		),
-	'autoload-dev' =>
-		array(
-			'psr-4' =>
-				array(
-					'SKYFILLERS\\SfSimpleFaq\\Tests\\' => 'Tests',
-				),
-		),
+	'autoload' => [
+		'psr-4' => [
+			'SKYFILLERS\\SfSimpleFaq\\' => 'Classes',
+		],
+	],
+	'autoload-dev' => [
+		'psr-4' => [
+			'SKYFILLERS\\SfSimpleFaq\\Tests\\' => 'Tests',
+		],
+	],
 );
