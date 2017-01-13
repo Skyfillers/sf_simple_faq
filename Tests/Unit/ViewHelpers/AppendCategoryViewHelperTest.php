@@ -54,28 +54,28 @@ class AppendCategoryViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function appendCategoryClassDataProvider()
     {
-        return array(
-            'intSelectedCategoriesContainsNewCategory' => array(
+        return [
+            'intSelectedCategoriesContainsNewCategory' => [
                 '0,2,4,6',
                 2,
                 '0,4,6'
-            ),
-            'intSelectedCategoriesDoesntContainsNewCategory' => array(
+            ],
+            'intSelectedCategoriesDoesntContainsNewCategory' => [
                 '0,2,4,6',
                 3,
                 '0,2,3,4,6'
-            ),
-            'stringSelectedCategoriesContainsNewCategory' => array(
+            ],
+            'stringSelectedCategoriesContainsNewCategory' => [
                 '0,2,4,6',
                 '2',
                 '0,4,6'
-            ),
-            'stringSelectedCategoriesDoesntContainsNewCategory' => array(
+            ],
+            'stringSelectedCategoriesDoesntContainsNewCategory' => [
                 '0,2,4,6',
                 '3',
                 '0,2,3,4,6'
-            )
-        );
+            ]
+        ];
     }
 
     /**

@@ -55,80 +55,80 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function textForRenderDataProvider()
     {
-        return array(
-            'searchwordExistMultipleTimesInText' => array(
+        return [
+            'searchwordExistMultipleTimesInText' => [
                 'butt',
                 30,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la . Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum <span class="faq-search-highlight">butt</span> po kass gelatoo...',
-            ),
-            'searchwordAtTextStart' => array(
+            ],
+            'searchwordAtTextStart' => [
                 'Flensburg bodaaa',
                 16,
                 'bodaaa Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la . Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 '<span class="faq-search-highlight">bodaaa</span> Minions ipsum b...',
-            ),
-            'searchwordAtTextEnd' => array(
+            ],
+            'searchwordAtTextEnd' => [
                 'bodaaa',
                 16,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh bodaaa',
                 '...iji jeje uuuhhh <span class="faq-search-highlight">bodaaa</span>',
-            ),
-            'searchwordWithinTrimAtStartOfText' => array(
+            ],
+            'searchwordWithinTrimAtStartOfText' => [
                 'bodaaa',
                 16,
                 'Minions bodaaa ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la . Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions <span class="faq-search-highlight">bodaaa</span> ipsum b...',
-            ),
-            'searchwordWithinTrimAtStartOfTextSecond' => array(
+            ],
+            'searchwordWithinTrimAtStartOfTextSecond' => [
                 'bodaaa',
                 16,
                 'Minions ipsum bodaaa butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la . Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum <span class="faq-search-highlight">bodaaa</span> b...',
-            ),
-            'searchwordMiddleOfText' => array(
+            ],
+            'searchwordMiddleOfText' => [
                 'bodaaa',
                 16,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 '...oiii la <span class="faq-search-highlight">bodaaa</span> bee do ...',
-            ),
-            'searchwordNotFound' => array(
+            ],
+            'searchwordNotFound' => [
                 'Flensburg',
                 16,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum bu...',
-            ),
-            'trimLongerThanContentSearchWordNotFound' => array(
+            ],
+            'trimLongerThanContentSearchWordNotFound' => [
                 'Flensburg',
                 30,
                 'Minions ipsum butt po kass ge',
                 'Minions ipsum butt po kass ge',
-            ),
-            'trimLongerThanContentStart' => array(
+            ],
+            'trimLongerThanContentStart' => [
                 'Minions',
                 30,
                 'Minions ipsum butt po kass',
                 '<span class="faq-search-highlight">Minions</span> ipsum butt po kass',
-            ),
-            'trimLongerThanContentMiddle' => array(
+            ],
+            'trimLongerThanContentMiddle' => [
                 'ipsum',
                 30,
                 'Minions ipsum butt po kass',
                 'Minions <span class="faq-search-highlight">ipsum</span> butt po kass',
-            ),
-            'trimLongerThanContentEnd' => array(
+            ],
+            'trimLongerThanContentEnd' => [
                 'kass',
                 30,
                 'Minions ipsum butt po kass',
                 'Minions ipsum butt po <span class="faq-search-highlight">kass</span>',
-            ),
-            'cropCharIsDecimal' => array(
+            ],
+            'cropCharIsDecimal' => [
                 'bodaaa',
                 16.4,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 '...oiii la <span class="faq-search-highlight">bodaaa</span> bee do ...',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -138,14 +138,14 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function textForRenderWithEmptySearchDataProvider()
     {
-        return array(
-            'emptySearchText' => array(
+        return [
+            'emptySearchText' => [
                 '',
                 16,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -155,26 +155,26 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function textForRenderWithoutCroppingDataProvider()
     {
-        return array(
-            'noCroppingSingleHit' => array(
+        return [
+            'noCroppingSingleHit' => [
                 'bodaaa',
                 0,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la <span class="faq-search-highlight">bodaaa</span> bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
-            ),
-            'cropCharIsNegativeSmall' => array(
+            ],
+            'cropCharIsNegativeSmall' => [
                 'bodaaa',
                 -1,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la <span class="faq-search-highlight">bodaaa</span> bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
-            ),
-            'cropCharIsNegativeBig' => array(
+            ],
+            'cropCharIsNegativeBig' => [
                 'bodaaa',
                 -100,
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la <span class="faq-search-highlight">bodaaa</span> bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -184,14 +184,14 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function textForRenderWithCropCharIsStringDataProvider()
     {
-        return array(
-            'cropCharIsString' => array(
+        return [
+            'cropCharIsString' => [
                 'bodaaa',
                 'Foo',
                 'Minions ipsum butt po kass gelatooo la belloo! Butt aaaaaah chasy bee do bee do bee do aaaaaah bananaaaa chasy baboiii la. Belloo! bee do bee do bee do para tú chasy tank yuuu! Potatoooo ti aamoo! Po kass butt wiiiii potatoooo poulet tikka masala para tú tatata bala tu hana dul sae. Baboiii la bodaaa bee do bee do bee do tank yuuu! Aaaaaah jiji hahaha. Tank yuuu! bananaaaa aaaaaah po kass bappleees tulaliloo me want bananaaa! Tatata bala tu belloo! Me want bananaaa! bappleees daa uuuhhh belloo! Poopayee gelatooo chasy bananaaaa. Daa hana dul sae po kass butt jiji jeje uuuhhh.',
                 '... oiii la <span class="faq-search-highlight">bodaaa</span> bee do  ...',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -209,7 +209,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function render($searchtext, $trim, $text, $expected)
     {
-        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', false);
+        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', ['getByPath'], [], '', false);
 
         $settingsServiceMock
             ->expects($this->at(0))
@@ -223,7 +223,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
             ->with($this->equalTo('highlightTag'))
             ->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
 
-        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', array('stdWrap'), array(), '', false);
+        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', ['stdWrap'], [], '', false);
         $contentObjectRendererMock
             ->expects($this->once())
             ->method('stdWrap')
@@ -252,8 +252,8 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function renderWithEmptySearch($searchtext, $trim, $text, $expected)
     {
-        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', false);
-        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', array('stdWrap'), array(), '', false);
+        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', ['getByPath'], [], '', false);
+        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', ['stdWrap'], [], '', false);
 
         $settingsServiceMock->expects($this->never())->method('getByPath');
         $contentObjectRendererMock->expects($this->never())->method('stdWrap');
@@ -298,7 +298,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function renderWithMissingHighlightTagThrowsException($searchtext, $trim, $text)
     {
-        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', false);
+        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', ['getByPath'], [], '', false);
         $settingsServiceMock
             ->expects($this->at(0))
             ->method('getByPath')
@@ -325,14 +325,14 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
      */
     public function renderWithOutCropping($searchtext, $trim, $text, $expected)
     {
-        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', false);
+        $settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', ['getByPath'], [], '', false);
         $settingsServiceMock
             ->expects($this->at(0))
             ->method('getByPath')
             ->with($this->equalTo('highlightTag'))
             ->will($this->returnValue('<span class="faq-search-highlight">|</span>'));
 
-        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', array('stdWrap'), array(), '', false);
+        $contentObjectRendererMock = $this->getMock('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer', ['stdWrap'], [], '', false);
         $contentObjectRendererMock
             ->expects($this->once())
             ->method('stdWrap')

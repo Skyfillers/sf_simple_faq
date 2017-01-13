@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title' => 'Simple FAQ',
     'description' => 'A simple extension for frequently asked questions',
     'category' => 'plugin',
@@ -12,15 +12,15 @@ $EM_CONF[$_EXTKEY] = array(
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
     'version' => '1.3.0',
-    'constraints' => array(
-        'depends' => array(
+    'constraints' => [
+        'depends' => [
             'typo3' => '6.2.0-6.2.99',
-        ),
-        'conflicts' => array(
-        ),
-        'suggests' => array(
-        ),
-    ),
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
     'autoload' => [
         'psr-4' => [
             'Skyfillers\\SfSimpleFaq\\' => 'Classes',
@@ -31,4 +31,4 @@ $EM_CONF[$_EXTKEY] = array(
             'Skyfillers\\SfSimpleFaq\\Tests\\' => 'Tests',
         ],
     ],
-);
+];

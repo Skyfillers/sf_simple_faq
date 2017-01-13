@@ -31,13 +31,13 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * The categories
      * @var array
      */
-    protected $categories = array();
+    protected $categories = [];
 
     /**
      * The category constraints
      * @var array
      */
-    protected $categoryConstraints = array();
+    protected $categoryConstraints = [];
 
     /**
      * The category constrains length
@@ -55,7 +55,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * The search constraints
      * @var array
      */
-    protected $searchConstraints = array();
+    protected $searchConstraints = [];
 
     /**
      * The search constraints length
@@ -112,7 +112,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected function generateSearchConstraints(\Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand)
     {
         if ($demand->getSearchtext()) {
-            $searchtextConstraints = array();
+            $searchtextConstraints = [];
             $searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), true);
 
             foreach ($searchWords as $searchWord) {

@@ -55,53 +55,53 @@ class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setCategoryClassDataProvider()
     {
-        return array(
-            'emptySettings' => array(
+        return [
+            'emptySettings' => [
                 '',
                 '',
                 ''
-            ),
-            'intSelectedCategoriesContainsCurrentCategory' => array(
+            ],
+            'intSelectedCategoriesContainsCurrentCategory' => [
                 2,
                 '0,2,5,7',
                 'faq-active-link'
-            ),
-            'stringSelectedCategoriesContainsCurrentCategory' => array(
+            ],
+            'stringSelectedCategoriesContainsCurrentCategory' => [
                 '2',
                 '0,2,5,7',
                 'faq-active-link'
-            ),
-                'intSelectedCategoriesDoesntContainsCurrentCategory' => array(
+            ],
+                'intSelectedCategoriesDoesntContainsCurrentCategory' => [
                 3,
                 '0,2,5,7',
                 ''
-            ),
-                'stringSelectedCategoriesDoesntContainsCurrentCategory' => array(
+            ],
+                'stringSelectedCategoriesDoesntContainsCurrentCategory' => [
                 '3',
                 '0,2,5,7',
                 ''
-            ),
-            'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+            ],
+            'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => [
                 0,
                 '0',
                 'faq-active-link'
-            ),
-            'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+            ],
+            'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => [
                 0,
                 '0,2,5,7',
                 ''
-            ),
-            'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+            ],
+            'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => [
                 '0',
                 '0',
                 'faq-active-link'
-            ),
-            'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+            ],
+            'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => [
                 '0',
                 '0,2,5,7',
                 ''
-            )
-        );
+            ]
+        ];
     }
 
     /**

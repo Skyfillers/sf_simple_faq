@@ -6,11 +6,11 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Skyfillers.' . $_EXTKEY,
     'Pifaq',
-    array(
+    [
         'Faq' => 'list,search,detail',
-    ),
+    ],
     // non-cacheable actions
-    array(
+    [
         'Faq' => 'search',
-    )
+    ]
 );
