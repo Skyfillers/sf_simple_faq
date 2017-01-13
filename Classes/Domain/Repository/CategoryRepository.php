@@ -20,5 +20,6 @@ namespace Skyfillers\SfSimpleFaq\Domain\Repository;
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
 }

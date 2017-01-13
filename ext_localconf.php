@@ -1,16 +1,16 @@
 <?php
 if (!defined('TYPO3_MODE')) {
-	die('Access denied.');
+    die('Access denied.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Skyfillers.' . $_EXTKEY,
-	'Pifaq',
-	array(
-		'Faq' => 'list,search,detail',
-	),
-	// non-cacheable actions
-	array(
-		'Faq' => 'search',
-	)
+    'Skyfillers.' . $_EXTKEY,
+    'Pifaq',
+    array(
+        'Faq' => 'list,search,detail',
+    ),
+    // non-cacheable actions
+    array(
+        'Faq' => 'search',
+    )
 );

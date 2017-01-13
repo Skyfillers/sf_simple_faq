@@ -19,102 +19,107 @@ namespace Skyfillers\SfSimpleFaq\Tests\Unit\ViewHelpers;
  *
  * @author Alexander Schnoor
  */
-class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
-	/**
-	 * Viewhelper
-	 *
-	 * @var \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
-	 */
-	protected $viewhelper = NULL;
+class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
+    /**
+     * Viewhelper
+     *
+     * @var \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
+     */
+    protected $viewhelper = null;
 
-	/**
-	 * Setup
-	 *
-	 * @return void
-	 */
-	protected function setUp() {
-		$this->viewhelper = new \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
-	}
+    /**
+     * Setup
+     *
+     * @return void
+     */
+    protected function setUp()
+    {
+        $this->viewhelper = new \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
+    }
 
-	/**
-	 * Teardown
-	 *
-	 * @return void
-	 */
-	protected function tearDown() {
-		unset($this->viewhelper);
-	}
+    /**
+     * Teardown
+     *
+     * @return void
+     */
+    protected function tearDown()
+    {
+        unset($this->viewhelper);
+    }
 
-	/**
-	 * Data Provider for unit tests
-	 *
-	 * @return array
-	 */
-	public function setCategoryClassDataProvider() {
-		return array(
-			'emptySettings' => array(
-				'',
-				'',
-				''
-			),
-			'intSelectedCategoriesContainsCurrentCategory' => array(
-				2,
-				'0,2,5,7',
-				'faq-active-link'
-			),
-			'stringSelectedCategoriesContainsCurrentCategory' => array(
-				'2',
-				'0,2,5,7',
-				'faq-active-link'
-			),
-				'intSelectedCategoriesDoesntContainsCurrentCategory' => array(
-				3,
-				'0,2,5,7',
-				''
-			),
-				'stringSelectedCategoriesDoesntContainsCurrentCategory' => array(
-				'3',
-				'0,2,5,7',
-				''
-			),
-			'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
-				0,
-				'0',
-				'faq-active-link'
-			),
-			'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
-				0,
-				'0,2,5,7',
-				''
-			),
-			'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
-				'0',
-				'0',
-				'faq-active-link'
-			),
-			'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
-				'0',
-				'0,2,5,7',
-				''
-			)
-		);
-	}
+    /**
+     * Data Provider for unit tests
+     *
+     * @return array
+     */
+    public function setCategoryClassDataProvider()
+    {
+        return array(
+            'emptySettings' => array(
+                '',
+                '',
+                ''
+            ),
+            'intSelectedCategoriesContainsCurrentCategory' => array(
+                2,
+                '0,2,5,7',
+                'faq-active-link'
+            ),
+            'stringSelectedCategoriesContainsCurrentCategory' => array(
+                '2',
+                '0,2,5,7',
+                'faq-active-link'
+            ),
+                'intSelectedCategoriesDoesntContainsCurrentCategory' => array(
+                3,
+                '0,2,5,7',
+                ''
+            ),
+                'stringSelectedCategoriesDoesntContainsCurrentCategory' => array(
+                '3',
+                '0,2,5,7',
+                ''
+            ),
+            'intSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+                0,
+                '0',
+                'faq-active-link'
+            ),
+            'intSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+                0,
+                '0,2,5,7',
+                ''
+            ),
+            'stringSelectedCategoriesIsZeroAndCurrentCategoryIsZero' => array(
+                '0',
+                '0',
+                'faq-active-link'
+            ),
+            'stringSelectedCategoriesIsNotZeroAndCurrentCategoryIsZero' => array(
+                '0',
+                '0,2,5,7',
+                ''
+            )
+        );
+    }
 
-	/**
-	 * Test the rendering
-	 *
-	 * @param int $currentCategory The Category to check if it's selected
-	 * @param string $selectedCategories The selected categories
-	 * @param string $expected The expected result
-	 *
-	 * @test
-	 *
-	 * @dataProvider setCategoryClassDataProvider
-	 *
-	 * @return void
-	 */
-	public function renderWithResultSelectedWithCurrentCategoryInt($currentCategory, $selectedCategories, $expected) {
-		$actual = $this->viewhelper->render($currentCategory, $selectedCategories);
-		$this->assertSame($expected, $actual);
-	}
+    /**
+     * Test the rendering
+     *
+     * @param int $currentCategory The Category to check if it's selected
+     * @param string $selectedCategories The selected categories
+     * @param string $expected The expected result
+     *
+     * @test
+     *
+     * @dataProvider setCategoryClassDataProvider
+     *
+     * @return void
+     */
+    public function renderWithResultSelectedWithCurrentCategoryInt($currentCategory, $selectedCategories, $expected)
+    {
+        $actual = $this->viewhelper->render($currentCategory, $selectedCategories);
+        $this->assertSame($expected, $actual);
+    }
 }

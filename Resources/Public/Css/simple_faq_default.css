@@ -1,41 +1,41 @@
 .faq-searchform {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .faq-list {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .faq-list li {
-	display: block;
-	padding: 0;
-	margin: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
 }
 
 .faq-link-list {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .faq-link {
-	padding: 0.5em;
-	text-decoration: none;
+    padding: 0.5em;
+    text-decoration: none;
 }
 
 .faq-link + .faq-link {
-	margin-left: 5px;
+    margin-left: 5px;
 }
 
 .faq-link:hover,
 .faq-link:focus,
 .faq-link:active,
 .faq-active-link {
-	text-decoration: none;
-	background: #ff8700;
-	color: #fff;
+    text-decoration: none;
+    background: #ff8700;
+    color: #fff;
 }
 
 .faq-search-highlight {
-	background: red;
-	color: white;
+    background: red;
+    color: white;
 }

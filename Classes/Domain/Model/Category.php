@@ -22,56 +22,61 @@ namespace Skyfillers\SfSimpleFaq\Domain\Model;
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  */
-class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * Title
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $title = '';
+    /**
+     * Title
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $title = '';
 
-	/**
-	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent The parent category
-	 */
-	protected $parent;
+    /**
+     * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent The parent category
+     */
+    protected $parent;
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title The title of the category
-	 *
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title The title of the category
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Returns the parent category
-	 *
-	 * @return \Skyfillers\SfSimpleFaq\Domain\Model\Category
-	 */
-	public function getParent() {
-		return $this->parent;
-	}
+    /**
+     * Returns the parent category
+     *
+     * @return \Skyfillers\SfSimpleFaq\Domain\Model\Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 
-	/**
-	 * Set the parent category of this category
-	 *
-	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent
-	 */
-	public function setParent($parent) {
-		$this->parent = $parent;
-	}
+    /**
+     * Set the parent category of this category
+     *
+     * @param \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
 }

@@ -24,58 +24,63 @@ namespace Skyfillers\SfSimpleFaq\Tests\Unit\Domain\Model;
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
-class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
-	/**
-	 * The subject under test.
-	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category
-	 */
-	protected $subject = NULL;
+    /**
+     * The subject under test.
+     * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category
+     */
+    protected $subject = null;
 
-	/**
-	 * Setup
-	 *
-	 * @return void
-	 */
-	protected function setUp() {
-		$this->subject = new \Skyfillers\SfSimpleFaq\Domain\Model\Category();
-	}
+    /**
+     * Setup
+     *
+     * @return void
+     */
+    protected function setUp()
+    {
+        $this->subject = new \Skyfillers\SfSimpleFaq\Domain\Model\Category();
+    }
 
-	/**
-	 * Teardown
-	 *
-	 * @return void
-	 */
-	protected function tearDown() {
-		unset($this->subject);
-	}
+    /**
+     * Teardown
+     *
+     * @return void
+     */
+    protected function tearDown()
+    {
+        unset($this->subject);
+    }
 
-	/**
-	 * Test: getTitle
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function getTitleReturnsInitialValueForString() {
-		$this->assertSame(
-			'',
-			$this->subject->getTitle()
-		);
-	}
+    /**
+     * Test: getTitle
+     *
+     * @test
+     * @return void
+     */
+    public function getTitleReturnsInitialValueForString()
+    {
+        $this->assertSame(
+            '',
+            $this->subject->getTitle()
+        );
+    }
 
-	/**
-	 * Test: set title
-	 *
-	 * @test
-	 * @return void
-	 */
-	public function setTitleForStringSetsTitle() {
-		$this->subject->setTitle('Conceived at T3CON10');
+    /**
+     * Test: set title
+     *
+     * @test
+     * @return void
+     */
+    public function setTitleForStringSetsTitle()
+    {
+        $this->subject->setTitle('Conceived at T3CON10');
 
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'title',
-			$this->subject
-		);
-	}
+        $this->assertAttributeEquals(
+            'Conceived at T3CON10',
+            'title',
+            $this->subject
+        );
+    }
 }
