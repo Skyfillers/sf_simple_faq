@@ -19,29 +19,30 @@ namespace Skyfillers\SfSimpleFaq\ViewHelpers;
  *
  * @author Alexander Schnoor
  */
-class GetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class GetCategoryClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
 
-	/**
-	 * Returns The class "faq-active-link"
-	 * if $selectedCategories contains $currentCategory
-	 *
-	 * @param int $currentCategory The Category to check if it's selected
-	 * @param string $selectedCategories The selected categories
-	 *
-	 * @return string
-	 */
-	public function render($currentCategory, $selectedCategories) {
-		$return = '';
-		if ($selectedCategories === '0' && (int)$currentCategory === 0) {
-			$return = 'faq-active-link';
-		} elseif ($selectedCategories !== '0' && (int)$currentCategory !== 0) {
-			$selected = explode(',', $selectedCategories);
-			if (in_array($currentCategory, $selected) === TRUE) {
-				$return = 'faq-active-link';
-			}
-		}
-		return $return;
-	}
-
+    /**
+     * Returns The class "faq-active-link"
+     * if $selectedCategories contains $currentCategory
+     *
+     * @param int $currentCategory The Category to check if it's selected
+     * @param string $selectedCategories The selected categories
+     *
+     * @return string
+     */
+    public function render($currentCategory, $selectedCategories)
+    {
+        $return = '';
+        if ($selectedCategories === '0' && (int)$currentCategory === 0) {
+            $return = 'faq-active-link';
+        } elseif ($selectedCategories !== '0' && (int)$currentCategory !== 0) {
+            $selected = explode(',', $selectedCategories);
+            if (in_array($currentCategory, $selected) === true) {
+                $return = 'faq-active-link';
+            }
+        }
+        return $return;
+    }
 }

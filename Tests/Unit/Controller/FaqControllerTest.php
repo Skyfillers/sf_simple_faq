@@ -20,303 +20,303 @@ namespace Skyfillers\SfSimpleFaq\Tests\Unit\Controller;
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  */
-class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
-	/**
-	 * The tested subject
-	 *
-	 * @var \Skyfillers\SfSimpleFaq\Controller\FaqController
-	 */
-	protected $subject = NULL;
+class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
+    /**
+     * The tested subject
+     *
+     * @var \Skyfillers\SfSimpleFaq\Controller\FaqController
+     */
+    protected $subject = null;
 
-	/**
-	 * Setup
-	 *
-	 * @return void
-	 */
-	protected function setUp() {
-		$this->subject = $this->getAccessibleMock('Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
-			array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'), array(), '', FALSE);
-	}
+    /**
+     * Setup
+     *
+     * @return void
+     */
+    protected function setUp()
+    {
+        $this->subject = $this->getAccessibleMock(
+            'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
+            array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'),
+            array(),
+            '',
+            false
+        );
+    }
 
-	/**
-	 * Teardown
-	 *
-	 * @return void
-	 */
-	protected function tearDown() {
-		unset($this->subject);
-	}
+    /**
+     * Teardown
+     *
+     * @return void
+     */
+    protected function tearDown()
+    {
+        unset($this->subject);
+    }
 
-	/**
-	 * Test: create a demand object from settings without category
-	 *
-	 * @test
-	 */
-	public function createDemandObjectFromSettingsWithoutCategory() {
-		$settings = array('category' => 10);
-		$objectManager = $this->getMock(
-			'TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
-			array(),
-			array(),
-			'',
-			FALSE
-		);
-		$mockController = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
-			array('redirect', 'forward', 'addFlashMessage'),
-			array(),
-			'',
-			FALSE
-		);
-		$mockDemand = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
-			array(),
-			array(),
-			'',
-			FALSE
-		);
-		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
-		$mockDemand->expects($this->at(1))->method('setCategories')->with(10);
-		$objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
-		$this->inject($mockController, 'objectManager', $objectManager);
+    /**
+     * Test: create a demand object from settings without category
+     *
+     * @test
+     */
+    public function createDemandObjectFromSettingsWithoutCategory()
+    {
+        $settings = array('category' => 10);
+        $objectManager = $this->getMock(
+            'TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
+            array(),
+            array(),
+            '',
+            false
+        );
+        $mockController = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
+            array('redirect', 'forward', 'addFlashMessage'),
+            array(),
+            '',
+            false
+        );
+        $mockDemand = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
+            array(),
+            array(),
+            '',
+            false
+        );
+        $mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
+        $mockDemand->expects($this->at(1))->method('setCategories')->with(10);
+        $objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
+        $this->inject($mockController, 'objectManager', $objectManager);
 
-		$mockController->createDemandObjectFromSettings($settings, 'test');
-	}
+        $mockController->createDemandObjectFromSettings($settings, 'test');
+    }
 
-	/**
-	 * Test: Create demand object from settings with category
-	 *
-	 * @test
-	 */
-	public function createDemandObjectFromSettingsWithCategory() {
-		$settings = array('category' => 10);
-		$objectManager = $this->getMock(
-			'TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
-			array(),
-			array(),
-			'',
-			FALSE
-		);
-		$mockController = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
-			array('redirect', 'forward', 'addFlashMessage'),
-			array(),
-			'',
-			FALSE
-		);
-		$mockDemand = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
-			array(),
-			array(),
-			'',
-			FALSE
-		);
-		$mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
-		$mockDemand->expects($this->at(1))->method('setCategories')->with(20);
-		$objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
-		$this->inject($mockController, 'objectManager', $objectManager);
+    /**
+     * Test: Create demand object from settings with category
+     *
+     * @test
+     */
+    public function createDemandObjectFromSettingsWithCategory()
+    {
+        $settings = array('category' => 10);
+        $objectManager = $this->getMock(
+            'TYPO3\\CMS\\Extbase\\Object\\ObjectManager',
+            array(),
+            array(),
+            '',
+            false
+        );
+        $mockController = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
+            array('redirect', 'forward', 'addFlashMessage'),
+            array(),
+            '',
+            false
+        );
+        $mockDemand = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
+            array(),
+            array(),
+            '',
+            false
+        );
+        $mockDemand->expects($this->at(0))->method('setSearchtext')->with('test');
+        $mockDemand->expects($this->at(1))->method('setCategories')->with(20);
+        $objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
+        $this->inject($mockController, 'objectManager', $objectManager);
 
-		$mockController->createDemandObjectFromSettings($settings, 'test', 20);
-	}
+        $mockController->createDemandObjectFromSettings($settings, 'test', 20);
+    }
 
-	/**
-	 * Test: List action test with all FAQs
-	 *
-	 * @test
-	 */
-	public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
-		$settings = array('settings');
-		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
-		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$categoryRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
-			array('findAll'),
-			array(),
-			'',
-			FALSE
-		);
-		$faqRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
-			array('findByDemand', 'findAll'),
-			array(),
-			'',
-			FALSE
-		);
-		$this->subject
-			->expects($this->once())
-			->method('createDemandObjectFromSettings')
-			->with($settings)
-			->will($this->returnValue($demand)
-		);
+    /**
+     * Test: List action test with all FAQs
+     *
+     * @test
+     */
+    public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView()
+    {
+        $settings = array('settings');
+        $demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $categoryRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+            array('findAll'),
+            array(),
+            '',
+            false
+        );
+        $faqRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+            array('findByDemand', 'findAll'),
+            array(),
+            '',
+            false
+        );
+        $this->subject
+            ->expects($this->once())
+            ->method('createDemandObjectFromSettings')
+            ->with($settings)
+            ->will($this->returnValue($demand));
 
-		$faqRepository
-			->expects($this->once())
-			->method('findByDemand')
-			->will($this->returnValue($allFaqs)
-		);
+        $faqRepository
+            ->expects($this->once())
+            ->method('findByDemand')
+            ->will($this->returnValue($allFaqs));
 
-		$categoryRepository->expects($this->once())->method('findAll')->will($this->returnValue($allCategories));
+        $categoryRepository->expects($this->once())->method('findAll')->will($this->returnValue($allCategories));
 
-		$view
-			->expects($this->once())
-			->method('assignMultiple')
-			->with(array(
-					'faqs' => $allFaqs,
-					'categories' => $allCategories,
-					'selectedCategories' => 0,
-				)
-		);
+        $view
+            ->expects($this->once())
+            ->method('assignMultiple')
+            ->with(array(
+                    'faqs' => $allFaqs,
+                    'categories' => $allCategories,
+                    'selectedCategories' => 0,
+                ));
 
-		$this->inject($this->subject, 'settings', $settings);
-		$this->inject($this->subject, 'faqRepository', $faqRepository);
-		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
-		$this->inject($this->subject, 'view', $view);
-		$this->subject->listAction();
-	}
+        $this->inject($this->subject, 'settings', $settings);
+        $this->inject($this->subject, 'faqRepository', $faqRepository);
+        $this->inject($this->subject, 'categoryRepository', $categoryRepository);
+        $this->inject($this->subject, 'view', $view);
+        $this->subject->listAction();
+    }
 
-	/**
-	 * Test: Search action fetches all FAQs
-	 *
-	 * @test
-	 */
-	public function searchActionWithSearchtermFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
-		$searchtext = 'bla';
-		$settings = array('settings');
+    /**
+     * Test: Search action fetches all FAQs
+     *
+     * @test
+     */
+    public function searchActionWithSearchtermFetchesAllFaqsFromRepositoryAndAssignsThemToView()
+    {
+        $searchtext = 'bla';
+        $settings = array('settings');
 
-		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
-		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$categoryRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
-			array('findAll'),
-			array(),
-			'',
-			FALSE
-		);
-		$faqRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
-			array('findByDemand', 'findAll'),
-			array(),
-			'',
-			FALSE
-		);
+        $demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $categoryRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+            array('findAll'),
+            array(),
+            '',
+            false
+        );
+        $faqRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+            array('findByDemand', 'findAll'),
+            array(),
+            '',
+            false
+        );
 
-		$this->subject
-			->expects($this->once())
-			->method('createDemandObjectFromSettings')
-			->with($settings)
-			->will($this->returnValue($demand)
-		);
+        $this->subject
+            ->expects($this->once())
+            ->method('createDemandObjectFromSettings')
+            ->with($settings)
+            ->will($this->returnValue($demand));
 
-		$categoryRepository
-			->expects($this->once())
-			->method('findAll')
-			->will($this->returnValue($allCategories)
-		);
+        $categoryRepository
+            ->expects($this->once())
+            ->method('findAll')
+            ->will($this->returnValue($allCategories));
 
-		$faqRepository
-			->expects($this->once())
-			->method('findByDemand')
-			->will($this->returnValue($allFaqs)
-		);
+        $faqRepository
+            ->expects($this->once())
+            ->method('findByDemand')
+            ->will($this->returnValue($allFaqs));
 
-		$faqRepository
-			->expects($this->never())
-			->method('findAll')
-			->will($this->returnValue($allFaqs)
-		);
+        $faqRepository
+            ->expects($this->never())
+            ->method('findAll')
+            ->will($this->returnValue($allFaqs));
 
-		$view
-			->expects($this->once())
-			->method('assignMultiple')
-			->with(array(
-					'faqs' => $allFaqs,
-					'categories' => $allCategories,
-					'selectedCategories' => 0,
-					'searchtext' => $searchtext
-				)
-			);
+        $view
+            ->expects($this->once())
+            ->method('assignMultiple')
+            ->with(array(
+                    'faqs' => $allFaqs,
+                    'categories' => $allCategories,
+                    'selectedCategories' => 0,
+                    'searchtext' => $searchtext
+                ));
 
-		$this->inject($this->subject, 'settings', $settings);
-		$this->inject($this->subject, 'faqRepository', $faqRepository);
-		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
-		$this->inject($this->subject, 'view', $view);
+        $this->inject($this->subject, 'settings', $settings);
+        $this->inject($this->subject, 'faqRepository', $faqRepository);
+        $this->inject($this->subject, 'categoryRepository', $categoryRepository);
+        $this->inject($this->subject, 'view', $view);
 
-		$this->subject->searchAction(0, 'bla');
-	}
+        $this->subject->searchAction(0, 'bla');
+    }
 
-	/**
-	 * Test: Search action fetches all FAQs
-	 *
-	 * @test
-	 */
-	public function searchActionWithNoSearchtermFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
-		$searchtext = '';
-		$settings = array('settings');
+    /**
+     * Test: Search action fetches all FAQs
+     *
+     * @test
+     */
+    public function searchActionWithNoSearchtermFetchesAllFaqsFromRepositoryAndAssignsThemToView()
+    {
+        $searchtext = '';
+        $settings = array('settings');
 
-		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
-		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
-		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
-		$categoryRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
-			array('findAll'),
-			array(),
-			'',
-			FALSE
-		);
-		$faqRepository = $this->getMock(
-			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
-			array('findByDemand', 'findAll'),
-			array(),
-			'',
-			FALSE
-		);
+        $demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+        $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
+        $allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', false);
+        $categoryRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+            array('findAll'),
+            array(),
+            '',
+            false
+        );
+        $faqRepository = $this->getMock(
+            'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+            array('findByDemand', 'findAll'),
+            array(),
+            '',
+            false
+        );
 
-		$this->subject
-			->expects($this->never())
-			->method('createDemandObjectFromSettings')
-			->with($settings)
-			->will($this->returnValue($demand)
-		);
+        $this->subject
+            ->expects($this->never())
+            ->method('createDemandObjectFromSettings')
+            ->with($settings)
+            ->will($this->returnValue($demand));
 
-		$categoryRepository
-			->expects($this->once())
-			->method('findAll')
-			->will($this->returnValue($allCategories)
-		);
+        $categoryRepository
+            ->expects($this->once())
+            ->method('findAll')
+            ->will($this->returnValue($allCategories));
 
-		$faqRepository
-			->expects($this->never())
-			->method('findByDemand')
-			->will($this->returnValue($allFaqs)
-		);
+        $faqRepository
+            ->expects($this->never())
+            ->method('findByDemand')
+            ->will($this->returnValue($allFaqs));
 
-		$faqRepository
-			->expects($this->once())
-			->method('findAll')
-			->will($this->returnValue($allFaqs)
-		);
+        $faqRepository
+            ->expects($this->once())
+            ->method('findAll')
+            ->will($this->returnValue($allFaqs));
 
-		$view
-			->expects($this->once())
-			->method('assignMultiple')
-			->with(array(
-					'faqs' => $allFaqs,
-					'categories' => $allCategories,
-					'selectedCategories' => 0,
-					'searchtext' => $searchtext
-				)
-			);
+        $view
+            ->expects($this->once())
+            ->method('assignMultiple')
+            ->with(array(
+                    'faqs' => $allFaqs,
+                    'categories' => $allCategories,
+                    'selectedCategories' => 0,
+                    'searchtext' => $searchtext
+                ));
 
-		$this->inject($this->subject, 'settings', $settings);
-		$this->inject($this->subject, 'faqRepository', $faqRepository);
-		$this->inject($this->subject, 'categoryRepository', $categoryRepository);
-		$this->inject($this->subject, 'view', $view);
+        $this->inject($this->subject, 'settings', $settings);
+        $this->inject($this->subject, 'faqRepository', $faqRepository);
+        $this->inject($this->subject, 'categoryRepository', $categoryRepository);
+        $this->inject($this->subject, 'view', $view);
 
-		$this->subject->searchAction(0, '');
-	}
+        $this->subject->searchAction(0, '');
+    }
 }

@@ -46,77 +46,77 @@ use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
  */
 class SettingsService implements SingletonInterface
 {
-	
-	/**
-	 * @var mixed
-	 */
-	protected $configuration;
-	
-	/**
-	 * @var array
-	 */
-	protected $configurationPathCache = [];
-	
-	/**
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
-	 */
-	protected $configurationManager;
-	
-	/**
-	 * Returns the TS configuration
-	 *
-	 * @return array|mixed
-	 */
-	public function getConfiguration()
-	{
-		if ($this->configuration === null) {
-			$this->configuration = $this->configurationManager->getConfiguration(
-				ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
-			);
-		}
-		
-		return $this->configuration;
-	}
-	
-	/**
-	 * Returns the settings at path $path, which is separated by ".",
-	 * e.g. "pages.uid".
-	 * "pages.uid" would return $this->settings['pages']['uid'].
-	 *
-	 * If the path is invalid or no entry is found, false is returned.
-	 *
-	 * @param string $path
-	 *
-	 * @return mixed
-	 */
-	public function getByPath($path)
-	{
-		
-		if (isset($this->configurationPathCache[$path])) {
-			return $this->configurationPathCache[$path];
-		}
-		
-		$configuration = $this->getConfiguration();
-		
-		$setting = $this->getPropertyPath($configuration, $path);
-		if ($setting === null) {
-			$setting = $this->getPropertyPath($configuration['settings'], $path);
-		}
-		
-		$this->configurationPathCache[$path] = $setting;
-		
-		return $setting;
-	}
-	
-	/**
-	 * @param array $configuration
-	 * @param string $path
-	 *
-	 * @return mixed
-	 */
-	protected function getPropertyPath(array $configuration, $path)
-	{
-		return ObjectAccess::getPropertyPath($configuration, $path);
-	}
+    
+    /**
+     * @var mixed
+     */
+    protected $configuration;
+    
+    /**
+     * @var array
+     */
+    protected $configurationPathCache = [];
+    
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     * @inject
+     */
+    protected $configurationManager;
+    
+    /**
+     * Returns the TS configuration
+     *
+     * @return array|mixed
+     */
+    public function getConfiguration()
+    {
+        if ($this->configuration === null) {
+            $this->configuration = $this->configurationManager->getConfiguration(
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            );
+        }
+        
+        return $this->configuration;
+    }
+    
+    /**
+     * Returns the settings at path $path, which is separated by ".",
+     * e.g. "pages.uid".
+     * "pages.uid" would return $this->settings['pages']['uid'].
+     *
+     * If the path is invalid or no entry is found, false is returned.
+     *
+     * @param string $path
+     *
+     * @return mixed
+     */
+    public function getByPath($path)
+    {
+        
+        if (isset($this->configurationPathCache[$path])) {
+            return $this->configurationPathCache[$path];
+        }
+        
+        $configuration = $this->getConfiguration();
+        
+        $setting = $this->getPropertyPath($configuration, $path);
+        if ($setting === null) {
+            $setting = $this->getPropertyPath($configuration['settings'], $path);
+        }
+        
+        $this->configurationPathCache[$path] = $setting;
+        
+        return $setting;
+    }
+    
+    /**
+     * @param array $configuration
+     * @param string $path
+     *
+     * @return mixed
+     */
+    protected function getPropertyPath(array $configuration, $path)
+    {
+        return ObjectAccess::getPropertyPath($configuration, $path);
+    }
 }

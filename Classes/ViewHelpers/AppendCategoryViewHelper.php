@@ -22,28 +22,29 @@ namespace Skyfillers\SfSimpleFaq\ViewHelpers;
  *
  * @package Skyfillers\SfSimpleFaq\ViewHelpers
  */
-class AppendCategoryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class AppendCategoryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	/**
-	 * Render the viewhelpers view
-	 *
-	 * @param string $selectedCategories The selected categories
-	 * @param string $newCategory The new category
-	 *
-	 * @return string
-	 */
-	public function render($selectedCategories, $newCategory) {
-		$selected = explode(',', $selectedCategories);
+    /**
+     * Render the viewhelpers view
+     *
+     * @param string $selectedCategories The selected categories
+     * @param string $newCategory The new category
+     *
+     * @return string
+     */
+    public function render($selectedCategories, $newCategory)
+    {
+        $selected = explode(',', $selectedCategories);
 
-		if (array_search($newCategory, $selected) == FALSE) {
-			array_push($selected, (int)$newCategory);
-		} else {
-			$categoryToDelete = array_search($newCategory, $selected);
-			unset($selected[$categoryToDelete]);
-		}
-		sort($selected);
+        if (array_search($newCategory, $selected) == false) {
+            array_push($selected, (int)$newCategory);
+        } else {
+            $categoryToDelete = array_search($newCategory, $selected);
+            unset($selected[$categoryToDelete]);
+        }
+        sort($selected);
 
-		return implode(',', $selected);
-	}
-
+        return implode(',', $selected);
+    }
 }
