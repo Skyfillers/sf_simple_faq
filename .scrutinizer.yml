@@ -8,6 +8,7 @@ filter:
 tools:
 
     external_code_coverage:
+        enabled: true
         timeout: 700
 
     php_cpd:

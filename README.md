@@ -27,9 +27,3 @@ You then have several Flexform settings which change the behavior of the extensi
 - Show/Hide the category overview
 - Enable/Disable multiple category selection
 - Show the answers in the list view or in a detail view
-
-
-
-
-
-

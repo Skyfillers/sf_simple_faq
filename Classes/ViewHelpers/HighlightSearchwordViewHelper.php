@@ -13,10 +13,7 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use Psr\Log\InvalidArgumentException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Exception\InvalidActionNameException;
-use TYPO3\CMS\Extbase\Mvc\Exception\InvalidViewHelperException;
 
 /**
  * Class HighlightSearchwordViewHelper
