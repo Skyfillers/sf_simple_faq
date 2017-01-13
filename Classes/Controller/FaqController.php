@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Controller;
+namespace Skyfillers\SfSimpleFaq\Controller;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -13,7 +13,7 @@ namespace SKYFILLERS\SfSimpleFaq\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use SKYFILLERS\SfSimpleFaq\Domain\Model\Faq;
+use Skyfillers\SfSimpleFaq\Domain\Model\Faq;
 
 /**
  * FaqController
@@ -27,36 +27,36 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * The FaqRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository
 	 */
 	protected $faqRepository;
 
 	/**
 	 * The categoryRepository
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository
 	 */
 	protected $categoryRepository;
 
 	/**
 	 * Inject the FAQ repository
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository The repository
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository The repository
 	 *
 	 * @return void
 	 */
-	public function injectFaqRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository) {
+	public function injectFaqRepository(\Skyfillers\SfSimpleFaq\Domain\Repository\FaqRepository $faqRepository) {
 		$this->faqRepository = $faqRepository;
 	}
 
 	/**
 	 * Inject the category repository
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository The repository
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository The repository
 	 *
 	 * @return void
 	 */
-	public function injectCategoryRepository(\SKYFILLERS\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository) {
+	public function injectCategoryRepository(\Skyfillers\SfSimpleFaq\Domain\Repository\CategoryRepository $categoryRepository) {
 		$this->categoryRepository = $categoryRepository;
 	}
 
@@ -81,7 +81,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @param string $searchtext The text, which the FAQs are filtered by
 	 * @param string $categories The categories, which the FAQs are filtered by
 	 *
-	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
+	 * @return \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
 	public function createDemandObjectFromSettings(array $settings, $searchtext, $categories = '0') {
 		if ($categories === '0') {
@@ -91,9 +91,9 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		/**
 		 * Object of the type FaqDemand
 		 *
-		 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
+		 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand
 		 */
-		$demand = $this->objectManager->get('SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
+		$demand = $this->objectManager->get('Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand');
 		$demand->setSearchtext($searchtext);
 		$demand->setCategories($categories);
 
@@ -148,7 +148,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * Detail action
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq $faq The faq model
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Faq $faq The faq model
 	 * @param string $selectedCategories The selected repository
 	 *
 	 * @return void

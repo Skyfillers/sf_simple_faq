@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
+namespace Skyfillers\SfSimpleFaq\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -20,7 +20,7 @@ namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
  * @author Alexander Schnoor
  * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
  *
- * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
+ * @package Skyfillers\SfSimpleFaq\ViewHelpers
  */
 class AppendCategoryViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 

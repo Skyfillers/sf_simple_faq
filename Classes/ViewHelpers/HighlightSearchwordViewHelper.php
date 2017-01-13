@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\ViewHelpers;
+namespace Skyfillers\SfSimpleFaq\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,12 +19,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Class HighlightSearchwordViewHelper
  *
  * @author Stefano Kowalke <s.kowalke@skyfillers.com>
- * @package SKYFILLERS\SfSimpleFaq\ViewHelpers
+ * @package Skyfillers\SfSimpleFaq\ViewHelpers
  */
 class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
-	 * @var \SKYFILLERS\SfSimpleFaq\Service\SettingsService $settingsService
+	 * @var \Skyfillers\SfSimpleFaq\Service\SettingsService $settingsService
 	 */
 	protected $settingsService;
 
@@ -34,11 +34,11 @@ class HighlightSearchwordViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abs
 	protected $contentObject;
 
 	/**
-	 * @param \SKYFILLERS\SfSimpleFaq\Service\SettingsService $settingsService
+	 * @param \Skyfillers\SfSimpleFaq\Service\SettingsService $settingsService
 	 *
 	 * @return void
 	 */
-	public function injectSettingsService(\SKYFILLERS\SfSimpleFaq\Service\SettingsService $settingsService) {
+	public function injectSettingsService(\Skyfillers\SfSimpleFaq\Service\SettingsService $settingsService) {
 		$this->settingsService = $settingsService;
 	}
 

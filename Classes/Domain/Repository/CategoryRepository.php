@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
+namespace Skyfillers\SfSimpleFaq\Domain\Repository;
 
 /*
  * This file is part of the TYPO3 CMS project.

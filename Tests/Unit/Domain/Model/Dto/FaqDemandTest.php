@@ -1,6 +1,6 @@
 <?php
 
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model\Dto;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\Domain\Model\Dto;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,7 +16,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model\Dto;
  */
 
 /**
- * Test case for class \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand.
+ * Test case for class \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -28,7 +28,7 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * The tested subject
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand
 	 */
 	protected $subject = NULL;
 
@@ -38,7 +38,7 @@ class FaqDemandTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+		$this->subject = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 	}
 
 	/**

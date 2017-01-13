@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Controller;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\Controller;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,7 +15,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Controller;
  */
 
 /**
- * Test case for class SKYFILLERS\SfSimpleFaq\Controller\FaqController.
+ * Test case for class Skyfillers\SfSimpleFaq\Controller\FaqController.
  *
  * @author Daniel Meyer <d.meyer@skyfillers.com>
  * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
@@ -24,7 +24,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * The tested subject
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Controller\FaqController
+	 * @var \Skyfillers\SfSimpleFaq\Controller\FaqController
 	 */
 	protected $subject = NULL;
 
@@ -34,7 +34,7 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->subject = $this->getAccessibleMock('SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
+		$this->subject = $this->getAccessibleMock('Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage', 'createDemandObjectFromSettings'), array(), '', FALSE);
 	}
 
@@ -62,14 +62,14 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			FALSE
 		);
 		$mockController = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
+			'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage'),
 			array(),
 			'',
 			FALSE
 		);
 		$mockDemand = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
 			array(),
 			array(),
 			'',
@@ -98,14 +98,14 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			FALSE
 		);
 		$mockController = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Controller\\FaqController',
+			'Skyfillers\\SfSimpleFaq\\Controller\\FaqController',
 			array('redirect', 'forward', 'addFlashMessage'),
 			array(),
 			'',
 			FALSE
 		);
 		$mockDemand = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Model\\Dto\\FaqDemand',
 			array(),
 			array(),
 			'',
@@ -126,19 +126,19 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	public function listActionFetchesAllFaqsFromRepositoryAndAssignsThemToView() {
 		$settings = array('settings');
-		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$categoryRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
 			array('findAll'),
 			array(),
 			'',
 			FALSE
 		);
 		$faqRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
 			array('findByDemand', 'findAll'),
 			array(),
 			'',
@@ -185,19 +185,19 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$searchtext = 'bla';
 		$settings = array('settings');
 
-		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$categoryRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
 			array('findAll'),
 			array(),
 			'',
 			FALSE
 		);
 		$faqRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
 			array('findByDemand', 'findAll'),
 			array(),
 			'',
@@ -257,19 +257,19 @@ class FaqControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$searchtext = '';
 		$settings = array('settings');
 
-		$demand = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
+		$demand = new \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand();
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$allFaqs = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$allCategories = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 		$categoryRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\CategoryRepository',
 			array('findAll'),
 			array(),
 			'',
 			FALSE
 		);
 		$faqRepository = $this->getMock(
-			'SKYFILLERS\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
+			'Skyfillers\\SfSimpleFaq\\Domain\\Repository\\FaqRepository',
 			array('findByDemand', 'findAll'),
 			array(),
 			'',

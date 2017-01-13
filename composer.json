@@ -36,12 +36,12 @@
   },
   "autoload": {
     "psr-4": {
-      "SKYFILLERS\\SfSimpleFaq\\": "Classes"
+      "Skyfillers\\SfSimpleFaq\\": "Classes"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SKYFILLERS\\SfSimpleFaq\\Tests\\": "Tests",
+      "Skyfillers\\SfSimpleFaq\\Tests\\": "Tests",
       "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
       "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
     }

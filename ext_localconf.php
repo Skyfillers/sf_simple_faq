@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'SKYFILLERS.' . $_EXTKEY,
+	'Skyfillers.' . $_EXTKEY,
 	'Pifaq',
 	array(
 		'Faq' => 'list,search,detail',

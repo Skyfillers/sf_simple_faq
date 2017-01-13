@@ -1,6 +1,6 @@
 <?php
 
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\Domain\Model;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,7 +16,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
  */
 
 /**
- * Test case for class \SKYFILLERS\SfSimpleFaq\Domain\Model\Category.
+ * Test case for class \Skyfillers\SfSimpleFaq\Domain\Model\Category.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -28,7 +28,7 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
 	 * The subject under test.
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category
 	 */
 	protected $subject = NULL;
 
@@ -38,7 +38,7 @@ class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
+		$this->subject = new \Skyfillers\SfSimpleFaq\Domain\Model\Category();
 	}
 
 	/**

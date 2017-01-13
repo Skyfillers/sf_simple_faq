@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
+namespace Skyfillers\SfSimpleFaq\Domain\Model;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -17,7 +17,7 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
 /**
  * Class Category
  *
- * @package SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+ * @package Skyfillers\SfSimpleFaq\Domain\Model\Category
  *
  * @author Alexander Schnoor
  * @author Daniel Meyer <d.meyer@skyfillers.com>
@@ -33,7 +33,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $parent The parent category
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent The parent category
 	 */
 	protected $parent;
 
@@ -60,7 +60,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the parent category
 	 *
-	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+	 * @return \Skyfillers\SfSimpleFaq\Domain\Model\Category
 	 */
 	public function getParent() {
 		return $this->parent;
@@ -69,7 +69,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Set the parent category of this category
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $parent
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Category $parent
 	 */
 	public function setParent($parent) {
 		$this->parent = $parent;
