@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Model;
+namespace Skyfillers\SfSimpleFaq\Domain\Model;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -49,7 +49,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Category
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Category
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Category
 	 */
 	protected $category;
 
@@ -123,7 +123,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the category
 	 *
-	 * @return \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $category
+	 * @return \Skyfillers\SfSimpleFaq\Domain\Model\Category $category
 	 */
 	public function getCategory() {
 		return $this->category;
@@ -132,11 +132,11 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the category
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Category $category A category
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Category $category A category
 	 *
 	 * @return void
 	 */
-	public function setCategory(\SKYFILLERS\SfSimpleFaq\Domain\Model\Category $category) {
+	public function setCategory(\Skyfillers\SfSimpleFaq\Domain\Model\Category $category) {
 		$this->category = $category;
 	}
 

@@ -23,12 +23,12 @@ $EM_CONF[$_EXTKEY] = array(
 	),
 	'autoload' => [
 		'psr-4' => [
-			'SKYFILLERS\\SfSimpleFaq\\' => 'Classes',
+			'Skyfillers\\SfSimpleFaq\\' => 'Classes',
 		],
 	],
 	'autoload-dev' => [
 		'psr-4' => [
-			'SKYFILLERS\\SfSimpleFaq\\Tests\\' => 'Tests',
+			'Skyfillers\\SfSimpleFaq\\Tests\\' => 'Tests',
 		],
 	],
 );

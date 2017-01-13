@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Model\Dto;
+namespace Skyfillers\SfSimpleFaq\Domain\Model\Dto;
 
 /*
  * This file is part of the TYPO3 CMS project.

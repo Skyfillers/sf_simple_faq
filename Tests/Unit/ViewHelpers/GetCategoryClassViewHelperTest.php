@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -23,7 +23,7 @@ class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase 
 	/**
 	 * Viewhelper
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
+	 * @var \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper
 	 */
 	protected $viewhelper = NULL;
 
@@ -33,7 +33,7 @@ class GetCategoryClassViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCase 
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
+		$this->viewhelper = new \Skyfillers\SfSimpleFaq\ViewHelpers\GetCategoryClassViewHelper();
 	}
 
 	/**

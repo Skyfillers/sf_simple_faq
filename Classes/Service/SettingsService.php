@@ -1,6 +1,6 @@
 <?php
 
-namespace SKYFILLERS\SfSimpleFaq\Service;
+namespace Skyfillers\SfSimpleFaq\Service;
 
 /***************************************************************
  *  Copyright notice

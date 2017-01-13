@@ -1,6 +1,6 @@
 <?php
 
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\Domain\Model;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,7 +16,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
  */
 
 /**
- * Test case for class \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq.
+ * Test case for class \Skyfillers\SfSimpleFaq\Domain\Model\Faq.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -27,7 +27,7 @@ namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\Domain\Model;
 class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * The subject under test
-	 * @var \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq
+	 * @var \Skyfillers\SfSimpleFaq\Domain\Model\Faq
 	 */
 	protected $subject = NULL;
 
@@ -37,7 +37,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->subject = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Faq();
+		$this->subject = new \Skyfillers\SfSimpleFaq\Domain\Model\Faq();
 	}
 
 	/**
@@ -156,7 +156,7 @@ class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @return void
 	 */
 	public function setCategoryForCategorySetsCategory() {
-		$categoryFixture = new \SKYFILLERS\SfSimpleFaq\Domain\Model\Category();
+		$categoryFixture = new \Skyfillers\SfSimpleFaq\Domain\Model\Category();
 		$this->subject->setCategory($categoryFixture);
 
 		$this->assertAttributeEquals(

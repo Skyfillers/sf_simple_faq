@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Tests\Unit\ViewHelpers;
+namespace Skyfillers\SfSimpleFaq\Tests\Unit\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -23,7 +23,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	/**
 	 * Viewhelper
 	 *
-	 * @var \SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper
+	 * @var \Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper
 	 */
 	protected $viewhelper;
 
@@ -33,7 +33,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @return void
 	 */
 	protected function setUp() {
-		$this->viewhelper = new \SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper();
+		$this->viewhelper = new \Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper();
 	}
 
 	/**
@@ -198,7 +198,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @test
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 * @dataProvider textForRenderDataProvider
-	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
+	 * @covers Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function render($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
@@ -240,7 +240,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @test
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 * @dataProvider textForRenderWithEmptySearchDataProvider
-	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
+	 * @covers Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderWithEmptySearch($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
@@ -268,7 +268,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @expectedExceptionMessage Setting "cropChars" can not cast to integer. Check your TS or your HighlightViewHelper.
 	 * @expectedExceptionCode 1439202541
 	 * @dataProvider textForRenderWithCropCharIsStringDataProvider
-	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
+	 * @covers Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderCropCharIsString($searchtext, $trim, $text) {
 		$this->viewhelper->render($searchtext, $trim, $text);
@@ -284,7 +284,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @expectedExceptionMessage The TypoScript setting "highlightTag" is not set or empty in your configuration.
 	 * @expectedExceptionCode 1438950217
 	 * @dataProvider textForRenderDataProvider
-	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
+	 * @covers Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderWithMissingHighlightTagThrowsException($searchtext, $trim, $text) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);
@@ -310,7 +310,7 @@ class HighlightSearchwordViewHelperTest extends \TYPO3\CMS\Core\Tests\UnitTestCa
 	 * @test
 	 * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception
 	 * @dataProvider textForRenderWithoutCroppingDataProvider
-	 * @covers SKYFILLERS\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
+	 * @covers Skyfillers\SfSimpleFaq\ViewHelpers\HighlightSearchwordViewHelper::render
 	 */
 	public function renderWithOutCropping($searchtext, $trim, $text, $expected) {
 		$settingsServiceMock = $this->getMock('Skyfillers\SfSimpleFaq\Service\SettingsService', array('getByPath'), array(), '', FALSE);

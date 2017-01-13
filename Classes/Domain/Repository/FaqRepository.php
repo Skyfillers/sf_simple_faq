@@ -1,5 +1,5 @@
 <?php
-namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
+namespace Skyfillers\SfSimpleFaq\Domain\Repository;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,7 +14,7 @@ namespace SKYFILLERS\SfSimpleFaq\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand;
+use Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -77,11 +77,11 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Generates the necessary category settings.
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
 	 *
 	 * @return void
 	 */
-	protected function generateCategories(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
+	protected function generateCategories(\Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
 		$categories = $demand->getCategories();
 		if (strlen($categories) > 1) {
 			$categories = explode(',', $categories);
@@ -103,11 +103,11 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Generates the necessary search settings.
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand object
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand object
 	 *
 	 * @return void
 	 */
-	protected function generateSearchConstraints(\SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
+	protected function generateSearchConstraints(\Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand) {
 		if ($demand->getSearchtext()) {
 			$searchtextConstraints = array();
 			$searchWords = GeneralUtility::trimExplode(' ', $demand->getSearchtext(), TRUE);
@@ -152,7 +152,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Returns the objects of this repository matching the given demand
 	 *
-	 * @param \SKYFILLERS\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
+	 * @param \Skyfillers\SfSimpleFaq\Domain\Model\Dto\FaqDemand $demand A demand
 	 *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
