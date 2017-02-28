@@ -8,7 +8,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
         'sortby' => 'sorting',
         'versioningWS' => 2,
         'versioning_followPages' => true,
@@ -135,8 +134,8 @@ return [
                         'icon' => 'wizard_rte2.gif',
                         'notNewRecords' => 1,
                         'RTEonly' => 1,
-                        'script' => 'wizard_rte.php',
-                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+                        'module' => ['name' => 'wizard_rte'],
+                        'title' => 'LLL:EXT:cms/locallang_ttc.xml:bodytext.W.RTE',
                         'type' => 'script'
                     ]
                 ]
